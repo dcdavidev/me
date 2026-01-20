@@ -1,0 +1,13 @@
+import { defineConfig } from 'rolldown';
+
+export default defineConfig({
+  input: 'src/main.ts',
+  output: {
+    format: 'esm',
+    dir: 'dist',
+    entryFileNames: '[name].js',
+    chunkFileNames: '[name]-[hash].js',
+    assetFileNames: '[name]-[hash][extname]',
+  },
+  platform: 'node',
+});

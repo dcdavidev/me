@@ -1,0 +1,28 @@
+{
+  "name": "server",
+  "version": "0.1.0",
+  "private": true,
+  "license": "CC-BY-NC-ND-4.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "rolldown -c",
+    "dev": "infisical run --env=dev --path=\"/apps/me\" -- tsx watch src/main.ts"
+  },
+  "dependencies": {
+    "@repo/server-routes": "workspace:*",
+    "@repo/server-schemas": "workspace:*",
+    "express": "^5.2.1",
+    "wnodex": "^0.1.0"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/prettier-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/express": "^5.0.6",
+    "@types/node": "^22.15.3",
+    "rolldown": "1.0.0-beta.60",
+    "tsx": "^4.21.0",
+    "typescript": "5.9.2"
+  }
+}
