@@ -7,13 +7,15 @@ import {
   ScrollRestoration,
 } from 'react-router';
 
-import type { Route } from './+types/root';
+import { Code, Flex, Heading, Text, Theme } from '@radix-ui/themes';
+
+import { LoadingScreen } from '@repo/shared-ui-components';
+import { SplashScreen } from '@repo/shared-ui-components';
+
 import './app.css';
 import '@radix-ui/themes/styles.css';
-import { Flex, Heading, Theme, Text, Code } from '@radix-ui/themes';
-import { LoadingScreen } from '@repo/shared-ui-components';
-import { Suspense, useEffect, useState } from 'react';
-import { SplashScreen } from '@repo/shared-ui-components';
+
+import type { Route } from './+types/root';
 
 export const meta: Route.MetaFunction = () => [
   {
@@ -56,6 +58,11 @@ export const links: Route.LinksFunction = () => [
   { rel: 'manifest', href: '/site.webmanifest' },
 ];
 
+/**
+ * @param root0
+ * @param root0.children
+ * @example
+ */
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">

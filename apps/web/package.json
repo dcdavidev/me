@@ -14,8 +14,10 @@
     "@react-router/serve": "7.12.0",
     "@repo/shared-ui-components": "workspace:*",
     "@repo/web-configs": "workspace:*",
+    "@tabler/icons-react": "^3.36.1",
     "isbot": "^5.1.31",
     "motion": "^12.27.4",
+    "radix-ui": "^1.4.3",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-router": "7.12.0"

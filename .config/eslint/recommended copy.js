@@ -39,9 +39,9 @@ export default defineConfig([
     },
   },
 
-  // --- Common for JS/TS/JSX/TSX ---
+  // --- Js/Ts base ---
   {
-    files: ['**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}'],
+    files: ['**/*.{js,ts,cjs,cts,mjs,mts,jsx,tsx}'],
     plugins: {
       jsdoc,
       import: importPlugin,
@@ -51,19 +51,93 @@ export default defineConfig([
     extends: [
       js.configs.recommended,
       ...tseslint.configs.recommended,
+      nodeDependencies.configs['flat/recommended'],
       unicorn.configs.recommended,
+      jsdoc.configs['flat/contents-typescript-flavor'],
+      jsdoc.configs['flat/logical-typescript-flavor'],
+      jsdoc.configs['flat/requirements-typescript-flavor'],
+      jsdoc.configs['flat/stylistic-typescript-flavor'],
     ],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.browser,
+      },
+    },
     rules: {
-      'prettier/prettier': 'error',
+      // TS: allow unused prefixed with "_"
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': [
         'error',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
       ],
 
-      // Enforce structured and grouped imports using simple-import-sort
+      // Quote/semi conflict resolution (Prettier handles)
+      quotes: 'off',
+      '@typescript-eslint/quotes': 'off',
+      semi: 'off',
+      '@typescript-eslint/semi': 'off',
+
+      // Unicorn
+      'unicorn/filename-case': ['error', { case: 'kebabCase' }],
+      'unicorn/prefer-module': 'error',
+      'unicorn/no-new-buffer': 'error',
+      'unicorn/no-instanceof-array': 'error',
+      'unicorn/prefer-includes': 'error',
+      'unicorn/prefer-string-replace-all': 'error',
+      'unicorn/prefer-top-level-await': 'off',
+      'unicorn/prefer-type-error': 'error',
+      'unicorn/throw-new-error': 'error',
+      'unicorn/no-null': 'off',
+      'unicorn/prevent-abbreviations': 'off',
+      'unicorn/explicit-length-check': 'warn',
+
+      // jsdoc
+      'jsdoc/require-jsdoc': [
+        'warn',
+        {
+          require: {
+            FunctionDeclaration: true,
+            MethodDefinition: true,
+            ClassDeclaration: true,
+          },
+        },
+      ],
+      'jsdoc/require-description': 'warn',
+      'jsdoc/require-param': 'error',
+      'jsdoc/require-returns': 'error',
+      'jsdoc/check-param-names': 'error',
+      'jsdoc/check-property-names': 'error',
+      'jsdoc/check-tag-names': 'error',
+      'jsdoc/check-alignment': 'warn',
+      'jsdoc/check-indentation': 'warn',
+      'jsdoc/require-description-complete-sentence': 'warn',
+      'jsdoc/no-undefined-types': 'error',
+      'jsdoc/empty-tags': 'error',
+      'jsdoc/no-multi-asterisks': 'warn',
+      'jsdoc/no-types': 'off',
+      'jsdoc/require-param-type': 'off',
+      'jsdoc/require-property-type': 'off',
+      'jsdoc/require-throws-type': 'off',
+      'jsdoc/require-yields-type': 'off',
+      'jsdoc/require-returns-type': 'off',
+      'jsdoc/tag-lines': [
+        'warn',
+        'any',
+        {
+          startLines: 0,
+          endLines: 0,
+          applyToEndTag: true,
+          count: 1,
+          tags: {},
+          maxBlockLines: null,
+        },
+      ],
+
+      // Disable the built-in sort-imports rule in favor of plugin
       'sort-imports': 'off',
-      'simple-import-sort/exports': 'error',
+
+      // Enforce structured and grouped imports using simple-import-sort
       'simple-import-sort/imports': [
         'error',
         {
@@ -275,46 +349,24 @@ export default defineConfig([
         },
       ],
 
-      'unicorn/no-null': 'off',
-      'unicorn/prevent-abbreviations': 'off',
+      // Enforce sorted exports
+      'simple-import-sort/exports': 'error',
+
+      // Prettier
+      'prettier/prettier': 'error',
     },
   },
 
-  // --- Node.js Specifics (TS/JS files) ---
+  // --- React ---
   {
-    files: ['**/*.{ts,js,mts,mjs,cts,cjs}'],
-    ignores: ['**/*.{tsx,jsx}'],
-    extends: [
-      nodeDependencies.configs['flat/recommended'],
-      jsdoc.configs['flat/contents-typescript-flavor'],
-      jsdoc.configs['flat/logical-typescript-flavor'],
-    ],
-    languageOptions: {
-      globals: { ...globals.node },
-    },
-    rules: {
-      'unicorn/filename-case': ['error', { case: 'kebabCase' }],
-      'jsdoc/require-jsdoc': [
-        'warn',
-        {
-          require: {
-            FunctionDeclaration: true,
-            MethodDefinition: true,
-            ClassDeclaration: true,
-          },
-        },
-      ],
-      'jsdoc/require-description': 'warn',
-    },
-  },
-
-  // --- React Specifics (TSX/JSX files) ---
-  {
-    files: ['**/*.{tsx,jsx}'],
+    files: ['**/*.{jsx,tsx}'],
     extends: [eslintReact.configs['recommended-typescript']],
     languageOptions: {
       sourceType: 'module',
-      globals: { ...globals.browser, ...globals.es2022 },
+      globals: {
+        ...globals.browser,
+        ...globals.es2022,
+      },
       parser: tseslint.parser,
       parserOptions: {
         projectService: true,
@@ -322,24 +374,59 @@ export default defineConfig([
       },
     },
     rules: {
-      // Filename case OFF for React components
       'unicorn/filename-case': 'off',
-      // JSDoc OFF for React components
+
       'jsdoc/require-jsdoc': 'off',
       'jsdoc/require-description': 'off',
       'jsdoc/require-param': 'off',
       'jsdoc/require-returns': 'off',
+      'jsdoc/check-param-names': 'off',
+      'jsdoc/check-property-names': 'off',
       'jsdoc/check-tag-names': 'off',
+      'jsdoc/check-alignment': 'off',
+      'jsdoc/check-indentation': 'off',
+      'jsdoc/require-description-complete-sentence': 'off',
+      'jsdoc/no-undefined-types': 'off',
+      'jsdoc/empty-tags': 'off',
+      'jsdoc/no-multi-asterisks': 'off',
+      'jsdoc/no-types': 'off',
+      'jsdoc/require-param-type': 'off',
+      'jsdoc/require-property-type': 'off',
+      'jsdoc/require-throws-type': 'off',
+      'jsdoc/require-yields-type': 'off',
+      'jsdoc/require-returns-type': 'off',
+      'jsdoc/tag-lines': 'off',
     },
   },
 
-  // --- CommonJS Overrides ---
+  // --- CommonJS specifics ---
   {
-    files: ['**/*.{cjs,cts}'],
-    languageOptions: { globals: { ...globals.commonjs } },
+    files: ['**/*.{cjs,cts}', '**/webpack.config.{js,cjs}'],
+    languageOptions: {
+      globals: { ...globals.commonjs },
+    },
     rules: {
       '@typescript-eslint/no-require-imports': 'off',
       'unicorn/prefer-module': 'off',
+    },
+  },
+
+  // --- Module specifics ---
+  {
+    files: ['**/*.{js,ts,mjs,mts}'],
+    languageOptions: {
+      sourceType: 'module',
+      globals: { ...globals.es2022 },
+    },
+  },
+
+  // --- Test files ---
+  {
+    files: ['**/*.test.{js,ts}', '**/*.spec.{js,ts}'],
+    rules: {
+      'no-console': 'off',
+      '@typescript-eslint/no-unused-vars': 'warn',
+      'unicorn/no-null': 'warn',
     },
   },
 
@@ -399,7 +486,12 @@ export default defineConfig([
     extends: ['markdown/recommended'],
   },
 
+  // --- spellcheck ---
   cspell.recommended,
+
+  // --- whitespace ---
   vuoto.configs.all,
+
+  // eslint-plugin-prettier/recommended config goes last.
   eslintPluginPrettierRecommended,
 ]);

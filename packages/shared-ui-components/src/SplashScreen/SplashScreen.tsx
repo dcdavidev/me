@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Flex } from '@radix-ui/themes';
 
 export const SplashScreen: React.FC<React.PropsWithChildren> = ({

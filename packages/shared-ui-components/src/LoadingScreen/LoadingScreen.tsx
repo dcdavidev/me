@@ -1,7 +1,9 @@
 import React from 'react';
-import { SplashScreen } from '../SplashScreen/SplashScreen.js';
+
+import { Em, Flex, Spinner, Text } from '@radix-ui/themes';
+
 import { BoxEaseIn } from '../BoxEaseIn/BoxEaseIn.js';
-import { Text, Em, Flex, Spinner } from '@radix-ui/themes';
+import { SplashScreen } from '../SplashScreen/SplashScreen.js';
 
 export const LoadingScreen: React.FC = () => {
   return (

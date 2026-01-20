@@ -5,7 +5,7 @@ import express from 'express';
 import { Wnodex } from 'wnodex';
 
 import { apiRouter } from '@repo/server-routes';
-import { CLIENT_PATH, HOST, PORT, PROD } from '@repo/server-schemas';
+import { HOST, PORT, PROD } from '@repo/server-schemas';
 
 const wnodex = new Wnodex({
   port: PORT,
@@ -48,7 +48,7 @@ app.get('/*splat', async (_req, res) =>
 );
 
 // Start the server
-wnodex.start().then(() => {
+await wnodex.start().then(() => {
   // Server started.
   // Here you can add additional startup chores if needed.
 });
