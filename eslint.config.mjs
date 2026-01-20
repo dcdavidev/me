@@ -8,6 +8,7 @@ export default defineConfig([
     '.github/instructions/**',
     '**/*:Zone.Identifier',
     '**/Thumbs.db',
+    '**/.react-router/**',
   ]),
   repoRecommended,
 ]);

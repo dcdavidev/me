@@ -1,0 +1,12 @@
+.radix-themes {
+  --default-font-family: 'Momo Trust Sans', sans-serif;
+  --heading-font-family: 'Funnel Display', sans-serif;
+  --quote-font-family: 'Roboto Serif', serif;
+  --em-font-family: 'Roboto Serif', serif;
+  --code-font-family: 'Source Code Pro', monospace;
+  --strong-font-family: 'Momo Trust Sans', sans-serif;
+}
+
+body {
+  margin: 0;
+}
