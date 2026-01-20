@@ -1,0 +1,53 @@
+export default {
+  plugins: [
+    'prettier-plugin-sh',
+    'prettier-plugin-toml',
+    'prettier-plugin-ini',
+    'prettier-plugin-packagejson',
+    'prettier-plugin-properties',
+    '@prettier/plugin-xml',
+  ],
+
+  trailingComma: 'es5',
+  tabWidth: 2,
+  semi: true,
+  singleQuote: true,
+  printWidth: 80,
+  endOfLine: 'lf',
+  bracketSpacing: true,
+
+  overrides: [
+    {
+      files: ['*.toml'],
+      options: {
+        printWidth: 100,
+      },
+    },
+    {
+      files: ['.czrc'],
+      options: {
+        parser: 'json',
+      },
+    },
+    {
+      files: [
+        '**/*.xml',
+        '**/*.svg',
+        '**/*.xhtml',
+        '**/*.xsd',
+        '**/*.xsl',
+        '**/*.xslt',
+        '**/*.plist',
+        '**/*.axml',
+        '**/*.xaml',
+        '**/*.config',
+        '**/*.resx',
+        '**/*.csproj',
+        '**/*.vbproj',
+      ],
+      options: {
+        parser: 'xml',
+      },
+    },
+  ],
+};
