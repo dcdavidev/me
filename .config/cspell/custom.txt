@@ -1,3 +1,5 @@
 isbot
 Momo
+pitto
+pittorica
 wnodex

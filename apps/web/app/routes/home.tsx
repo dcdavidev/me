@@ -4,8 +4,10 @@ import { Toast } from 'radix-ui';
 
 import { api } from '@repo/web-configs';
 
-import { Welcome } from '../welcome/Welcome';
 import type { Route } from './+types/home';
+
+import { About } from '~/about/About';
+import { Welcome } from '~/welcome/Welcome';
 
 export function meta() {
   return [
@@ -42,6 +44,7 @@ export default function Home() {
   return (
     <Toast.Provider swipeDirection="right">
       <Welcome />
+      <About />
 
       <Toast.Root
         key={actionData?.timestamp}

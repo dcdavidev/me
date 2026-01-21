@@ -17,6 +17,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@pittorica/pitto": "^0.4.5",
     "@radix-ui/themes": "^3.2.1",
     "@repo/eslint-config": "workspace:*",
     "@repo/prettier-config": "workspace:*",
@@ -34,6 +35,7 @@
     "vite": "^7.3.1"
   },
   "peerDependencies": {
+    "@pittorica/pitto": "^0.4.5",
     "@radix-ui/themes": "^3.2.1",
     "motion": "^12.27.4",
     "react": "^19.2.3",

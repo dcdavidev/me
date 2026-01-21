@@ -5,10 +5,13 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
+  define: {
+    'import.meta.env.PORT': JSON.stringify(process.env.PORT),
+  },
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3000',
+        target: `http://localhost:${process.env.PORT}`,
         changeOrigin: true,
       },
     },

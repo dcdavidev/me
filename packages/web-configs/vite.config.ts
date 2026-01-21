@@ -44,4 +44,7 @@ export default defineConfig({
     sourcemap: true,
     minify: false,
   },
+  define: {
+    'import.meta.env.PORT': JSON.stringify(process.env.PORT),
+  },
 });
