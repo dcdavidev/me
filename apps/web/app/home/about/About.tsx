@@ -57,9 +57,8 @@ export function About() {
               </Text>
             </BoxEaseIn>
           </Box>
-
-          <Divider variant="wave" />
         </Grid>
+        <Divider variant="wave" />
       </Container>
     </Box>
   );

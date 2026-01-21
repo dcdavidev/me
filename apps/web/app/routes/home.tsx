@@ -6,8 +6,7 @@ import { api } from '@repo/web-configs';
 
 import type { Route } from './+types/home';
 
-import { About } from '~/about/About';
-import { Welcome } from '~/welcome/Welcome';
+import { About, TechStack, Welcome } from '~/home';
 
 export function meta() {
   return [
@@ -45,6 +44,7 @@ export default function Home() {
     <Toast.Provider swipeDirection="right">
       <Welcome />
       <About />
+      <TechStack />
 
       <Toast.Root
         key={actionData?.timestamp}
