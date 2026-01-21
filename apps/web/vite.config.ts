@@ -4,6 +4,7 @@ import { reactRouter } from '@react-router/dev/vite';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
+  assetsInclude: ['**/*.lottie'],
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
   define: {
     'import.meta.env.PORT': JSON.stringify(process.env.PORT),

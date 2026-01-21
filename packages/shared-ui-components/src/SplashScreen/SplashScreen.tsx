@@ -12,7 +12,7 @@ export const SplashScreen: React.FC<React.PropsWithChildren> = ({
       direction="column"
       style={{
         height: '100vh',
-        width: '100vw',
+        width: '100%',
         position: 'relative',
       }}
     >

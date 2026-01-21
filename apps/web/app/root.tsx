@@ -27,9 +27,9 @@ import {
   SplashScreen,
 } from '@repo/shared-ui-components';
 
-import meSqrd from './me.webp';
+import meSqrd from '~/me.webp';
 
-import './app.css';
+import '~/app.css';
 import '@radix-ui/themes/styles.css';
 
 import type { Route } from './+types/root';
