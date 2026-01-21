@@ -1,8 +1,10 @@
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 import express from 'express';
 
 import { Wnodex } from 'wnodex';
+import { createRequestHandler } from '@react-router/express';
 
 import { apiRouter } from '@repo/server-routes';
 import { HOST, PORT, PROD } from '@repo/server-schemas';
@@ -34,18 +36,39 @@ const wnodex = new Wnodex({
 // const logger = wnodex.getLogger();
 const app = wnodex.getApp();
 
+app.disable('x-powered-by');
+
 // client files
-const CLIENT_PATH = path.join(import.meta.dirname, 'client');
-app.use(express.static(CLIENT_PATH));
-app.use('/assets', express.static(path.join(CLIENT_PATH, 'assets')));
+const CLIENT_PATH = path.join(import.meta.dirname, 'web');
+
+// SSR client files
+const reactRouterHandler = createRequestHandler({
+  build: await import(
+    pathToFileURL(path.join(CLIENT_PATH, 'server', 'index.js')).href
+  ),
+});
+
+// Client assets
+app.use(
+  '/assets',
+  express.static(path.join(CLIENT_PATH, 'client', 'assets'), {
+    immutable: true,
+    maxAge: '1y',
+  })
+);
+
+// Client filles
+app.use(
+  express.static(path.join(CLIENT_PATH, 'client'), {
+    maxAge: '1h',
+  })
+);
 
 // API routes
 app.use('/api', apiRouter);
 
 // SPA fallback
-app.get('/*splat', async (_req, res) =>
-  res.sendFile(path.join(CLIENT_PATH, 'index.html'))
-);
+app.all('*splat', reactRouterHandler);
 
 // Start the server
 await wnodex.start().then(() => {

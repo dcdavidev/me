@@ -168,15 +168,51 @@ importers:
 
   apps/server:
     dependencies:
+      '@lottiefiles/dotlottie-react':
+        specifier: ^0.17.13
+        version: 0.17.13(react@19.2.3)
+      '@pittorica/pitto':
+        specifier: ^0.4.5
+        version: 0.4.5
+      '@radix-ui/themes':
+        specifier: ^3.2.1
+        version: 3.2.1(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@react-router/express':
+        specifier: ^7.12.0
+        version: 7.12.0(express@5.2.1)(react-router@7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(typescript@5.9.2)
+      '@react-router/node':
+        specifier: 7.12.0
+        version: 7.12.0(react-router@7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(typescript@5.9.2)
       '@repo/server-routes':
         specifier: workspace:*
         version: link:../../packages/server-routes
       '@repo/server-schemas':
         specifier: workspace:*
         version: link:../../packages/server-schemas
+      '@repo/web':
+        specifier: workspace:*
+        version: link:../web
+      '@tabler/icons-react':
+        specifier: ^3.36.1
+        version: 3.36.1(react@19.2.3)
       express:
         specifier: ^5.2.1
         version: 5.2.1
+      isbot:
+        specifier: ^5.1.33
+        version: 5.1.33
+      radix-ui:
+        specifier: ^1.4.3
+        version: 1.4.3(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      react:
+        specifier: ^19.2.3
+        version: 19.2.3
+      react-dom:
+        specifier: ^19.2.3
+        version: 19.2.3(react@19.2.3)
+      react-router:
+        specifier: 7.12.0
+        version: 7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       wnodex:
         specifier: ^0.1.0
         version: 0.1.0
@@ -11870,6 +11906,14 @@ snapshots:
     dependencies:
       '@react-router/node': 7.12.0(react-router@7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(typescript@5.9.2)
       express: 4.22.1
+      react-router: 7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+    optionalDependencies:
+      typescript: 5.9.2
+
+  '@react-router/express@7.12.0(express@5.2.1)(react-router@7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(typescript@5.9.2)':
+    dependencies:
+      '@react-router/node': 7.12.0(react-router@7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(typescript@5.9.2)
+      express: 5.2.1
       react-router: 7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
     optionalDependencies:
       typescript: 5.9.2

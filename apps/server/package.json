@@ -6,13 +6,26 @@
   "type": "module",
   "main": "./dist/index.js",
   "scripts": {
+    "prebuild": "rsync -av --delete --mkpath ../web/dist/ src/web/",
     "build": "rolldown -c",
     "dev": "infisical run --env=dev --path=\"/apps/me\" -- tsx watch src/main.ts"
   },
   "dependencies": {
+    "@lottiefiles/dotlottie-react": "^0.17.13",
+    "@pittorica/pitto": "^0.4.5",
+    "@radix-ui/themes": "^3.2.1",
+    "@react-router/express": "^7.12.0",
+    "@react-router/node": "7.12.0",
     "@repo/server-routes": "workspace:*",
     "@repo/server-schemas": "workspace:*",
+    "@repo/web": "workspace:*",
+    "@tabler/icons-react": "^3.36.1",
     "express": "^5.2.1",
+    "isbot": "^5.1.33",
+    "radix-ui": "^1.4.3",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-router": "7.12.0",
     "wnodex": "^0.1.0"
   },
   "devDependencies": {
