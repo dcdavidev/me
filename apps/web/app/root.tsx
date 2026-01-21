@@ -16,10 +16,16 @@ import {
   Flex,
   Grid,
   Heading,
+  IconButton,
   Text,
   Theme,
 } from '@radix-ui/themes';
 import { Background } from '@pittorica/pitto';
+
+import {
+  IconBrandGithubFilled,
+  IconBrandLinkedinFilled,
+} from '@tabler/icons-react';
 
 import {
   Divider,
@@ -89,6 +95,44 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Theme appearance="dark" accentColor="ruby" radius="medium">
+          <Box
+            position="fixed"
+            left="0"
+            right="0"
+            top="0"
+            p="2"
+            style={{ zIndex: 1000 }}
+          >
+            <Flex direction="row" gap="2" justify="center" align="start">
+              <Box flexGrow="1">
+                <Avatar
+                  size="3"
+                  src={meSqrd}
+                  fallback="Me"
+                  radius="full"
+                  onClick={() => (globalThis.location.href = '#home')}
+                />
+              </Box>
+              <Flex gap="4" justify="center" align="end" p="2">
+                <IconButton
+                  variant="ghost"
+                  color="blue"
+                  onClick={() =>
+                    window.open('https://linkedin.com/in/dcdavidev')
+                  }
+                >
+                  <IconBrandLinkedinFilled />
+                </IconButton>
+                <IconButton
+                  variant="ghost"
+                  color="gray"
+                  onClick={() => window.open('https://github.com/dcdavidev')}
+                >
+                  <IconBrandGithubFilled />
+                </IconButton>
+              </Flex>
+            </Flex>
+          </Box>
           <main style={{ position: 'relative' }}>{children}</main>
 
           <Box
@@ -135,9 +179,21 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
               <Divider variant="scallop" />
 
-              <Flex justify={'center'} align={'center'}>
+              <Flex
+                justify={'center'}
+                align={'center'}
+                direction={'column'}
+                gap={'4'}
+              >
                 <Text align={'center'}>
                   Davide Di Criscito - Italian VAT number 04737220980
+                </Text>
+                <Text size={'1'}>
+                  View the source code of this website on{' '}
+                  <Link to="https://github.com/dcdavidev/me" target="_blank">
+                    GitHub
+                  </Link>
+                  .
                 </Text>
               </Flex>
             </Container>
