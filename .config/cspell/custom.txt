@@ -3,4 +3,5 @@ isbot
 Momo
 pitto
 pittorica
+Sqrd
 wnodex

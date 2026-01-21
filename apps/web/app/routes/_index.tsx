@@ -1,12 +1,13 @@
 import { useActionData } from 'react-router';
 
+import { Flex } from '@radix-ui/themes';
 import { Toast } from 'radix-ui';
 
 import { api } from '@repo/web-configs';
 
-import type { Route } from './+types/home';
+import type { Route } from './+types/_index';
 
-import { About, TechStack, Welcome } from '~/home';
+import { About, TechStack, Welcome } from '~/routes/_home/index';
 
 export function meta() {
   return [
@@ -42,9 +43,11 @@ export default function Home() {
 
   return (
     <Toast.Provider swipeDirection="right">
-      <Welcome />
-      <About />
-      <TechStack />
+      <Flex direction={'column'} gap={'9'}>
+        <Welcome />
+        <About />
+        <TechStack />
+      </Flex>
 
       <Toast.Root
         key={actionData?.timestamp}

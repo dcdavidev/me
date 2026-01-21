@@ -206,6 +206,7 @@ export default defineConfig([
               '^@mui',
               '^@nextui-org/react',
               '^@radix-ui',
+              '^@pittorica/pitto',
               '^radix-ui',
               '^antd',
               '^framer-motion',

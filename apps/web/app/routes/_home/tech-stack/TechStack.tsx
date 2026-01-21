@@ -4,7 +4,7 @@ import { BoxEaseIn } from '@repo/shared-ui-components';
 
 export function TechStack() {
   return (
-    <Box id="tech-stack">
+    <Box id="tech-stack" pt="9">
       <BoxEaseIn>
         <Container size="4">
           <Heading size="8" mb="6" align="center">

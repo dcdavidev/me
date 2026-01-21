@@ -214,6 +214,9 @@ importers:
       '@radix-ui/themes':
         specifier: ^3.2.1
         version: 3.2.1(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@react-router/fs-routes':
+        specifier: ^7.12.0
+        version: 7.12.0(@react-router/dev@7.12.0(@react-router/serve@7.12.0(react-router@7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(typescript@5.9.2))(@types/node@22.15.3)(jiti@2.6.1)(lightningcss@1.30.2)(react-router@7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(tsx@4.21.0)(typescript@5.9.2)(vite@7.3.1(@types/node@22.15.3)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0)(yaml@2.8.2))(yaml@2.8.2))(typescript@5.9.2)
       '@react-router/node':
         specifier: 7.12.0
         version: 7.12.0(react-router@7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(typescript@5.9.2)
@@ -3069,6 +3072,19 @@ packages:
     peerDependencies:
       express: ^4.17.1 || ^5
       react-router: 7.12.0
+      typescript: ^5.1.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
+  '@react-router/fs-routes@7.12.0':
+    resolution:
+      {
+        integrity: sha512-otlOIrIsJsqY5ACfgMsIkHPq1rfuvdwxBGWZRSscU+HK+BcHAz8ZDq+wYDGonOLcU6wUn33+G+/1skznIV1L8A==,
+      }
+    engines: { node: '>=20.0.0' }
+    peerDependencies:
+      '@react-router/dev': ^7.12.0
       typescript: ^5.1.0
     peerDependenciesMeta:
       typescript:
@@ -11831,6 +11847,13 @@ snapshots:
       '@react-router/node': 7.12.0(react-router@7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(typescript@5.9.2)
       express: 4.22.1
       react-router: 7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+    optionalDependencies:
+      typescript: 5.9.2
+
+  '@react-router/fs-routes@7.12.0(@react-router/dev@7.12.0(@react-router/serve@7.12.0(react-router@7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(typescript@5.9.2))(@types/node@22.15.3)(jiti@2.6.1)(lightningcss@1.30.2)(react-router@7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(tsx@4.21.0)(typescript@5.9.2)(vite@7.3.1(@types/node@22.15.3)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0)(yaml@2.8.2))(yaml@2.8.2))(typescript@5.9.2)':
+    dependencies:
+      '@react-router/dev': 7.12.0(@react-router/serve@7.12.0(react-router@7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(typescript@5.9.2))(@types/node@22.15.3)(jiti@2.6.1)(lightningcss@1.30.2)(react-router@7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(tsx@4.21.0)(typescript@5.9.2)(vite@7.3.1(@types/node@22.15.3)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0)(yaml@2.8.2))(yaml@2.8.2)
+      minimatch: 9.0.5
     optionalDependencies:
       typescript: 5.9.2
 
