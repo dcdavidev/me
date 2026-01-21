@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { useNavigate } from 'react-router';
+
 import { Button, Dialog, Flex } from '@radix-ui/themes';
 
 import {
@@ -10,6 +12,7 @@ import {
 import { ContactDialog } from './ContactDialog';
 
 export function HomeActions() {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
   return (
@@ -33,6 +36,7 @@ export function HomeActions() {
         variant="outline"
         radius="large"
         style={{ cursor: 'pointer' }}
+        onClick={() => navigate('#about')}
       >
         Show More <IconArrowNarrowDownDashed />
       </Button>
