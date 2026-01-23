@@ -13,6 +13,7 @@
     "lint": "pnpm dlx eslint --no-warn-ignored --fix .",
     "lint:fmt": "pnpm run lint && pnpm run fmt",
     "prepare": "pnpm dlx lefthook install",
+    "release": "release-it",
     "serve": "infisical run --env=dev --path=\"/apps/me\" -- node apps/server/dist/main.js"
   },
   "config": {
@@ -25,6 +26,7 @@
     "@commitlint/config-conventional": "^20.3.1",
     "@cspell/cspell-types": "^9.6.0",
     "@prettier/plugin-xml": "^3.4.2",
+    "@release-it/conventional-changelog": "^10.0.4",
     "@repo/eslint-config": "workspace:*",
     "@repo/prettier-config": "workspace:*",
     "commitizen": "^4.3.1",
@@ -40,6 +42,7 @@
     "prettier-plugin-properties": "^0.3.1",
     "prettier-plugin-sh": "^0.18.0",
     "prettier-plugin-toml": "^2.0.6",
+    "release-it": "^19.2.4",
     "turbo": "^2.7.5",
     "typescript": "5.9.2"
   },
