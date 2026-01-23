@@ -1,0 +1,23 @@
+services:
+  me:
+    image: me:latest
+    build:
+      context: .
+    environment:
+      - PORT=${PORT}
+      - NODE_ENV=${NODE_ENV}
+      - EMAIL_PASSWORD
+      - EMAIL_SERVICE
+      - EMAIL_USER
+    ports:
+      - '${PORT}:${PORT}'
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: overlay

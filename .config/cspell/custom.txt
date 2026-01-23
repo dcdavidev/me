@@ -1,7 +1,10 @@
 expressjs
 isbot
+libc
 Momo
+nasm
 pitto
 pittorica
+shrc
 Sqrd
 wnodex

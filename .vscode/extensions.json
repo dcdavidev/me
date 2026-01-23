@@ -30,6 +30,13 @@
     "timonwong.shellcheck",
     "gruntfuggly.todo-tree",
     "eliostruyf.vscode-typescript-exportallmodules",
-    "redhat.vscode-yaml"
+    "redhat.vscode-yaml",
+    "ms-vscode-remote.remote-containers",
+    "ms-vscode-remote.remote-ssh",
+    "ms-vscode.remote-server",
+    "ms-vscode-remote.remote-wsl",
+    "ms-azuretools.vscode-containers",
+    "ms-azuretools.vscode-docker",
+    "docker.docker"
   ]
 }

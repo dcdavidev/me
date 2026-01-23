@@ -1,0 +1,10 @@
+services:
+  me:
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: none
+
+networks:
+  webnet:
+    driver: bridge
