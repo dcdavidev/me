@@ -143,6 +143,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <Background variant="beams" colors={['#ffffff']} />
 
             <Container size="4">
+              <Divider variant="double" />
               <Flex
                 mt="9"
                 justify={'center'}
@@ -185,10 +186,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 direction={'column'}
                 gap={'4'}
               >
-                <Text align={'center'}>
+                <Text align={'center'} wrap="pretty">
                   Davide Di Criscito - Italian VAT number 04737220980
                 </Text>
-                <Text size={'1'}>
+                <Text size={'1'} wrap="pretty">
                   View the source code of this website on{' '}
                   <Link to="https://github.com/dcdavidev/me" target="_blank">
                     GitHub

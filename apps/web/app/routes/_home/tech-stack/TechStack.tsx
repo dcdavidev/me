@@ -10,7 +10,7 @@ export function TechStack() {
           <Heading size="8" mb="6" align="center">
             Tech Stack
           </Heading>
-          <Flex justify="center" align="center" gap="4" mb="8">
+          <Flex wrap="wrap" gap="4" mb="8" justify="center" px="2">
             <Flex direction="column" align="center">
               <i className="ci ci-javascript ci-2x"></i>
               <Text as="span" align="center">

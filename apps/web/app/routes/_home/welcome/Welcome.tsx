@@ -21,14 +21,24 @@ export function Welcome() {
         backgroundPosition: 'center',
       }}
     >
-      <Container size="4">
+      <Container size={{ initial: '1', sm: '2', md: '4' }} px="2">
         <BoxEaseIn>
-          <Heading size="9" mb="6" align="center">
+          <Heading
+            size={{ initial: '8', md: '9' }}
+            mb="6"
+            align="center"
+            wrap="pretty"
+          >
             Ready to build something <u>unique</u>?
           </Heading>
         </BoxEaseIn>
         <BoxEaseIn>
-          <Heading size="9" mb="9" align="center">
+          <Heading
+            size={{ initial: '8', md: '9' }}
+            mb="9"
+            align="center"
+            wrap="pretty"
+          >
             Let's start today.
           </Heading>
         </BoxEaseIn>

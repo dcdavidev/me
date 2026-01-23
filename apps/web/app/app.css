@@ -7,6 +7,17 @@
   --strong-font-family: 'Momo Trust Sans', sans-serif;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  font-family: var(--default-font-family);
+}
+
 body {
   margin: 0;
 }
