@@ -7,11 +7,6 @@
   "exports": {
     ".": "./src/index.ts"
   },
-  "scripts": {
-    "build": "vite build",
-    "postbuild": "tsc --emitDeclarationOnly",
-    "preview": "vite preview"
-  },
   "devDependencies": {
     "@pittorica/pitto": "^0.4.5",
     "@radix-ui/themes": "^3.2.1",

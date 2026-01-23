@@ -17,4 +17,12 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    rollupOptions: {
+      external: [],
+    },
+  },
+  ssr: {
+    noExternal: true,
+  },
 });

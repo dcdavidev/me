@@ -7,10 +7,6 @@
   "exports": {
     ".": "./src/index.ts"
   },
-  "scripts": {
-    "build": "rolldown -c",
-    "postbuild": "tsc -p tsconfig.json"
-  },
   "dependencies": {
     "@repo/server-configs": "workspace:*",
     "@repo/server-schemas": "workspace:*",

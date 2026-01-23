@@ -8,40 +8,29 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 
 WORKDIR /opt/me
 
-FROM base AS dependencies
+FROM base AS builder
 
-COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
-COPY . ./
-
-ENV CI=true
-RUN pnpm install --frozen-lockfile --ignore-scripts
-
-FROM base AS build
-
-COPY --from=dependencies /opt/me/node_modules ./node_modules
 COPY . .
 
 ENV CI=true
 
-RUN pnpm add turbo --global
-RUN turbo run build
-
-RUN pnpm prune --prod --no-optional
+RUN pnpm install --frozen-lockfile --ignore-scripts
+RUN pnpm dlx turbo run build
+RUN pnpm prune --prod --ignore-scripts
 
 FROM node:24.11.1-alpine3.23 AS runner
 
-RUN apk add --no-cache vips-dev
+RUN apk add --no-cache vips-dev bash
 
 WORKDIR /opt/me
 
-COPY --from=build --chown=node:node /opt/me/package.json /opt/me/pnpm-workspace.yaml ./
-COPY --from=build --chown=node:node /opt/me/apps/server/package.json ./apps/server/
-COPY --from=build --chown=node:node /opt/me/node_modules ./node_modules
-COPY --from=build --chown=node:node /opt/me/apps/server/dist ./
-COPY --from=build --chown=node:node /opt/me/apps/web/dist ./web
+ARG NODE_ENV
+ENV NODE_ENV=$NODE_ENV
+
+COPY --from=builder --chown=node:node /opt/me ./
 
 USER node
 
 EXPOSE $PORT
 
-CMD [ "node", "main.js" ]
+CMD [ "node", "apps/server/dist/main.js" ]

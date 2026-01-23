@@ -201,6 +201,9 @@ importers:
       isbot:
         specifier: ^5.1.33
         version: 5.1.33
+      motion:
+        specifier: ^12.27.4
+        version: 12.27.4(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       radix-ui:
         specifier: ^1.4.3
         version: 1.4.3(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -232,9 +235,9 @@ importers:
       '@types/node':
         specifier: ^22.15.3
         version: 22.15.3
-      rolldown:
-        specifier: 1.0.0-beta.60
-        version: 1.0.0-beta.60
+      esbuild:
+        specifier: ^0.27.2
+        version: 0.27.2
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
