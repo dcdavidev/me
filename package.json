@@ -6,6 +6,7 @@
   "scripts": {
     "build": "turbo run build",
     "check-types": "turbo run check-types",
+    "deploy": "infisical run --env=prod --path=\"/apps/me\" -- docker stack deploy --with-registry-auth -c docker-compose.yml me --detach=false",
     "dev": "turbo run dev",
     "docker:build": "infisical run --env=dev --path=\"/apps/me\" -- docker compose build",
     "docker:down": "infisical run --env=dev --path=\"/apps/me\" -- docker compose -f docker-compose.yml -f docker-compose.local.yml down",

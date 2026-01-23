@@ -1,18 +1,50 @@
 services:
+  traefik:
+    image: traefik:v3.0
+    command:
+      - '--providers.swarm=true'
+      - '--providers.swarm.endpoint=unix:///var/run/docker.sock'
+      - '--providers.swarm.exposedByDefault=false'
+      - '--entrypoints.web.address=:80'
+      - '--entrypoints.websecure.address=:443'
+      - '--entrypoints.web.http.redirections.entryPoint.to=websecure'
+      - '--entrypoints.web.http.redirections.entryPoint.scheme=https'
+      - '--certificatesresolvers.myresolver.acme.httpchallenge=true'
+      - '--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web'
+      - '--certificatesresolvers.myresolver.acme.email=${ACME_EMAIL}'
+      - '--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json'
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - traefik-certificates:/letsencrypt
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+    networks:
+      - webnet
+
   me:
-    image: me:latest
-    build:
-      context: .
+    image: dcdavidev/me:latest
     environment:
       - PORT=${PORT}
       - NODE_ENV=${NODE_ENV}
-      - EMAIL_PASSWORD
-      - EMAIL_SERVICE
-      - EMAIL_USER
-    ports:
-      - '${PORT}:${PORT}'
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD}
+      - EMAIL_SERVICE=${EMAIL_SERVICE}
+      - EMAIL_USER=${EMAIL_USER}
     deploy:
       replicas: 2
+      placement:
+        constraints:
+          - node.role == worker
+      labels:
+        - 'traefik.enable=true'
+        - 'traefik.http.routers.me.rule=Host(`${HOST}`) || Host(`www.${HOST}`)'
+        - 'traefik.http.routers.me.entrypoints=websecure'
+        - 'traefik.http.routers.me.tls.certresolver=myresolver'
+        - 'traefik.http.services.me.loadbalancer.server.port=3000'
       restart_policy:
         condition: on-failure
     networks:
@@ -21,3 +53,7 @@ services:
 networks:
   webnet:
     driver: overlay
+    attachable: true
+
+volumes:
+  traefik-certificates:
