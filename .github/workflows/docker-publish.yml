@@ -89,7 +89,7 @@ jobs:
 
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/me:${{ needs.push_to_registry.outputs.tag }}
 
-            docker stack deploy -c docker-compose.yml --with-registry-auth me
+            env $(cat .env | grep -v '^#' | xargs) docker stack deploy -c docker-compose.yml --with-registry-auth me
 
             echo "Starting cleanup of old images..."
             OLD_IMAGES=$(docker images "${{ secrets.DOCKERHUB_USERNAME }}/me" --format "{{.ID}}" | tail -n +4)
