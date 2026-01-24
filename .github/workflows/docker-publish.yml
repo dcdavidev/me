@@ -60,11 +60,12 @@ jobs:
             --method=universal-auth \
             --client-id=$INFISICAL_CLIENT_ID \
             --client-secret=$INFISICAL_CLIENT_SECRET \
-            --domain https://eu.infisical.com/api \
-            --silent --plain)
+            --domain https://eu.infisical.com \
+            --plain --raw)
 
           infisical export \
             --token=$INFISICAL_TOKEN \
+            --domain https://eu.infisical.com \
             --env=prod \
             --path=/apps/me \
             --silent > .env
