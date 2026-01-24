@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.19](https://github.com/dcdavidev/me/compare/v0.3.18...v0.3.19) (2026-01-24)
+
+### Bug Fixes
+
+- try again building nbo jsxDev ([49faf34](https://github.com/dcdavidev/me/commit/49faf34d96fbf098942f40677f37d5c7eed7f936))
+
 ## [0.3.18](https://github.com/dcdavidev/me/compare/v0.3.17...v0.3.18) (2026-01-24)
 
 ### Bug Fixes
