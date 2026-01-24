@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.0](https://github.com/dcdavidev/me/compare/v0.2.9...v0.3.0) (2026-01-24)
+
+### Features
+
+- **server:** add health route ([3f9ec76](https://github.com/dcdavidev/me/commit/3f9ec76e7f7d3eb8276a255fcde5c3e94755f886))
+
 ## [0.2.9](https://github.com/dcdavidev/me/compare/v0.2.8...v0.2.9) (2026-01-24)
 
 ## [0.2.8](https://github.com/dcdavidev/me/compare/v0.2.7...v0.2.8) (2026-01-24)
