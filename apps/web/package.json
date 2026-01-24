@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "react-router build",
+    "build": "NODE_ENV=production react-router build --mode production",
     "dev": "react-router dev",
     "start": "react-router-serve ./dist/server/index.js",
     "typecheck": "react-router typegen && tsc"

@@ -7,7 +7,7 @@ export default defineConfig(({ mode }) => ({
   assetsInclude: ['**/*.lottie'],
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
   define: {
-    'import.meta.env.PORT': JSON.stringify(process.env.PORT),
+    'process.env.PORT': JSON.stringify(process.env.PORT),
     'process.env.NODE_ENV': JSON.stringify(mode),
   },
   server: {
