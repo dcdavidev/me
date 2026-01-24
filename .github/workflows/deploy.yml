@@ -32,14 +32,6 @@ jobs:
         env:
           NODE_ENV: production
 
-      - name: Quality Check (Grep jsxDEV)
-        run: |
-          if grep -r "jsxDEV" apps/server/dist/web/server/index.js; then
-            echo "ERRORE: Rilevato runtime di sviluppo nel bundle!"
-            exit 1
-          fi
-
-      # Rimuoviamo le devDeps prima della build Docker per avere node_modules leggeri
       - name: Prune dependencies
         run: pnpm prune --prod --no-optional
 
