@@ -56,6 +56,14 @@ jobs:
 
       - name: Executing remote ssh commands to deploy
         uses: appleboy/ssh-action@v1.0.3
+        env:
+          PORT: ${{ secrets.PORT }}
+          NODE_ENV: ${{ secrets.NODE_ENV }}
+          HOST: ${{ secrets.HOST }}
+          ACME_EMAIL: ${{ secrets.ACME_EMAIL }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_SERVICE: ${{ secrets.EMAIL_SERVICE }}
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
@@ -70,6 +78,16 @@ jobs:
             echo "EMAIL_SERVICE=$EMAIL_SERVICE" >> .env
             echo "EMAIL_USER=$EMAIL_USER" >> .env
             echo "TAG=${{ needs.push_to_registry.outputs.tag }}" >> .env
+
+            export NODE_ENV=$NODE_ENV
+            export PORT=$PORT
+            export HOST=$HOST
+            export ACME_EMAIL=$ACME_EMAIL
+            export EMAIL_PASSWORD=$EMAIL_PASSWORD
+            export EMAIL_SERVICE=$EMAIL_SERVICE
+            export EMAIL_USER=$EMAIL_USER
+            export TAG=${{ needs.push_to_registry.outputs.tag }}
+
 
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/me:${{ needs.push_to_registry.outputs.tag }}
 
