@@ -1,5 +1,7 @@
 # Changelog
 
+## [0.3.22](https://github.com/dcdavidev/me/compare/v0.3.21...v0.3.22) (2026-01-24)
+
 ## [0.3.21](https://github.com/dcdavidev/me/compare/v0.3.20...v0.3.21) (2026-01-24)
 
 ## [0.3.20](https://github.com/dcdavidev/me/compare/v0.3.19...v0.3.20) (2026-01-24)
