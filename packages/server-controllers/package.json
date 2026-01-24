@@ -1,6 +1,6 @@
 {
   "name": "@repo/server-controllers",
-  "version": "0.3.9",
+  "version": "0.3.10",
   "private": true,
   "license": "CC-BY-NC-ND-4.0",
   "type": "module",
