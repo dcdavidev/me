@@ -44,12 +44,13 @@ services:
       retries: 3
       start_period: 40s
     environment:
-      - NODE_ENV=${NODE_ENV}
+      - NODE_ENV=${NODE_ENV:-production}
       - HOST=${HOST}
-      - PORT=${PORT}
+      - PORT=${PORT:-3000}
       - EMAIL_PASSWORD=${EMAIL_PASSWORD}
       - EMAIL_SERVICE=${EMAIL_SERVICE}
       - EMAIL_USER=${EMAIL_USER}
+      - ACME_EMAIL=${ACME_EMAIL}
     deploy:
       replicas: 2
       placement:

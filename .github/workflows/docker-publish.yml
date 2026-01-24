@@ -70,24 +70,22 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           envs: PORT,NODE_ENV,HOST,ACME_EMAIL,EMAIL_PASSWORD,EMAIL_SERVICE,EMAIL_USER
           script: |
-            echo "PORT=$PORT" > .env
-            echo "NODE_ENV=$NODE_ENV" >> .env
-            echo "HOST=$HOST" >> .env
-            echo "ACME_EMAIL=$ACME_EMAIL" >> .env
-            echo "EMAIL_PASSWORD=$EMAIL_PASSWORD" >> .env
-            echo "EMAIL_SERVICE=$EMAIL_SERVICE" >> .env
-            echo "EMAIL_USER=$EMAIL_USER" >> .env
-            echo "TAG=${{ needs.push_to_registry.outputs.tag }}" >> .env
+            cat <<EOF > .env
+            PORT=${PORT}
+            NODE_ENV=${NODE_ENV}
+            HOST=${HOST}
+            ACME_EMAIL=${ACME_EMAIL}
+            EMAIL_PASSWORD=${EMAIL_PASSWORD}
+            EMAIL_SERVICE=${EMAIL_SERVICE}
+            EMAIL_USER=${EMAIL_USER}
+            TAG=${{ needs.push_to_registry.outputs.tag }}
+            EOF
 
-            export NODE_ENV=$NODE_ENV
-            export PORT=$PORT
-            export HOST=$HOST
-            export ACME_EMAIL=$ACME_EMAIL
-            export EMAIL_PASSWORD=$EMAIL_PASSWORD
-            export EMAIL_SERVICE=$EMAIL_SERVICE
-            export EMAIL_USER=$EMAIL_USER
-            export TAG=${{ needs.push_to_registry.outputs.tag }}
+            export $(cat .env | xargs)
 
+            set -a
+            source .env
+            set +a
 
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/me:${{ needs.push_to_registry.outputs.tag }}
 
