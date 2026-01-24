@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.16](https://github.com/dcdavidev/me/compare/v0.3.15...v0.3.16) (2026-01-24)
+
+### Bug Fixes
+
+- **web:** test removing jsxDex ([6a0465b](https://github.com/dcdavidev/me/commit/6a0465b4334a00d1f425b920e45299bc0f7dbdcb))
+
 ## [0.3.15](https://github.com/dcdavidev/me/compare/v0.3.14...v0.3.15) (2026-01-24)
 
 ### Bug Fixes
