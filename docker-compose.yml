@@ -37,9 +37,16 @@ services:
 
   me:
     image: dcdavidev/me:${TAG:-latest}
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:${PORT:-3000}/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     environment:
-      - PORT=${PORT}
       - NODE_ENV=${NODE_ENV}
+      - HOST=${HOST}
+      - PORT=${PORT}
       - EMAIL_PASSWORD=${EMAIL_PASSWORD}
       - EMAIL_SERVICE=${EMAIL_SERVICE}
       - EMAIL_USER=${EMAIL_USER}
@@ -53,7 +60,7 @@ services:
         - 'traefik.http.routers.me.rule=Host(`${HOST}`) || Host(`www.${HOST}`)'
         - 'traefik.http.routers.me.entrypoints=websecure'
         - 'traefik.http.routers.me.tls.certresolver=myresolver'
-        - 'traefik.http.services.me.loadbalancer.server.port=3000'
+        - 'traefik.http.services.me.loadbalancer.server.port=${PORT:-3000}'
         - 'traefik.docker.network=me_webnet'
         - 'traefik.http.routers.me.service=me'
       restart_policy:

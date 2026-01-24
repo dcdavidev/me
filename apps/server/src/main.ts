@@ -6,7 +6,7 @@ import express from 'express';
 import { Wnodex } from 'wnodex';
 import { createRequestHandler } from '@react-router/express';
 
-import { apiRouter } from '@repo/server-routes';
+import { apiRouter, rootRouter } from '@repo/server-routes';
 import { HOST, PORT, PROD } from '@repo/server-schemas';
 
 const wnodex = new Wnodex({
@@ -65,8 +65,9 @@ app.use(
   })
 );
 
-// API routes
+// Routes
 app.use('/api', apiRouter);
+app.use('/', rootRouter);
 
 // SPA fallback
 app.all('*splat', reactRouterHandler);
