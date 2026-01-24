@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.18](https://github.com/dcdavidev/me/compare/v0.3.17...v0.3.18) (2026-01-24)
+
+### Bug Fixes
+
+- **server:** try new build ([c44ec09](https://github.com/dcdavidev/me/commit/c44ec09c8c65f7699117c3b5cb952e945bd5b36b))
+
 ## [0.3.17](https://github.com/dcdavidev/me/compare/v0.3.16...v0.3.17) (2026-01-24)
 
 ### Bug Fixes
