@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   esbuild: {
-    jsxDev: mode !== 'production',
+    jsxDev: false,
   },
   build: {
     minify: mode === 'production',

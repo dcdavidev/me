@@ -13,6 +13,7 @@ FROM base AS builder
 COPY . .
 
 RUN find . -name "dist" -type d -exec rm -rf {} +
+RUN find . -name ".turbo" -type d -exec rm -rf {} +
 
 ENV CI=true
 
