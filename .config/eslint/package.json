@@ -1,6 +1,6 @@
 {
   "name": "@repo/eslint-config",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "private": true,
   "license": "CC-BY-NC-ND-4.0",
   "type": "module",
