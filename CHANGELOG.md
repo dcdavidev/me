@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.15](https://github.com/dcdavidev/me/compare/v0.3.14...v0.3.15) (2026-01-24)
+
+### Bug Fixes
+
+- **web:** build ([1b12b44](https://github.com/dcdavidev/me/commit/1b12b448af133c0ddee745a531ca83ea2ad91ced))
+
 ## [0.3.14](https://github.com/dcdavidev/me/compare/v0.3.13...v0.3.14) (2026-01-24)
 
 ## [0.3.13](https://github.com/dcdavidev/me/compare/v0.3.12...v0.3.13) (2026-01-24)
