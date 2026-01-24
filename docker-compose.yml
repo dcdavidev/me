@@ -1,7 +1,6 @@
 services:
   traefik:
     image: traefik:v2.11
-    user: '0:0'
     ports:
       - target: 80
         published: 80
@@ -37,7 +36,6 @@ services:
       placement:
         constraints:
           - node.role == manager
-          - node.hostname == ubuntu
     networks:
       - webnet
 
@@ -66,6 +64,7 @@ services:
         - 'traefik.enable=true'
         - 'traefik.http.routers.me.rule=Host(`${HOST}`) || Host(`www.${HOST}`)'
         - 'traefik.http.routers.me.entrypoints=websecure'
+        - 'traefik.http.routers.me.tls=true'
         - 'traefik.http.routers.me.tls.certresolver=myresolver'
         - 'traefik.http.services.me.loadbalancer.server.port=${PORT:-3000}'
         - 'traefik.docker.network=me_webnet'
