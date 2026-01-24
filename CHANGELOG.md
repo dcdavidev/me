@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.17](https://github.com/dcdavidev/me/compare/v0.3.16...v0.3.17) (2026-01-24)
+
+### Bug Fixes
+
+- **web:** force building for production ([4beea39](https://github.com/dcdavidev/me/commit/4beea3996510e01a19c243102a7efa3c6031ec5c))
+
 ## [0.3.16](https://github.com/dcdavidev/me/compare/v0.3.15...v0.3.16) (2026-01-24)
 
 ### Bug Fixes
