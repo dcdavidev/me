@@ -1,6 +1,6 @@
 {
   "name": "@repo/server-configs",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "private": true,
   "license": "CC-BY-NC-ND-4.0",
   "type": "module",
