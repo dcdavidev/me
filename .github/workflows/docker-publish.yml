@@ -45,58 +45,48 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v4
 
-      - name: Copy docker-compose via SCP
+      - name: Install Infisical CLI
+        run: |
+          curl -1sLf 'https://dl.cloudsmith.io/public/infisical/infisical-cli/setup.deb.sh' | sudo -E bash
+          sudo apt-get update && sudo apt-get install -y infisical
+
+      - name: Fetch secrets from Infisical
+        env:
+          INFISICAL_CLIENT_ID: ${{ secrets.INFISICAL_CLIENT_ID }}
+          INFISICAL_CLIENT_SECRET: ${{ secrets.INFISICAL_CLIENT_SECRET }}
+        run: |
+          infisical login --client-id=$INFISICAL_CLIENT_ID --client-secret=$INFISICAL_CLIENT_SECRET
+          infisical export --env=prod --project=dcdavidev-me --path=/apps/me > .env
+          echo "TAG=${{ needs.push_to_registry.outputs.tag }}" >> .env
+
+      - name: Copy Files to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: 'docker-compose.yml'
+          source: 'docker-compose.yml,.env'
           target: '~/'
 
       - name: Executing remote ssh commands to deploy
         uses: appleboy/ssh-action@v1.0.3
-        env:
-          PORT: ${{ secrets.PORT }}
-          NODE_ENV: ${{ secrets.NODE_ENV }}
-          HOST: ${{ secrets.HOST }}
-          ACME_EMAIL: ${{ secrets.ACME_EMAIL }}
-          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-          EMAIL_SERVICE: ${{ secrets.EMAIL_SERVICE }}
-          EMAIL_USER: ${{ secrets.EMAIL_USER }}
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          envs: PORT,NODE_ENV,HOST,ACME_EMAIL,EMAIL_PASSWORD,EMAIL_SERVICE,EMAIL_USER
           script: |
-            cat <<EOF > .env
-            PORT=${PORT}
-            NODE_ENV=${NODE_ENV}
-            HOST=${HOST}
-            ACME_EMAIL=${ACME_EMAIL}
-            EMAIL_PASSWORD=${EMAIL_PASSWORD}
-            EMAIL_SERVICE=${EMAIL_SERVICE}
-            EMAIL_USER=${EMAIL_USER}
-            TAG=${{ needs.push_to_registry.outputs.tag }}
-            EOF
-
-            export $(cat .env | xargs)
-
-            set -a
-            source .env
-            set +a
+            export $(grep -v '^#' .env | xargs)
 
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/me:${{ needs.push_to_registry.outputs.tag }}
 
-            env $(cat .env | grep -v '^#' | xargs) docker stack deploy -c docker-compose.yml --with-registry-auth me
+            docker-compose --env-file .env config > deploy-config.yml
+
+            docker stack deploy -c deploy-config.yml --with-registry-auth me
 
             echo "Starting cleanup of old images..."
             OLD_IMAGES=$(docker images "${{ secrets.DOCKERHUB_USERNAME }}/me" --format "{{.ID}}" | tail -n +4)
             if [ -n "$OLD_IMAGES" ]; then
               docker rmi $OLD_IMAGES || true
-              echo "Old images removed."
-            else
-              echo "No images to remove (fewer than 3 present)."
             fi
             docker image prune -f
+            rm deploy-config.yml
