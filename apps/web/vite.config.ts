@@ -18,7 +18,11 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
+  esbuild: {
+    jsxDev: mode !== 'production',
+  },
   build: {
+    minify: mode === 'production',
     rollupOptions: {
       external: [],
     },
