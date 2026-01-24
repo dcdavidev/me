@@ -1,0 +1,128 @@
+name: Publish and Deploy
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build_and_push:
+    name: Build Apps and Push Image
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.meta.outputs.version }}
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build applications
+        run: NODE_ENV=production pnpm dlx turbo run build --no-cache -- --mode production
+        env:
+          NODE_ENV: production
+
+      - name: Quality Check (Grep jsxDEV)
+        run: |
+          if grep -r "jsxDEV" apps/server/dist/web/server/index.js; then
+            echo "ERRORE: Rilevato runtime di sviluppo nel bundle!"
+            exit 1
+          fi
+
+      # Rimuoviamo le devDeps prima della build Docker per avere node_modules leggeri
+      - name: Prune dependencies
+        run: pnpm prune --prod --no-optional
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/me
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+  deploy:
+    name: Deploy to Docker Swarm
+    runs-on: ubuntu-latest
+    needs: build_and_push
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Install Infisical CLI
+        run: |
+          curl -1sLf 'https://artifacts-cli.infisical.com/setup.deb.sh' | sudo -E bash
+          sudo apt-get update && sudo apt-get install -y infisical
+
+      - name: Fetch secrets from Infisical
+        env:
+          PROJECT_ID: ${{ secrets.INFISICAL_PROJECT_ID }}
+        run: |
+          INFISICAL_TOKEN=$(infisical login \
+            --method=universal-auth \
+            --client-id="${{ secrets.INFISICAL_CLIENT_ID }}" \
+            --client-secret="${{ secrets.INFISICAL_CLIENT_SECRET }}" \
+            --domain="https://eu.infisical.com" \
+            --plain)
+
+          infisical export \
+            --token=$INFISICAL_TOKEN \
+            --domain https://eu.infisical.com \
+            --projectId="$PROJECT_ID" \
+            --env=prod \
+            --path=/apps/me \
+            --silent > .env
+
+          sed -i "s/=['\"]\(.*\)['\"]/=\1/g" .env
+          echo "TAG=${{ needs.build_and_push.outputs.tag }}" >> .env
+
+      - name: Copy Files to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: 'docker-compose.yml,.env'
+          target: '~/'
+
+      - name: Executing remote ssh commands to deploy
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd ~
+            export $(grep -v '^#' .env | xargs)
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/me:${TAG}
+            docker compose --env-file .env config > deploy-config.yml
+            sed -i '/^name:/d' deploy-config.yml
+            sed -i 's/published: "\([0-9]*\)"/published: \1/g' deploy-config.yml
+            sed -i 's/target: "\([0-9]*\)"/target: \1/g' deploy-config.yml
+            docker stack deploy -c deploy-config.yml --with-registry-auth me
+            docker image prune -f
+            rm deploy-config.yml
