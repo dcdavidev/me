@@ -12,6 +12,8 @@ FROM base AS builder
 
 COPY . .
 
+RUN find . -name "dist" -type d -exec rm -rf {} +
+
 ENV CI=true
 
 RUN pnpm install --frozen-lockfile --ignore-scripts

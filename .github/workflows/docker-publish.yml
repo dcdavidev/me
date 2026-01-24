@@ -34,6 +34,8 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            NODE_ENV=production
 
   deploy:
     name: Deploy to Docker Swarm
@@ -46,10 +48,18 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          envs: PORT,NODE_ENV,HOST,ACME_EMAIL,EMAIL_PASSWORD,EMAIL_SERVICE,EMAIL_USER
           script: |
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/me:${{ needs.push_to_registry.outputs.tag }}
+            PORT=$PORT \
+            NODE_ENV=$NODE_ENV \
+            HOST=$HOST \
+            ACME_EMAIL=$ACME_EMAIL \
+            EMAIL_PASSWORD=$EMAIL_PASSWORD \
+            EMAIL_SERVICE=$EMAIL_SERVICE \
+            EMAIL_USER=$EMAIL_USER \
             docker service update \
               --image ${{ secrets.DOCKERHUB_USERNAME }}/me:${{ needs.push_to_registry.outputs.tag }} \
               --with-registry-auth \
-              --resolve-image always \
+              --force \
               me_me

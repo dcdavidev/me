@@ -1,6 +1,7 @@
 node_modules
-dist
-.turbo
-web/server
-web/client
+**/.turbo
+**/dist
+**/web/server
+**/web/client
 .env
+.git
