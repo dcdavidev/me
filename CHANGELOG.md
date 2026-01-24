@@ -1,5 +1,7 @@
 # Changelog
 
+## [0.3.1](https://github.com/dcdavidev/me/compare/v0.3.0...v0.3.1) (2026-01-24)
+
 ## [0.3.0](https://github.com/dcdavidev/me/compare/v0.2.9...v0.3.0) (2026-01-24)
 
 ### Features
