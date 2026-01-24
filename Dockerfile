@@ -17,7 +17,7 @@ RUN find . -name "dist" -type d -exec rm -rf {} +
 ENV CI=true
 
 RUN pnpm install --frozen-lockfile --ignore-scripts
-RUN NODE_ENV=production pnpm dlx turbo run build
+RUN NODE_ENV=production pnpm dlx turbo run build --no-cache -- --mode production
 RUN pnpm prune --prod --ignore-scripts
 
 FROM node:24.11.1-alpine3.23 AS runner
