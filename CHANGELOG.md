@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.2](https://github.com/dcdavidev/me/compare/v0.3.1...v0.3.2) (2026-01-24)
+
+### Bug Fixes
+
+- **workspace:** add dotenvx ([3b2572e](https://github.com/dcdavidev/me/commit/3b2572e5f9a94472e6e62965a8ba9eb427a33030))
+
 ## [0.3.1](https://github.com/dcdavidev/me/compare/v0.3.0...v0.3.1) (2026-01-24)
 
 ## [0.3.0](https://github.com/dcdavidev/me/compare/v0.2.9...v0.3.0) (2026-01-24)
