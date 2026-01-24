@@ -1,6 +1,5 @@
 node_modules
 **/.turbo
-**/dist
 **/web/server
 **/web/client
 .env
