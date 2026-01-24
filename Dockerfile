@@ -15,7 +15,7 @@ COPY . .
 ENV CI=true
 
 RUN pnpm install --frozen-lockfile --ignore-scripts
-RUN pnpm dlx turbo run build
+RUN NODE_ENV=production pnpm dlx turbo run build
 RUN pnpm prune --prod --ignore-scripts
 
 FROM node:24.11.1-alpine3.23 AS runner
