@@ -76,6 +76,8 @@ jobs:
             --path=/apps/me \
             --silent > .env
 
+          sed -i "s/=['\"]\(.*\)['\"]/=\1/g" .env
+
           echo "TAG=${{ needs.push_to_registry.outputs.tag }}" >> .env
 
       - name: Copy Files to VPS
