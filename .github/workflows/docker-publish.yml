@@ -56,7 +56,19 @@ jobs:
           INFISICAL_CLIENT_ID: ${{ secrets.INFISICAL_CLIENT_ID }}
           INFISICAL_CLIENT_SECRET: ${{ secrets.INFISICAL_CLIENT_SECRET }}
         run: |
-          infisical export --client-id=$INFISICAL_CLIENT_ID --client-secret=$INFISICAL_CLIENT_SECRET --env=prod --path=/apps/me > .env
+          INFISICAL_TOKEN=$(infisical login \
+            --method=universal-auth \
+            --client-id=$INFISICAL_CLIENT_ID \
+            --client-secret=$INFISICAL_CLIENT_SECRET \
+            --domain https://eu.infisical.com/api \
+            --silent --plain)
+
+          infisical export \
+            --token=$INFISICAL_TOKEN \
+            --env=prod \
+            --path=/apps/me \
+            --silent > .env
+
           echo "TAG=${{ needs.push_to_registry.outputs.tag }}" >> .env
 
       - name: Copy Files to VPS
