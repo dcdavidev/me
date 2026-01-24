@@ -3,31 +3,36 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import { reactRouter } from '@react-router/dev/vite';
 import tailwindcss from '@tailwindcss/vite';
 
-export default defineConfig(({ mode }) => ({
-  assetsInclude: ['**/*.lottie'],
-  plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
-  define: {
-    'process.env.PORT': JSON.stringify(process.env.PORT),
-    'process.env.NODE_ENV': JSON.stringify(mode),
-  },
-  server: {
-    proxy: {
-      '/api': {
-        target: `http://localhost:${process.env.PORT}`,
-        changeOrigin: true,
+export default defineConfig(({ mode }) => {
+  return {
+    assetsInclude: ['**/*.lottie'],
+
+    plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
+
+    define: {
+      'import.meta.env.PORT': JSON.stringify(process.env.PORT),
+    },
+
+    server: {
+      proxy: {
+        '/api': {
+          target: `http://localhost:${process.env.PORT}`,
+          changeOrigin: true,
+        },
       },
     },
-  },
-  esbuild: {
-    jsxDev: false,
-  },
-  build: {
-    minify: mode === 'production',
-    rollupOptions: {
-      external: [],
+
+    esbuild: {
+      jsx: 'automatic',
+      jsxDev: false,
     },
-  },
-  ssr: {
-    noExternal: true,
-  },
-}));
+
+    build: {
+      minify: mode === 'production',
+    },
+
+    ssr: {
+      noExternal: true,
+    },
+  };
+});
