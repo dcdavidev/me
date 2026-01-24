@@ -1,4 +1,4 @@
-name: Publish Docker Image
+name: Publish and Deploy
 
 on:
   push:
@@ -21,13 +21,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Extract metadata (tags, labels) for Docker
+      - name: Extract metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
           images: ${{ secrets.DOCKERHUB_USERNAME }}/me
 
-      - name: Build and push Docker image
+      - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -42,6 +42,18 @@ jobs:
     runs-on: ubuntu-latest
     needs: push_to_registry
     steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Copy docker-compose via SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: 'docker-compose.yml'
+          target: '~/'
+
       - name: Executing remote ssh commands to deploy
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -50,16 +62,25 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           envs: PORT,NODE_ENV,HOST,ACME_EMAIL,EMAIL_PASSWORD,EMAIL_SERVICE,EMAIL_USER
           script: |
+            echo "PORT=$PORT" > .env
+            echo "NODE_ENV=$NODE_ENV" >> .env
+            echo "HOST=$HOST" >> .env
+            echo "ACME_EMAIL=$ACME_EMAIL" >> .env
+            echo "EMAIL_PASSWORD=$EMAIL_PASSWORD" >> .env
+            echo "EMAIL_SERVICE=$EMAIL_SERVICE" >> .env
+            echo "EMAIL_USER=$EMAIL_USER" >> .env
+            echo "TAG=${{ needs.push_to_registry.outputs.tag }}" >> .env
+
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/me:${{ needs.push_to_registry.outputs.tag }}
-            PORT=$PORT \
-            NODE_ENV=$NODE_ENV \
-            HOST=$HOST \
-            ACME_EMAIL=$ACME_EMAIL \
-            EMAIL_PASSWORD=$EMAIL_PASSWORD \
-            EMAIL_SERVICE=$EMAIL_SERVICE \
-            EMAIL_USER=$EMAIL_USER \
-            docker service update \
-              --image ${{ secrets.DOCKERHUB_USERNAME }}/me:${{ needs.push_to_registry.outputs.tag }} \
-              --with-registry-auth \
-              --force \
-              me_me
+
+            docker stack deploy -c docker-compose.yml --with-registry-auth me
+
+            echo "Starting cleanup of old images..."
+            OLD_IMAGES=$(docker images "${{ secrets.DOCKERHUB_USERNAME }}/me" --format "{{.ID}}" | tail -n +4)
+            if [ -n "$OLD_IMAGES" ]; then
+              docker rmi $OLD_IMAGES || true
+              echo "Old images removed."
+            else
+              echo "No images to remove (fewer than 3 present)."
+            fi
+            docker image prune -f
