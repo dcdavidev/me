@@ -51,4 +51,5 @@ jobs:
             docker service update \
               --image ${{ secrets.DOCKERHUB_USERNAME }}/me:${{ needs.push_to_registry.outputs.tag }} \
               --with-registry-auth \
+              --resolve-image always \
               me_me
