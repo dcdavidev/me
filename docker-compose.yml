@@ -1,14 +1,20 @@
 services:
   traefik:
-    image: traefik:v3.0
+    image: traefik:v2.11
+    user: '0:0'
+    environment:
+      - DOCKER_API_VERSION=1.44
     command:
-      - '--providers.swarm=true'
-      - '--providers.swarm.endpoint=unix:///var/run/docker.sock'
-      - '--providers.swarm.exposedByDefault=false'
+      - '--providers.docker=true'
+      - '--providers.docker.swarmMode=true' # Attiva il supporto Swarm
+      - '--providers.docker.exposedByDefault=false'
+      - '--providers.docker.endpoint=unix:///var/run/docker.sock'
+
       - '--entrypoints.web.address=:80'
       - '--entrypoints.websecure.address=:443'
       - '--entrypoints.web.http.redirections.entryPoint.to=websecure'
       - '--entrypoints.web.http.redirections.entryPoint.scheme=https'
+
       - '--certificatesresolvers.myresolver.acme.httpchallenge=true'
       - '--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web'
       - '--certificatesresolvers.myresolver.acme.email=${ACME_EMAIL}'
@@ -23,6 +29,7 @@ services:
       placement:
         constraints:
           - node.role == manager
+          - node.hostname == ubuntu
     networks:
       - webnet
 
@@ -38,7 +45,7 @@ services:
       replicas: 2
       placement:
         constraints:
-          - node.role == worker
+          - node.role == manager
       labels:
         - 'traefik.enable=true'
         - 'traefik.http.routers.me.rule=Host(`${HOST}`) || Host(`www.${HOST}`)'

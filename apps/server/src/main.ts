@@ -36,6 +36,7 @@ const wnodex = new Wnodex({
 // const logger = wnodex.getLogger();
 const app = wnodex.getApp();
 
+app.set('trust proxy', 1);
 app.disable('x-powered-by');
 
 // client files

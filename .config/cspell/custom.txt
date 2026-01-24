@@ -2,6 +2,7 @@ expressjs
 isbot
 libc
 Momo
+myresolver
 nasm
 pitto
 pittorica
