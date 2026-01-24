@@ -1,6 +1,6 @@
 {
   "name": "@repo/shared-ui-components",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "private": true,
   "license": "CC-BY-NC-ND-4.0",
   "type": "module",
