@@ -100,7 +100,7 @@ jobs:
 
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/me:${{ needs.push_to_registry.outputs.tag }}
 
-            docker-compose --env-file .env config > deploy-config.yml
+            docker compose --env-file .env config > deploy-config.yml
 
             grep "Host" deploy-config.yml
 
