@@ -5,6 +5,8 @@ services:
     environment:
       - DOCKER_API_VERSION=1.44
     command:
+      - '--log.level=DEBUG'
+
       - '--providers.docker=true'
       - '--providers.docker.swarmMode=true'
       - '--providers.docker.exposedByDefault=false'
@@ -34,7 +36,7 @@ services:
       - webnet
 
   me:
-    image: dcdavidev/me:latest
+    image: dcdavidev/me:${TAG:-latest}
     environment:
       - PORT=${PORT}
       - NODE_ENV=${NODE_ENV}
@@ -53,6 +55,7 @@ services:
         - 'traefik.http.routers.me.tls.certresolver=myresolver'
         - 'traefik.http.services.me.loadbalancer.server.port=3000'
         - 'traefik.docker.network=me_webnet'
+        - 'traefik.http.routers.me.service=me'
       restart_policy:
         condition: on-failure
     networks:
