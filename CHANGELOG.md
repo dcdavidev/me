@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.2](https://github.com/dcdavidev/me/compare/v0.2.1...v0.2.2) (2026-01-24)
+
+### Bug Fixes
+
+- **server:** trust proxy ([49594d3](https://github.com/dcdavidev/me/commit/49594d3e2f5322ea4ac87c1bba3ffc603cb8e0b0))
+
 ## [0.2.1](https://github.com/dcdavidev/me/compare/v0.2.0...v0.2.1) (2026-01-23)
 
 ## 0.2.0 (2026-01-23)
