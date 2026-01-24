@@ -94,11 +94,19 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            cd ~
+
             export $(grep -v '^#' .env | xargs)
 
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/me:${{ needs.push_to_registry.outputs.tag }}
 
             docker-compose --env-file .env config > deploy-config.yml
+
+            grep "Host" deploy-config.yml
+
+            sed -i '/^name:/d' deploy-config.yml
+            sed -i 's/published: "\([0-9]*\)"/published: \1/g' deploy-config.yml
+            sed -i 's/target: "\([0-9]*\)"/target: \1/g' deploy-config.yml
 
             docker stack deploy -c deploy-config.yml --with-registry-auth me
 
