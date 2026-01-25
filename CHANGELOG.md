@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.36](https://github.com/dcdavidev/me/compare/v0.3.35...v0.3.36) (2026-01-25)
+
+### Bug Fixes
+
+- **web:** add @pittorica/pitto to the ssr.noExternal ([51670cf](https://github.com/dcdavidev/me/commit/51670cff9ae18e38cb93da6701a71093663a1614))
+
 ## [0.3.35](https://github.com/dcdavidev/me/compare/v0.3.34...v0.3.35) (2026-01-25)
 
 ### Bug Fixes
