@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.28](https://github.com/dcdavidev/me/compare/v0.3.27...v0.3.28) (2026-01-25)
+
+### Bug Fixes
+
+- generate a package.json for the server build ([26598c4](https://github.com/dcdavidev/me/commit/26598c45fe373e7e92ced624add427b619ac1448))
+
 ## [](https://github.com/dcdavidev/me/compare/v0.3.26...vnull) (2026-01-25)
 
 ### Bug Fixes
