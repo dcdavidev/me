@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.1](https://github.com/dcdavidev/me/compare/v0.4.0...v0.4.1) (2026-01-25)
+
+### Bug Fixes
+
+* **web:** remove pittorica ([c53a2ad](https://github.com/dcdavidev/me/commit/c53a2add8ff42278ee03d492c6b225ddd099a431))
+
 ## [0.4.0](https://github.com/dcdavidev/me/compare/v0.3.39...v0.4.0) (2026-01-25)
 
 ### Features
