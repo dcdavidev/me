@@ -12,6 +12,7 @@ WORKDIR /opt/me
 ENV NODE_ENV=production
 
 COPY --chown=node:node /apps/server/dist ./
+COPY --chown=node:node /apps/web/dist ./web
 COPY --chown=node:node entrypoint.sh ./
 RUN chmod +x entrypoint.sh
 
