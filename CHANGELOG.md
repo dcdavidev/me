@@ -1,5 +1,11 @@
 # Changelog
 
+## [](https://github.com/dcdavidev/me/compare/v0.3.26...vnull) (2026-01-25)
+
+### Bug Fixes
+
+- add package.json to the build ([55ba4f4](https://github.com/dcdavidev/me/commit/55ba4f40fb053af7f46461330a5a2547b111c1f8))
+
 ## [0.3.26](https://github.com/dcdavidev/me/compare/v0.3.25...v0.3.26) (2026-01-25)
 
 ### Bug Fixes
