@@ -12,7 +12,6 @@
     "sync:web": "rsync -av --delete --mkpath ../web/dist/ src/web/"
   },
   "dependencies": {
-    "@dotenvx/dotenvx": "^1.52.0",
     "@lottiefiles/dotlottie-react": "^0.17.13",
     "@pittorica/pitto": "^0.4.5",
     "@radix-ui/themes": "^3.2.1",
