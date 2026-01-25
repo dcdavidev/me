@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.29](https://github.com/dcdavidev/me/compare/v0.3.28...v0.3.29) (2026-01-25)
+
+### Bug Fixes
+
+- export host env var ([7d48723](https://github.com/dcdavidev/me/commit/7d4872370e9b366c1e8a6e9c1c6acda6bbd08e1a))
+
 ## [0.3.28](https://github.com/dcdavidev/me/compare/v0.3.27...v0.3.28) (2026-01-25)
 
 ### Bug Fixes
