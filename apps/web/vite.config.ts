@@ -1,12 +1,12 @@
 import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { reactRouter } from '@react-router/dev/vite';
-import tailwindcss from '@tailwindcss/vite';
+import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin';
 
 export default defineConfig({
   assetsInclude: ['**/*.lottie'],
 
-  plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
+  plugins: [vanillaExtractPlugin(), reactRouter(), tsconfigPaths()],
 
   define: {
     'import.meta.env.PORT': JSON.stringify(process.env.PORT),
