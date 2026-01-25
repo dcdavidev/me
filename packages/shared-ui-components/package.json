@@ -8,7 +8,7 @@
     ".": "./src/index.ts"
   },
   "devDependencies": {
-    "@pittorica/divider-react": "^0.8.2",
+    "@pittorica/divider-react": "^0.21.0",
     "@pittorica/pitto": "^0.4.5",
     "@radix-ui/themes": "^3.2.1",
     "@repo/eslint-config": "workspace:*",
