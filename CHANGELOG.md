@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.33](https://github.com/dcdavidev/me/compare/v0.3.32...v0.3.33) (2026-01-25)
+
+### Bug Fixes
+
+- **server:** improve generated pacakge.json with some depencencies ([786f8bf](https://github.com/dcdavidev/me/commit/786f8bf0a107a1514bff69b656f15eb9091e90da))
+
 ## [0.3.32](https://github.com/dcdavidev/me/compare/v0.3.31...v0.3.32) (2026-01-25)
 
 ### Bug Fixes
