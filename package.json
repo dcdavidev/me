@@ -19,7 +19,7 @@
     "lint": "pnpm dlx eslint --no-warn-ignored --fix .",
     "lint:fmt": "pnpm run lint && pnpm run fmt",
     "prepare": "pnpm dlx lefthook install",
-    "release": "release-it",
+    "release": "LEFTHOOK=\"0\" release-it",
     "serve": "infisical run --env=dev --path=\"/apps/me\" -- node apps/server/dist/main.js"
   },
   "config": {
