@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.0](https://github.com/dcdavidev/me/compare/v0.3.39...v0.4.0) (2026-01-25)
+
+### Features
+
+- upgrade pittorica ([7281a5f](https://github.com/dcdavidev/me/commit/7281a5fb78d4031b3f54fbc1f198508801270064))
+
 ## [0.3.39](https://github.com/dcdavidev/me/compare/v0.3.38...v0.3.39) (2026-01-25)
 
 ### Bug Fixes
