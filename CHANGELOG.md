@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.37](https://github.com/dcdavidev/me/compare/v0.3.36...v0.3.37) (2026-01-25)
+
+### Bug Fixes
+
+- **web:** move to the new pittorica packages ([74fd586](https://github.com/dcdavidev/me/commit/74fd586fd41b7d56327027a65fbc928f388272ac))
+
 ## [0.3.36](https://github.com/dcdavidev/me/compare/v0.3.35...v0.3.36) (2026-01-25)
 
 ### Bug Fixes
