@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.30](https://github.com/dcdavidev/me/compare/v0.3.29...v0.3.30) (2026-01-25)
+
+### Bug Fixes
+
+- force vite to mode production when building web app ([7b7cca9](https://github.com/dcdavidev/me/commit/7b7cca921706802db64a5fe4346cae2f98fadc02))
+
 ## [0.3.29](https://github.com/dcdavidev/me/compare/v0.3.28...v0.3.29) (2026-01-25)
 
 ### Bug Fixes
