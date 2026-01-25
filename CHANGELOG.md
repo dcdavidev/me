@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.34](https://github.com/dcdavidev/me/compare/v0.3.33...v0.3.34) (2026-01-25)
+
+### Bug Fixes
+
+- **workspace:** fix dependencies ([f7783f7](https://github.com/dcdavidev/me/commit/f7783f73cf8169a229597731c100cae2dd922e68))
+
 ## [0.3.33](https://github.com/dcdavidev/me/compare/v0.3.32...v0.3.33) (2026-01-25)
 
 ### Bug Fixes
