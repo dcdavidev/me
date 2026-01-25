@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.32](https://github.com/dcdavidev/me/compare/v0.3.31...v0.3.32) (2026-01-25)
+
+### Bug Fixes
+
+- **web:** add isBot to ssr.noExternal in vite.config.ts ([71dc7b7](https://github.com/dcdavidev/me/commit/71dc7b7e166b57626e0acd2e6fffa2c6e60cc457))
+
 ## [0.3.31](https://github.com/dcdavidev/me/compare/v0.3.30...v0.3.31) (2026-01-25)
 
 ### Bug Fixes
