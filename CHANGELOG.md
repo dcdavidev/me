@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.24](https://github.com/dcdavidev/me/compare/v0.3.23...v0.3.24) (2026-01-25)
+
+### Bug Fixes
+
+- try new stack deploy ([7f0f7dc](https://github.com/dcdavidev/me/commit/7f0f7dc2386f3a1e67f76092f2b41feab7ee2d98))
+
 ## [0.3.23](https://github.com/dcdavidev/me/compare/v0.3.22...v0.3.23) (2026-01-24)
 
 ## [0.3.22](https://github.com/dcdavidev/me/compare/v0.3.21...v0.3.22) (2026-01-24)
