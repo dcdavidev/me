@@ -1,6 +1,6 @@
 {
   "name": "@repo/server-schemas",
-  "version": "0.3.37",
+  "version": "0.3.38",
   "private": true,
   "license": "CC-BY-NC-ND-4.0",
   "type": "module",

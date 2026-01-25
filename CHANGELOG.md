@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.38](https://github.com/dcdavidev/me/compare/v0.3.37...v0.3.38) (2026-01-25)
+
+### Bug Fixes
+
+- **server:** add @pittorica/\* deps ([087f93a](https://github.com/dcdavidev/me/commit/087f93af7c3fadf6413cbb99d6f1810cbe704ca9))
+
 ## [0.3.37](https://github.com/dcdavidev/me/compare/v0.3.36...v0.3.37) (2026-01-25)
 
 ### Bug Fixes
