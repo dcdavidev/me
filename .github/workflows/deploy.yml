@@ -28,7 +28,9 @@ jobs:
         run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: Build applications
-        run: NODE_ENV=production pnpm dlx turbo run build --force -- --mode production
+        run: |
+          export NODE_ENV=production
+          pnpm dlx turbo run build
         env:
           NODE_ENV: production
 

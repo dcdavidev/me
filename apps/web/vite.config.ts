@@ -18,7 +18,7 @@ export default defineConfig({
   resolve: {
     dedupe: ['react', 'react-dom', 'react-router'],
     alias: {
-      'react/jsx-dev-runtime': 'react/jsx-runtime',
+      'react/jsx-dev-runtime': 'react/jsx-runtime.js',
     },
   },
 
@@ -35,7 +35,20 @@ export default defineConfig({
   },
 
   ssr: {
-    noExternal: true,
+    noExternal: [
+      'react',
+      'react-dom',
+      'react-router',
+      '@react-router/node',
+      '@react-router/fs-routes',
+      '@radix-ui/themes',
+      'radix-ui',
+      'motion',
+      '@tabler/icons-react',
+      '@lottiefiles/dotlottie-react',
+      '@repo/shared-ui-components',
+      '@repo/web-configs',
+    ],
   },
 
   server: {
