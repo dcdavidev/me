@@ -26,13 +26,7 @@ import {
   IconBrandLinkedinFilled,
 } from '@tabler/icons-react';
 
-import { Background } from '@pittorica/background-react';
-
-import {
-  Divider,
-  LoadingScreen,
-  SplashScreen,
-} from '@repo/shared-ui-components';
+import { LoadingScreen, SplashScreen } from '@repo/shared-ui-components';
 
 import meSqrd from '~/me.webp';
 
@@ -141,12 +135,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
             pt="9"
             style={{ minHeight: '100vh', position: 'relative' }}
           >
-            <Background variant="beams" colors={['#ffffff']} />
-
             <Container size="4">
-              <Divider variant="double" />
               <Flex
-                mt="9"
+                my="9"
                 justify={'center'}
                 align={'center'}
                 direction={'column'}
@@ -178,8 +169,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   </Flex>
                 </Grid>
               </Flex>
-
-              <Divider variant="scallop" />
 
               <Flex
                 justify={'center'}

@@ -9,7 +9,7 @@ import react from '@vitejs/plugin-react';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const packagePath = fileURLToPath(new URL('package.json', import.meta.url));
-const packageJson: { peerDependencies: Record<string, string> } = JSON.parse(
+const packageJson: { dependencies: Record<string, string> } = JSON.parse(
   readFileSync(packagePath, 'utf8')
 );
 
@@ -31,7 +31,7 @@ export default defineConfig({
     rollupOptions: {
       external: [
         'react/jsx-runtime',
-        ...Object.keys(packageJson.peerDependencies || {}),
+        ...Object.keys(packageJson.dependencies || {}),
       ],
       output: {
         globals: {

@@ -1,6 +1,6 @@
 import { Box, Container, Flex, Grid, Heading, Text } from '@radix-ui/themes';
 
-import { BoxEaseIn, BoxFadeIn, Divider } from '@repo/shared-ui-components';
+import { BoxEaseIn, BoxFadeIn } from '@repo/shared-ui-components';
 
 import meFull from './full.webp';
 
@@ -8,8 +8,6 @@ export function About() {
   return (
     <Box id="about">
       <Container size="4">
-        <Divider variant="wave" />
-
         <Grid
           columns={{ initial: '1', md: '2' }}
           gap="2"
@@ -58,7 +56,6 @@ export function About() {
             </BoxEaseIn>
           </Box>
         </Grid>
-        <Divider variant="wave" />
       </Container>
     </Box>
   );

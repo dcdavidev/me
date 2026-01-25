@@ -37,7 +37,6 @@ export default defineConfig({
   ssr: {
     noExternal: [
       '@lottiefiles/dotlottie-react',
-      '@pittorica/pitto',
       '@radix-ui/themes',
       '@react-router/fs-routes',
       '@react-router/node',
@@ -49,6 +48,7 @@ export default defineConfig({
       'radix-ui',
       'react',
       'react-dom',
+      'react/jsx-runtime',
       'react-router',
     ],
   },
