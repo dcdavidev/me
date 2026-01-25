@@ -63,40 +63,13 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v4
 
-      - name: Install Infisical CLI
-        run: |
-          curl -1sLf 'https://artifacts-cli.infisical.com/setup.deb.sh' | sudo -E bash
-          sudo apt-get update && sudo apt-get install -y infisical
-
-      - name: Fetch secrets from Infisical
-        env:
-          PROJECT_ID: ${{ secrets.INFISICAL_PROJECT_ID }}
-        run: |
-          INFISICAL_TOKEN=$(infisical login \
-            --method=universal-auth \
-            --client-id="${{ secrets.INFISICAL_CLIENT_ID }}" \
-            --client-secret="${{ secrets.INFISICAL_CLIENT_SECRET }}" \
-            --domain="https://eu.infisical.com" \
-            --plain)
-
-          infisical export \
-            --token=$INFISICAL_TOKEN \
-            --domain https://eu.infisical.com \
-            --projectId="$PROJECT_ID" \
-            --env=prod \
-            --path=/apps/me \
-            --silent > .env
-
-          sed -i "s/=['\"]\(.*\)['\"]/=\1/g" .env
-          echo "TAG=${{ needs.build_and_push.outputs.tag }}" >> .env
-
       - name: Copy Files to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: 'docker-compose.yml,.env'
+          source: 'docker-compose.yml'
           target: '~/'
 
       - name: Executing remote ssh commands to deploy
@@ -105,14 +78,15 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          envs: INFISICAL_CLIENT_ID,INFISICAL_CLIENT_SECRET,INFISICAL_PROJECT_ID,TAG,DOCKERHUB_USERNAME
           script: |
-            cd ~
-            export $(grep -v '^#' .env | xargs)
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/me:${TAG}
-            docker compose --env-file .env config > deploy-config.yml
-            sed -i '/^name:/d' deploy-config.yml
-            sed -i 's/published: "\([0-9]*\)"/published: \1/g' deploy-config.yml
-            sed -i 's/target: "\([0-9]*\)"/target: \1/g' deploy-config.yml
-            docker stack deploy -c deploy-config.yml --with-registry-auth me
+            export TAG=${{ needs.build_and_push.outputs.tag }}
+            export INFISICAL_CLIENT_ID="${{ secrets.INFISICAL_CLIENT_ID }}"
+            export INFISICAL_CLIENT_SECRET="${{ secrets.INFISICAL_CLIENT_SECRET }}"
+            export INFISICAL_PROJECT_ID="${{ secrets.INFISICAL_PROJECT_ID }}"
+
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/me:$TAG
+
+            docker stack deploy -c docker-compose.yml --with-registry-auth me
+
             docker image prune -f
-            rm deploy-config.yml

@@ -12,6 +12,7 @@ services:
         mode: host
     environment:
       - DOCKER_API_VERSION=1.44
+      - ACME_EMAIL=${ACME_EMAIL}
     command:
       - '--log.level=DEBUG'
 
@@ -41,6 +42,12 @@ services:
 
   me:
     image: dcdavidev/me:${TAG:-latest}
+    environment:
+      - INFISICAL_CLIENT_ID=${INFISICAL_CLIENT_ID}
+      - INFISICAL_CLIENT_SECRET=${INFISICAL_CLIENT_SECRET}
+      - INFISICAL_PROJECT_ID=${INFISICAL_PROJECT_ID}
+      - HOST=${HOST}
+      - PORT=${PORT:-3000}
     healthcheck:
       test:
         [
@@ -51,14 +58,6 @@ services:
       timeout: 5s
       retries: 3
       start_period: 20s
-    environment:
-      - NODE_ENV=${NODE_ENV:-production}
-      - HOST=${HOST}
-      - PORT=${PORT:-3000}
-      - EMAIL_PASSWORD=${EMAIL_PASSWORD}
-      - EMAIL_SERVICE=${EMAIL_SERVICE}
-      - EMAIL_USER=${EMAIL_USER}
-      - ACME_EMAIL=${ACME_EMAIL}
     deploy:
       replicas: 2
       placement:
