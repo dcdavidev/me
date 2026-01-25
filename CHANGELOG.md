@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.25](https://github.com/dcdavidev/me/compare/v0.3.24...v0.3.25) (2026-01-25)
+
+### Bug Fixes
+
+- force infisical eu domain ([0c5cc9e](https://github.com/dcdavidev/me/commit/0c5cc9e3c03dedb422d0d238ac2936221ef46abb))
+
 ## [0.3.24](https://github.com/dcdavidev/me/compare/v0.3.23...v0.3.24) (2026-01-25)
 
 ### Bug Fixes
