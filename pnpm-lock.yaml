@@ -177,9 +177,12 @@ importers:
       '@lottiefiles/dotlottie-react':
         specifier: ^0.17.13
         version: 0.17.13(react@19.2.3)
-      '@pittorica/pitto':
-        specifier: ^0.4.5
-        version: 0.4.5
+      '@pittorica/background-react':
+        specifier: ^0.8.2
+        version: 0.8.2
+      '@pittorica/divider-react':
+        specifier: ^0.8.2
+        version: 0.8.2(@vanilla-extract/css@1.18.0)
       '@radix-ui/themes':
         specifier: ^3.2.1
         version: 3.2.1(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
