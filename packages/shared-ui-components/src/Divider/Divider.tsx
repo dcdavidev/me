@@ -2,7 +2,10 @@ import React from 'react';
 
 import { Box } from '@radix-ui/themes';
 
-import { Divider as PittoDivider, type DividerProps } from '@pittorica/pitto';
+import {
+  Divider as PittoDivider,
+  type DividerProps,
+} from '@pittorica/divider-react';
 
 import { BoxEaseIn } from '../BoxEaseIn/BoxEaseIn.js';
 

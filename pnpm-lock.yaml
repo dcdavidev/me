@@ -259,6 +259,12 @@ importers:
       '@lottiefiles/dotlottie-react':
         specifier: ^0.17.13
         version: 0.17.13(react@19.2.3)
+      '@pittorica/background-react':
+        specifier: ^0.8.2
+        version: 0.8.2
+      '@pittorica/divider-react':
+        specifier: ^0.8.2
+        version: 0.8.2(@vanilla-extract/css@1.18.0)
       '@pittorica/pitto':
         specifier: ^0.4.5
         version: 0.4.5
@@ -450,6 +456,9 @@ importers:
 
   packages/shared-ui-components:
     devDependencies:
+      '@pittorica/divider-react':
+        specifier: ^0.8.2
+        version: 0.8.2(@vanilla-extract/css@1.18.0)
       '@pittorica/pitto':
         specifier: ^0.4.5
         version: 0.4.5
@@ -2474,10 +2483,34 @@ packages:
         integrity: sha512-k2ENnmBugE/rzQfEcdWHcCY+/FM3VLzH9cYEsbdsoqrvzAKRhUZeRNhAZvB8OitQJ1TBed3yqWtdjzS6wJKBwg==,
       }
 
+  '@pittorica/background-react@0.8.2':
+    resolution:
+      {
+        integrity: sha512-PGyc14zR5/1EK1DYwVIPBFiZ3qMU23EZnvuNhtglams+J22VkPGQ+uqVHfpyVhQPKDzysKZdl9Mzf/HvylfDpw==,
+      }
+
+  '@pittorica/box-react@0.8.2':
+    resolution:
+      {
+        integrity: sha512-leOncJzqG6RE520N7YvxLM7PuNCv2enltu283ZPNh5mdaBxsdbM/xIzDJ1XfPR/sG7vYxSMJ+viCDjSmAjOqqw==,
+      }
+
+  '@pittorica/divider-react@0.8.2':
+    resolution:
+      {
+        integrity: sha512-34JWYJxrCsp5ajXpZHfjCthK4aVJWJNshOfppGFJA9oWLh3yI4LeNRV2yxwtH4KcIn6JEulPMG+U4b3qPYmoPg==,
+      }
+
   '@pittorica/pitto@0.4.5':
     resolution:
       {
         integrity: sha512-RugGmAQxKBa1jBu8khrFdF7lrpc8Z6PwbhtxqvHfiWMYykQsvGiO6ljGuJkhRyM+MHe6IxLYPe+gpZJVSN1X+g==,
+      }
+
+  '@pittorica/styles@0.8.2':
+    resolution:
+      {
+        integrity: sha512-I8uMRxEmEh9RSsClGZv4SPRl+W9VhqtxXQBkU3UxXC1OGEdf2z5WM0fGtuSNYN/FfMZ0Be+4lKhDaARNLh1ywQ==,
       }
 
   '@pkgr/core@0.2.9':
@@ -12496,6 +12529,38 @@ snapshots:
 
   '@pinojs/redact@0.4.0': {}
 
+  '@pittorica/background-react@0.8.2':
+    dependencies:
+      '@vanilla-extract/css': 1.18.0
+      '@vanilla-extract/recipes': 0.5.7(@vanilla-extract/css@1.18.0)
+      clsx: 2.1.1
+      motion: 12.29.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
+    transitivePeerDependencies:
+      - '@emotion/is-prop-valid'
+      - babel-plugin-macros
+
+  '@pittorica/box-react@0.8.2':
+    dependencies:
+      '@pittorica/styles': 0.8.2
+      clsx: 2.1.1
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
+    transitivePeerDependencies:
+      - babel-plugin-macros
+
+  '@pittorica/divider-react@0.8.2(@vanilla-extract/css@1.18.0)':
+    dependencies:
+      '@pittorica/box-react': 0.8.2
+      '@vanilla-extract/recipes': 0.5.7(@vanilla-extract/css@1.18.0)
+      clsx: 2.1.1
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
+    transitivePeerDependencies:
+      - '@vanilla-extract/css'
+      - babel-plugin-macros
+
   '@pittorica/pitto@0.4.5':
     dependencies:
       '@fontsource-variable/fira-code': 5.2.7
@@ -12515,6 +12580,14 @@ snapshots:
       react-dom: 19.2.3(react@19.2.3)
     transitivePeerDependencies:
       - '@emotion/is-prop-valid'
+      - babel-plugin-macros
+
+  '@pittorica/styles@0.8.2':
+    dependencies:
+      '@vanilla-extract/css': 1.18.0
+      '@vanilla-extract/sprinkles': 1.6.5(@vanilla-extract/css@1.18.0)
+      color: 5.0.3
+    transitivePeerDependencies:
       - babel-plugin-macros
 
   '@pkgr/core@0.2.9': {}

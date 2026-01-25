@@ -20,12 +20,13 @@ import {
   Text,
   Theme,
 } from '@radix-ui/themes';
-import { Background } from '@pittorica/pitto';
 
 import {
   IconBrandGithubFilled,
   IconBrandLinkedinFilled,
 } from '@tabler/icons-react';
+
+import { Background } from '@pittorica/background-react';
 
 import {
   Divider,

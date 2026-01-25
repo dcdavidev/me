@@ -18,7 +18,7 @@ export default defineConfig({
   resolve: {
     dedupe: ['react', 'react-dom', 'react-router'],
     alias: {
-      'react/jsx-dev-runtime': 'react/jsx-runtime.js',
+      'react/jsx-dev-runtime': 'react/jsx-runtime',
     },
   },
 
