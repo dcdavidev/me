@@ -1,6 +1,6 @@
 {
   "name": "@repo/prettier-config",
-  "version": "0.3.38",
+  "version": "0.3.39",
   "private": true,
   "license": "CC-BY-NC-ND-4.0",
   "type": "module",

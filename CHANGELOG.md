@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.39](https://github.com/dcdavidev/me/compare/v0.3.38...v0.3.39) (2026-01-25)
+
+### Bug Fixes
+
+- **web:** add vanilla-extract vite plugin ([f0383bf](https://github.com/dcdavidev/me/commit/f0383bfa75986b6a1a9ffc09972e5c3abd73b8ce))
+
 ## [0.3.38](https://github.com/dcdavidev/me/compare/v0.3.37...v0.3.38) (2026-01-25)
 
 ### Bug Fixes
