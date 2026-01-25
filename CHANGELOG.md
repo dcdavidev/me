@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.26](https://github.com/dcdavidev/me/compare/v0.3.25...v0.3.26) (2026-01-25)
+
+### Bug Fixes
+
+- copy web dist folder ([82d38ba](https://github.com/dcdavidev/me/commit/82d38bab4e23e8b27af49c725d8794f0dfa5c56c))
+
 ## [0.3.25](https://github.com/dcdavidev/me/compare/v0.3.24...v0.3.25) (2026-01-25)
 
 ### Bug Fixes
