@@ -7,6 +7,7 @@
   "main": "./dist/index.js",
   "scripts": {
     "build": "pnpm run sync:web && node esbuild.mjs",
+    "postbuild": "node build.js",
     "dev": "infisical run --env=dev --path=\"/apps/me\" -- tsx watch src/main.ts",
     "sync:web": "rsync -av --delete --mkpath ../web/dist/ src/web/"
   },
