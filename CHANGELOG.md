@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.31](https://github.com/dcdavidev/me/compare/v0.3.30...v0.3.31) (2026-01-25)
+
+### Bug Fixes
+
+- **web:** add some deps to ssr.noExternal in vite.config.ts ([59a30a6](https://github.com/dcdavidev/me/commit/59a30a64fd850dbb70ca3b77c2a99a103c68b765))
+
 ## [0.3.30](https://github.com/dcdavidev/me/compare/v0.3.29...v0.3.30) (2026-01-25)
 
 ### Bug Fixes
