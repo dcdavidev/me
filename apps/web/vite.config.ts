@@ -48,6 +48,7 @@ export default defineConfig({
       '@lottiefiles/dotlottie-react',
       '@repo/shared-ui-components',
       '@repo/web-configs',
+      'isBot',
     ],
   },
 
