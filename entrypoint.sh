@@ -21,4 +21,4 @@ if [ -z "$INFISICAL_TOKEN" ]; then
 fi
 
 echo "🚀 Starting application via Infisical..."
-exec infisical run --projectId "$INFISICAL_PROJECT_ID" --env=prod --path=/apps/me -- "$@"
+exec infisical run --domain="https://eu.infisical.com" --projectId "$INFISICAL_PROJECT_ID" --env=prod --path=/apps/me -- "$@"
