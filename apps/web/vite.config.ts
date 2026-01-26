@@ -17,9 +17,6 @@ export default defineConfig({
 
   resolve: {
     dedupe: ['react', 'react-dom', 'react-router'],
-    alias: {
-      'react/jsx-dev-runtime': 'react/jsx-runtime',
-    },
   },
 
   esbuild: {
@@ -38,18 +35,12 @@ export default defineConfig({
     noExternal: [
       '@lottiefiles/dotlottie-react',
       '@radix-ui/themes',
-      '@react-router/fs-routes',
-      '@react-router/node',
       '@repo/shared-ui-components',
       '@repo/web-configs',
       '@tabler/icons-react',
       'isBot',
       'motion',
       'radix-ui',
-      'react',
-      'react-dom',
-      'react/jsx-runtime',
-      'react-router',
     ],
   },
 
