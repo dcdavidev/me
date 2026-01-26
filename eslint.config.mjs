@@ -4,8 +4,8 @@ import repoRecommended from '@repo/eslint-config/recommended';
 
 export default defineConfig([
   globalIgnores([
-    '**/node_modules/**',
     '.github/instructions/**',
+    '**/node_modules/**',
     '**/*:Zone.Identifier',
     '**/Thumbs.db',
     '**/.react-router/**',
