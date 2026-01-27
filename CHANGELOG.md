@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.5.0](https://github.com/dcdavidev/me/compare/v0.4.1...v0.5.0) (2026-01-27)
+
+### Features
+
+* **web:** add about route ([faab0e5](https://github.com/dcdavidev/me/commit/faab0e5ea18d363cb82ed1f97ba7143c5d467685))
+* **web:** add tech-stack route ([279d83c](https://github.com/dcdavidev/me/commit/279d83c6a22be5add5931a292b30cf2533a55441))
+
+### Bug Fixes
+
+* **web:** dev server now starts ([82d5c1a](https://github.com/dcdavidev/me/commit/82d5c1ac6a832a8a5227f867747d415560e30088))
+
 ## [0.4.1](https://github.com/dcdavidev/me/compare/v0.4.0...v0.4.1) (2026-01-25)
 
 ### Bug Fixes
