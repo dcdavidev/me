@@ -10,14 +10,15 @@ export function TechStack() {
   const navigate = useNavigate();
 
   return (
-    <Box id="tech-stack">
+    <Box id="tech-stack" px={'4'}>
       <Flex justify="center" align="center" style={{ minHeight: '100vh' }}>
-        <Container size={'4'}>
+        <Container size={{ initial: '1', sm: '2', md: '4' }}>
           <BoxEaseIn>
             <Heading
               size={{ initial: '8', md: '9' }}
               align="center"
               wrap="pretty"
+              mb={'9'}
             >
               Tech Stack
             </Heading>

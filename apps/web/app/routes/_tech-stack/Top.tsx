@@ -1,4 +1,4 @@
-import { Box, Container, Flex, Heading } from '@radix-ui/themes';
+import { Container, Flex, Heading } from '@radix-ui/themes';
 
 import { BoxEaseIn } from '@repo/shared-ui-components';
 
@@ -8,24 +8,27 @@ import { TechStackSummary } from './Summary';
 
 export function Top() {
   return (
-    <Box id="top" mb={'9'}>
-      <Flex
-        justify="center"
-        align="center"
-        height={'100vh'}
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${backgroundImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <Container size="4">
+    <Flex
+      id="top"
+      position="relative"
+      overflow="hidden"
+      align="center"
+      justify="center"
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        minHeight: '100vh',
+      }}
+    >
+      <Container size={{ initial: '1', sm: '2', md: '4' }} mx={'4'}>
+        <Flex justify="center" align="center" gap={'9'} direction={'column'}>
           <BoxEaseIn>
             <Heading
               size={{ initial: '8', md: '9' }}
-              mb="6"
               align="center"
               wrap="pretty"
+              mb={'-6'}
             >
               Tech Stack
             </Heading>
@@ -42,8 +45,8 @@ export function Top() {
           </BoxEaseIn>
 
           <TechStackSummary />
-        </Container>
-      </Flex>
-    </Box>
+        </Flex>
+      </Container>
+    </Flex>
   );
 }

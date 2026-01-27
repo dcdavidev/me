@@ -4,7 +4,7 @@ import { BoxEaseIn } from '@repo/shared-ui-components';
 
 export function Stack() {
   return (
-    <Container size={'4'}>
+    <Container size={{ initial: '1', sm: '2', md: '4' }} mx={'4'}>
       <BoxEaseIn>
         <Flex direction={'column'} gap={'4'} id="typescript">
           <i className="ci ci-typescript ci-4x"></i>

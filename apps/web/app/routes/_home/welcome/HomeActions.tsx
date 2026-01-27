@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { useNavigate } from 'react-router';
 
-import { Button, Dialog, Flex } from '@radix-ui/themes';
+import { Button, Container, Dialog, Flex } from '@radix-ui/themes';
 
 import {
   IconArrowNarrowDownDashed,
@@ -16,30 +16,36 @@ export function HomeActions() {
   const [open, setOpen] = useState(false);
 
   return (
-    <Flex gap="4" justify="center">
-      <Dialog.Root open={open} onOpenChange={setOpen}>
-        <Dialog.Trigger>
-          <Button
-            size="4"
-            variant="solid"
-            radius="large"
-            style={{ cursor: 'pointer' }}
-          >
-            Contact Me <IconBubbleTextFilled />
-          </Button>
-        </Dialog.Trigger>
-
-        <ContactDialog setOpen={setOpen} />
-      </Dialog.Root>
-      <Button
-        size="4"
-        variant="outline"
-        radius="large"
-        style={{ cursor: 'pointer' }}
-        onClick={() => navigate('#about')}
+    <Container size={{ initial: '1', sm: '2', md: '4' }}>
+      <Flex
+        gap="4"
+        justify="center"
+        direction={{ initial: 'column', sm: 'row' }}
       >
-        Show More <IconArrowNarrowDownDashed />
-      </Button>
-    </Flex>
+        <Dialog.Root open={open} onOpenChange={setOpen}>
+          <Dialog.Trigger>
+            <Button
+              size="4"
+              variant="solid"
+              radius="large"
+              style={{ cursor: 'pointer' }}
+            >
+              Contact Me <IconBubbleTextFilled />
+            </Button>
+          </Dialog.Trigger>
+
+          <ContactDialog setOpen={setOpen} />
+        </Dialog.Root>
+        <Button
+          size="4"
+          variant="outline"
+          radius="large"
+          style={{ cursor: 'pointer' }}
+          onClick={() => navigate('#about')}
+        >
+          Show More <IconArrowNarrowDownDashed />
+        </Button>
+      </Flex>
+    </Container>
   );
 }

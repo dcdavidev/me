@@ -1,4 +1,4 @@
-import { Container, Flex, Heading } from '@radix-ui/themes';
+import { Box, Container, Flex, Heading } from '@radix-ui/themes';
 
 import { BoxEaseIn } from '@repo/shared-ui-components';
 
@@ -21,32 +21,34 @@ export function Top() {
         backgroundPosition: 'center',
       }}
     >
-      <Container size={{ initial: '1', sm: '2', md: '4' }} px="2">
-        <BoxEaseIn>
-          <Heading
-            size={{ initial: '8', md: '9' }}
-            mb="6"
-            align="center"
-            wrap="pretty"
-          >
-            Ready to build something <u>unique</u>?
-          </Heading>
-        </BoxEaseIn>
-        <BoxEaseIn>
-          <Heading
-            size={{ initial: '8', md: '9' }}
-            mb="9"
-            align="center"
-            wrap="pretty"
-          >
-            Let's start today.
-          </Heading>
-        </BoxEaseIn>
+      <Box mx={'4'}>
+        <Container size={{ initial: '1', sm: '2', md: '4' }} mx="4">
+          <BoxEaseIn>
+            <Heading
+              size={{ initial: '8', md: '9' }}
+              mb="6"
+              align="center"
+              wrap="pretty"
+            >
+              Ready to build something <u>unique</u>?
+            </Heading>
+          </BoxEaseIn>
+          <BoxEaseIn>
+            <Heading
+              size={{ initial: '8', md: '9' }}
+              mb="9"
+              align="center"
+              wrap="pretty"
+            >
+              Let's start today.
+            </Heading>
+          </BoxEaseIn>
 
-        <BoxEaseIn>
-          <HomeActions />
-        </BoxEaseIn>
-      </Container>
+          <BoxEaseIn>
+            <HomeActions />
+          </BoxEaseIn>
+        </Container>
+      </Box>
     </Flex>
   );
 }

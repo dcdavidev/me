@@ -12,6 +12,7 @@ import {
 import {
   Avatar,
   Box,
+  Button,
   Card,
   Code,
   Container,
@@ -25,6 +26,7 @@ import {
 } from '@radix-ui/themes';
 
 import {
+  IconArrowUpDashed,
   IconBrandGithubFilled,
   IconBrandLinkedinFilled,
 } from '@tabler/icons-react';
@@ -152,54 +154,81 @@ export function Layout({ children }: { children: React.ReactNode }) {
               backgroundPosition: 'center',
             }}
           >
-            <Container size="4">
-              <Card mb={'6'}>
-                <Box p={'4'}>
-                  <Flex
-                    direction={'column'}
-                    justify={'center'}
-                    align={'start'}
-                    gap={'2'}
-                  >
-                    <Heading size={'4'}>Davide Di Criscito</Heading>
-                    <Text>Full Stack Developer powering web solutions.</Text>
-                  </Flex>
-
-                  <Separator my={'6'} style={{ width: '100%' }} />
-
-                  <Grid columns={{ initial: '1', md: '2', lg: '3' }} gap="6">
+            <Box px={'4'} width={'100%'}>
+              <Container size={{ initial: '1', md: '4' }}>
+                <Flex justify={'center'} align={'center'} py={'9'}>
+                  <Button color={'blue'} onClick={() => navigate('#top')}>
+                    back to top <IconArrowUpDashed />
+                  </Button>
+                </Flex>
+                <Card mb={'6'}>
+                  <Box p={'4'}>
                     <Flex
                       direction={'column'}
-                      justify={'start'}
-                      align={'start'}
+                      justify={'center'}
+                      align={{ initial: 'center', md: 'start' }}
                       gap={'2'}
                     >
-                      <Link to={'/'}>Home</Link>
-                      <Link to={'/about'}>About</Link>
-                      <Link to={'/tech-stack'}>Tech Stack</Link>
+                      <Heading
+                        size={{ initial: '4', md: '6' }}
+                        wrap={'pretty'}
+                        align={{ initial: 'center', md: 'left' }}
+                      >
+                        Davide Di Criscito
+                      </Heading>
+                      <Text
+                        wrap={'pretty'}
+                        align={{ initial: 'center', md: 'left' }}
+                      >
+                        Full Stack Developer powering web solutions.
+                      </Text>
                     </Flex>
-                  </Grid>
-                </Box>
-              </Card>
 
-              <Flex
-                justify={'center'}
-                align={'center'}
-                direction={'column'}
-                gap={'4'}
-              >
-                <Text align={'center'} wrap="pretty">
-                  Davide Di Criscito - Italian VAT number 04737220980
-                </Text>
-                <Text size={'1'} wrap="pretty">
-                  View the source code of this website on{' '}
-                  <Link to="https://github.com/dcdavidev/me" target="_blank">
-                    GitHub
-                  </Link>
-                  .
-                </Text>
-              </Flex>
-            </Container>
+                    <Separator my={'6'} style={{ width: '100%' }} />
+
+                    <Grid columns={{ initial: '1', md: '2', lg: '3' }} gap="6">
+                      <Flex
+                        direction={'column'}
+                        justify={'start'}
+                        align={{ initial: 'center', md: 'start' }}
+                        gap={'2'}
+                      >
+                        <Link to={'/'}>
+                          <Text align={{ initial: 'center', md: 'left' }}>
+                            Home
+                          </Text>
+                        </Link>
+                        <Link to={'/about'}>About</Link>
+                        <Link to={'/tech-stack'}>Tech Stack</Link>
+                      </Flex>
+                    </Grid>
+                  </Box>
+                </Card>
+
+                <Container size={{ initial: '1', md: '4' }}>
+                  <Flex
+                    justify={'center'}
+                    align={'center'}
+                    direction={'column'}
+                    gap={'4'}
+                  >
+                    <Text align={'center'} wrap="pretty">
+                      Davide Di Criscito - Italian VAT number 04737220980
+                    </Text>
+                    <Text size={'1'} wrap="pretty" align={'center'}>
+                      View the source code of this website on{' '}
+                      <Link
+                        to="https://github.com/dcdavidev/me"
+                        target="_blank"
+                      >
+                        GitHub
+                      </Link>
+                      .
+                    </Text>
+                  </Flex>
+                </Container>
+              </Container>
+            </Box>
           </Flex>
         </Theme>
         <ScrollRestoration />

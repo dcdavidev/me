@@ -4,10 +4,10 @@ import { BoxEaseIn } from '@repo/shared-ui-components';
 
 export function TechStackSummary() {
   return (
-    <Box id="tech-stack" pt="9">
-      <Container size="4">
+    <Box id="tech-stack" px="9">
+      <Container size={{ initial: '1', sm: '2', md: '4' }}>
         <BoxEaseIn>
-          <Flex wrap="wrap" gap="4" justify="center" p="4">
+          <Flex wrap="wrap" gap="4" justify="center">
             <Flex direction="column" align="center">
               <i className="ci ci-javascript ci-2x"></i>
               <Text as="span" align="center">

@@ -1,13 +1,13 @@
-import { Box } from '@radix-ui/themes';
+import { Flex } from '@radix-ui/themes';
 
 import { Stack, Top } from './_tech-stack';
 
 export default function TechStack() {
   return (
-    <Box id="top">
+    <Flex justify={'center'} align={'stretch'} gap={'9'} direction={'column'}>
       <Top />
 
       <Stack />
-    </Box>
+    </Flex>
   );
 }
