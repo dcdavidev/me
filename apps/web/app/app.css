@@ -1,13 +1,8 @@
-@import '@fontsource/momo-trust-sans';
-@import '@fontsource-variable/funnel-display';
-@import '@fontsource-variable/roboto-serif';
-@import '@fontsource-variable/source-code-pro';
-
 :root {
   --font-momo-trust-sans: 'Momo Trust Sans', sans-serif;
-  --font-funnel-display: 'Funnel Display', sans-serif;
-  --font-roboto-serif: 'Roboto Serif', serif;
-  --font-source-code-pro: 'Source Code Pro', monospace;
+  --font-funnel-display: 'Funnel Display Variable', sans-serif;
+  --font-roboto-serif: 'Roboto Serif Variable', serif;
+  --font-source-code-pro: 'Source Code Pro Variable', monospace;
 }
 
 :root,
