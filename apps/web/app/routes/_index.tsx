@@ -5,9 +5,8 @@ import { Toast } from 'radix-ui';
 
 import { api } from '@repo/web-configs';
 
+import { About, TechStack, Top } from './_home';
 import type { Route } from './+types/_index';
-
-import { About, TechStack, Welcome } from '~/routes/_home/index';
 
 export function meta() {
   return [
@@ -44,7 +43,7 @@ export default function Home() {
   return (
     <Toast.Provider swipeDirection="right">
       <Flex direction={'column'} gap={'9'}>
-        <Welcome />
+        <Top />
         <About />
         <TechStack />
       </Flex>

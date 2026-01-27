@@ -1,10 +1,22 @@
-import { Box, Container, Flex, Grid, Heading, Text } from '@radix-ui/themes';
+import { useNavigate } from 'react-router';
+
+import {
+  Box,
+  Button,
+  Container,
+  Flex,
+  Grid,
+  Heading,
+  Text,
+} from '@radix-ui/themes';
 
 import { BoxEaseIn, BoxFadeIn } from '@repo/shared-ui-components';
 
-import meFull from './full.webp';
+import meFull from '~/assets/me/full.webp';
 
 export function About() {
+  const navigate = useNavigate();
+
   return (
     <Box id="about">
       <Container size="4">
@@ -56,6 +68,18 @@ export function About() {
             </BoxEaseIn>
           </Box>
         </Grid>
+
+        <BoxEaseIn>
+          <Flex justify={'center'} align={'center'} mt={'9'}>
+            <Button
+              size={'4'}
+              variant="outline"
+              onClick={() => navigate('/about')}
+            >
+              Discover more about me 🙋
+            </Button>
+          </Flex>
+        </BoxEaseIn>
       </Container>
     </Box>
   );

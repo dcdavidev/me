@@ -6,17 +6,20 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useNavigate,
 } from 'react-router';
 
 import {
   Avatar,
   Box,
+  Card,
   Code,
   Container,
   Flex,
   Grid,
   Heading,
   IconButton,
+  Separator,
   Text,
   Theme,
 } from '@radix-ui/themes';
@@ -28,10 +31,11 @@ import {
 
 import { LoadingScreen, SplashScreen } from '@repo/shared-ui-components';
 
-import meSqrd from '~/me.webp';
+import footerBgImg from '~/assets/backgrounds/abstract-purple.webp';
+import meSqrd from '~/assets/me/squared.webp';
 
-import '~/app.css';
 import '@radix-ui/themes/styles.css';
+import '~/app.css';
 
 import type { Route } from './+types/root';
 
@@ -77,6 +81,8 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const navigate = useNavigate();
+
   return (
     <html lang="en">
       <head>
@@ -105,7 +111,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
                   src={meSqrd}
                   fallback="Me"
                   radius="full"
-                  onClick={() => (globalThis.location.href = '#home')}
+                  onClick={() => navigate('/')}
+                  style={{ cursor: 'pointer' }}
                 />
               </Box>
               <Flex gap="4" justify="center" align="end" p="2">
@@ -128,25 +135,26 @@ export function Layout({ children }: { children: React.ReactNode }) {
               </Flex>
             </Flex>
           </Box>
-          <main style={{ position: 'relative' }}>{children}</main>
 
-          <Box
+          <Box mb={'9'}>
+            <main style={{ position: 'relative' }}>{children}</main>
+          </Box>
+
+          <Flex
             id="footer"
-            pt="9"
-            style={{ minHeight: '100vh', position: 'relative' }}
+            justify={'center'}
+            align={'center'}
+            style={{
+              minHeight: '100vh',
+              position: 'relative',
+              backgroundImage: `url(${footerBgImg})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
           >
             <Container size="4">
-              <Flex
-                my="9"
-                justify={'center'}
-                align={'center'}
-                direction={'column'}
-              >
-                <Grid columns={{ initial: '1', md: '2', lg: '3' }} gap="6">
-                  <Avatar src={meSqrd} fallback="DC" size={'9'} radius="full" />
-                  <Box />
-                  <Box />
-
+              <Card mb={'6'}>
+                <Box p={'4'}>
                   <Flex
                     direction={'column'}
                     justify={'center'}
@@ -157,18 +165,22 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     <Text>Full Stack Developer powering web solutions.</Text>
                   </Flex>
 
-                  <Flex
-                    direction={'column'}
-                    justify={'start'}
-                    align={'start'}
-                    gap={'2'}
-                  >
-                    <Link to={'/#home'}>Home</Link>
-                    <Link to={'/#about'}>About</Link>
-                    <Link to={'/#tech-stack'}>Tech Stack</Link>
-                  </Flex>
-                </Grid>
-              </Flex>
+                  <Separator my={'6'} style={{ width: '100%' }} />
+
+                  <Grid columns={{ initial: '1', md: '2', lg: '3' }} gap="6">
+                    <Flex
+                      direction={'column'}
+                      justify={'start'}
+                      align={'start'}
+                      gap={'2'}
+                    >
+                      <Link to={'/'}>Home</Link>
+                      <Link to={'/about'}>About</Link>
+                      <Link to={'/#tech-stack'}>Tech Stack</Link>
+                    </Flex>
+                  </Grid>
+                </Box>
+              </Card>
 
               <Flex
                 justify={'center'}
@@ -188,7 +200,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 </Text>
               </Flex>
             </Container>
-          </Box>
+          </Flex>
         </Theme>
         <ScrollRestoration />
         <Scripts />

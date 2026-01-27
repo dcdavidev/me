@@ -2,14 +2,14 @@ import { Container, Flex, Heading } from '@radix-ui/themes';
 
 import { BoxEaseIn } from '@repo/shared-ui-components';
 
-import backgroundImage from './abstract-colors-brown.webp';
+import backgroundImage from '~/assets/backgrounds/abstract-brown.webp';
 
 import { HomeActions } from './HomeActions';
 
-export function Welcome() {
+export function Top() {
   return (
     <Flex
-      id="home"
+      id="top"
       position="relative"
       height="100vh"
       overflow="hidden"

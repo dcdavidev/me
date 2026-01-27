@@ -4,7 +4,7 @@ import { Heading } from '@radix-ui/themes';
 import { SplashScreen } from '@repo/shared-ui-components';
 
 // @ts-expect-error lottie not typed
-import animationData from '~/kitty-error-404.lottie';
+import animationData from '~/assets/animations/kitty-error-404.lottie';
 
 export default function NotFound() {
   return (
