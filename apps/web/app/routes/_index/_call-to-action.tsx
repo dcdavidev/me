@@ -9,7 +9,7 @@ import {
   IconBubbleTextFilled,
 } from '@tabler/icons-react';
 
-import { ContactDialog } from './ContactDialog';
+import { ContactDialog } from './_contact-dialog';
 
 export function HomeActions() {
   const navigate = useNavigate();

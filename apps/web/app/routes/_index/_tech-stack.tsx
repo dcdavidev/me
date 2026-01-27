@@ -4,7 +4,7 @@ import { Box, Button, Container, Flex, Heading } from '@radix-ui/themes';
 
 import { BoxEaseIn } from '@repo/shared-ui-components';
 
-import { TechStackSummary } from '~/routes/_tech-stack/Summary';
+import { TechStackSummary } from '~/routes/tech-stack/_summary';
 
 export function TechStack() {
   const navigate = useNavigate();

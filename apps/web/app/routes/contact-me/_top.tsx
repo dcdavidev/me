@@ -1,10 +1,8 @@
-import { Container, Flex, Heading } from '@radix-ui/themes';
+import { Card, Container, Flex, Heading } from '@radix-ui/themes';
 
 import { BoxEaseIn } from '@repo/shared-ui-components';
 
-import backgroundImage from '~/assets/backgrounds/code.webp';
-
-import { TechStackSummary } from './Summary';
+import backgroundImage from '~/assets/backgrounds/abstract-dual-expose.webp';
 
 export function Top() {
   return (
@@ -15,7 +13,7 @@ export function Top() {
       align="center"
       justify="center"
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${backgroundImage})`,
+        backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         minHeight: '100vh',
@@ -28,23 +26,14 @@ export function Top() {
               size={{ initial: '8', md: '9' }}
               align="center"
               wrap="pretty"
-              mb={'-6'}
             >
-              Tech Stack
+              Contact Me
             </Heading>
           </BoxEaseIn>
 
           <BoxEaseIn>
-            <Heading
-              size={{ initial: '6', md: '8' }}
-              align="center"
-              wrap="pretty"
-            >
-              the ecosystem powering my development workflow.
-            </Heading>
+            <Card>hikjgbkjhgkjhg</Card>
           </BoxEaseIn>
-
-          <TechStackSummary />
         </Flex>
       </Container>
     </Flex>

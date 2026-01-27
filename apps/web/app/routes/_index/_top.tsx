@@ -4,7 +4,7 @@ import { BoxEaseIn } from '@repo/shared-ui-components';
 
 import backgroundImage from '~/assets/backgrounds/abstract-brown.webp';
 
-import { HomeActions } from './HomeActions';
+import { HomeActions } from './_call-to-action';
 
 export function Top() {
   return (

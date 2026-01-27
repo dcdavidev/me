@@ -5,7 +5,6 @@ import { Toast } from 'radix-ui';
 
 import { api } from '@repo/web-configs';
 
-import { About, TechStack, Top } from './_home';
 import type { Route } from './+types/_index';
 
 export function meta() {

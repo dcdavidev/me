@@ -6,7 +6,8 @@ import { BoxEaseIn } from '@repo/shared-ui-components';
 // @ts-expect-error lottie not typed
 import animationData from '~/assets/animations/developer-relaxing.lottie';
 
-import { Mission, Top } from './_about';
+import { Mission } from './_mission';
+import { Top } from './_top';
 
 export default function About() {
   return (

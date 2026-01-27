@@ -143,7 +143,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             </Flex>
           </Box>
 
-          <Box mb={'9'}>
+          <Box>
             <main style={{ position: 'relative' }}>
               {children}
               <ScrollRestoration />
@@ -203,6 +203,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                       >
                         <Link to={'/'}>Home</Link>
                         <Link to={'/about'}>About</Link>
+                        <Link to={'/contact-me'}>Contact Me</Link>
                         <Link to={'/tech-stack'}>Tech Stack</Link>
                       </Flex>
 
