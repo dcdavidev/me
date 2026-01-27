@@ -1,10 +1,23 @@
+@import '@fontsource/momo-trust-sans';
+@import '@fontsource-variable/funnel-display';
+@import '@fontsource-variable/roboto-serif';
+@import '@fontsource-variable/source-code-pro';
+
+:root {
+  --font-momo-trust-sans: 'Momo Trust Sans', sans-serif;
+  --font-funnel-display: 'Funnel Display', sans-serif;
+  --font-roboto-serif: 'Roboto Serif', serif;
+  --font-source-code-pro: 'Source Code Pro', monospace;
+}
+
+:root,
 .radix-themes {
-  --default-font-family: 'Momo Trust Sans', sans-serif;
-  --heading-font-family: 'Funnel Display', sans-serif;
-  --quote-font-family: 'Roboto Serif', serif;
-  --em-font-family: 'Roboto Serif', serif;
-  --code-font-family: 'Source Code Pro', monospace;
-  --strong-font-family: 'Momo Trust Sans', sans-serif;
+  --default-font-family: var(--font-momo-trust-sans);
+  --heading-font-family: var(--font-funnel-display);
+  --quote-font-family: var(--font-roboto-serif);
+  --em-font-family: var(--font-roboto-serif);
+  --code-font-family: var(--font-source-code-pro);
+  --strong-font-family: var(--font-momo-trust-sans);
 }
 
 *,

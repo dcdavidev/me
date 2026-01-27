@@ -1,5 +1,5 @@
 {
-  "name": "@repo/server-configs",
+  "name": "@repo/web-components",
   "version": "0.5.0",
   "private": true,
   "license": "CC-BY-NC-ND-4.0",
@@ -8,12 +8,16 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "@repo/server-schemas": "workspace:*",
-    "nodemailer": "^7.0.12"
+    "@repo/web-configs": "workspace:*",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "vanilla-cookieconsent": "^3.1.0"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
     "@types/node": "^25.0.10",
-    "@types/nodemailer": "^7.0.5"
+    "@types/react": "^19.2.9",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "5.9.3"
   }
 }

@@ -14,11 +14,8 @@
     "express": "^5.2.1"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/prettier-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/node": "^25.0.10",
-    "@types/nodemailer": "^7.0.5",
-    "rolldown": "1.0.0-rc.1"
+    "@types/nodemailer": "^7.0.5"
   }
 }

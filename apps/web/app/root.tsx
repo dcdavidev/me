@@ -1,3 +1,8 @@
+import '@fontsource/momo-trust-sans';
+import '@fontsource-variable/funnel-display';
+import '@fontsource-variable/roboto-serif';
+import '@fontsource-variable/source-code-pro';
+
 import {
   isRouteErrorResponse,
   Link,
@@ -31,7 +36,9 @@ import {
   IconBrandLinkedinFilled,
 } from '@tabler/icons-react';
 
-import { LoadingScreen, SplashScreen } from '@repo/shared-ui-components';
+import { SplashScreen } from '@repo/shared-ui-components';
+import { CookieConsentInit } from '@repo/web-components';
+import { consentConfig } from '@repo/web-configs';
 
 import footerBgImg from '~/assets/backgrounds/abstract-purple.webp';
 import meSqrd from '~/assets/me/squared.webp';
@@ -40,6 +47,7 @@ import '@radix-ui/themes/styles.css';
 import '~/app.css';
 
 import type { Route } from './+types/root';
+import { useCookieConsent } from './hooks';
 
 export const meta: Route.MetaFunction = () => [
   {
@@ -57,10 +65,6 @@ export const links: Route.LinksFunction = () => [
     rel: 'preconnect',
     href: 'https://fonts.gstatic.com',
     crossOrigin: 'anonymous',
-  },
-  {
-    rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Momo+Trust+Sans:wght@200..800&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap',
   },
   {
     rel: 'stylesheet',
@@ -84,6 +88,7 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
+  const { showPreferences } = useCookieConsent();
 
   return (
     <html lang="en">
@@ -139,7 +144,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
           </Box>
 
           <Box mb={'9'}>
-            <main style={{ position: 'relative' }}>{children}</main>
+            <main style={{ position: 'relative' }}>
+              {children}
+              <ScrollRestoration />
+            </main>
           </Box>
 
           <Flex
@@ -193,13 +201,26 @@ export function Layout({ children }: { children: React.ReactNode }) {
                         align={{ initial: 'center', md: 'start' }}
                         gap={'2'}
                       >
-                        <Link to={'/'}>
-                          <Text align={{ initial: 'center', md: 'left' }}>
-                            Home
-                          </Text>
-                        </Link>
+                        <Link to={'/'}>Home</Link>
                         <Link to={'/about'}>About</Link>
                         <Link to={'/tech-stack'}>Tech Stack</Link>
+                      </Flex>
+
+                      <Flex
+                        direction={'column'}
+                        justify={'start'}
+                        align={{ initial: 'center', md: 'start' }}
+                        gap={'2'}
+                      >
+                        <Link
+                          to={'#'}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            showPreferences();
+                          }}
+                        >
+                          Cookie Preferences
+                        </Link>
                       </Flex>
                     </Grid>
                   </Box>
@@ -231,15 +252,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
             </Box>
           </Flex>
         </Theme>
-        <ScrollRestoration />
+
+        <CookieConsentInit config={consentConfig} />
         <Scripts />
       </body>
     </html>
   );
-}
-
-export function HydrateFallback() {
-  return <LoadingScreen />;
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
@@ -260,11 +278,13 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 
   return (
     <SplashScreen>
-      <Flex justify={'center'} align={'center'} gap="4">
-        <Heading size="5">{message}</Heading>
-        <Text>{details}</Text>
-        {stack && <Code>{stack}</Code>}
-      </Flex>
+      <Container size={{ initial: '1', sm: '2', md: '4' }} mx={'4'}>
+        <Flex justify={'center'} align={'center'} gap="4" direction={'column'}>
+          <Heading size="5">{message}</Heading>
+          <Text>{details}</Text>
+          {stack && <Code>{stack}</Code>}
+        </Flex>
+      </Container>
     </SplashScreen>
   );
 }
