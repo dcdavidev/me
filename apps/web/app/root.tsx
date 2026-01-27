@@ -176,7 +176,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                     >
                       <Link to={'/'}>Home</Link>
                       <Link to={'/about'}>About</Link>
-                      <Link to={'/#tech-stack'}>Tech Stack</Link>
+                      <Link to={'/tech-stack'}>Tech Stack</Link>
                     </Flex>
                   </Grid>
                 </Box>

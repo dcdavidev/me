@@ -1,61 +1,45 @@
-import { Box, Container, Flex, Heading, Text } from '@radix-ui/themes';
+import { useNavigate } from 'react-router';
+
+import { Box, Button, Container, Flex, Heading } from '@radix-ui/themes';
 
 import { BoxEaseIn } from '@repo/shared-ui-components';
 
+import { TechStackSummary } from '~/routes/_tech-stack/Summary';
+
 export function TechStack() {
+  const navigate = useNavigate();
+
   return (
-    <Box id="tech-stack" pt="9">
-      <BoxEaseIn>
-        <Container size="4">
-          <Heading size="8" mb="6" align="center">
-            Tech Stack
-          </Heading>
-          <Flex wrap="wrap" gap="4" mb="8" justify="center" px="2">
-            <Flex direction="column" align="center">
-              <i className="ci ci-javascript ci-2x"></i>
-              <Text as="span" align="center">
-                Javascript
-              </Text>
+    <Box id="tech-stack">
+      <Flex justify="center" align="center" style={{ minHeight: '100vh' }}>
+        <Container size={'4'}>
+          <BoxEaseIn>
+            <Heading
+              size={{ initial: '8', md: '9' }}
+              align="center"
+              wrap="pretty"
+            >
+              Tech Stack
+            </Heading>
+          </BoxEaseIn>
+
+          <TechStackSummary />
+
+          <Box my={'9'} />
+
+          <BoxEaseIn>
+            <Flex justify={'center'} align={'center'}>
+              <Button
+                size={'4'}
+                variant="outline"
+                onClick={() => navigate('/tech-stack')}
+              >
+                I want to learn more
+              </Button>
             </Flex>
-            <Flex direction="column" align="center">
-              <i className="ci ci-typescript ci-2x"></i>
-              <Text as="span" align="center">
-                Typescript
-              </Text>
-            </Flex>
-            <Flex direction="column" align="center">
-              <i className="ci ci-nodejs ci-2x"></i>
-              <Text as="span" align="center">
-                Node.js
-              </Text>
-            </Flex>
-            <Flex direction="column" align="center">
-              <i className="ci ci-expressjs ci-2x ci-invert"></i>
-              <Text as="span" align="center">
-                Express.js
-              </Text>
-            </Flex>
-            <Flex direction="column" align="center">
-              <i className="ci ci-react ci-2x"></i>
-              <Text as="span" align="center">
-                React.js
-              </Text>
-            </Flex>
-            <Flex direction="column" align="center">
-              <i className="ci ci-reactrouter ci-2x ci-invert"></i>
-              <Text as="span" align="center">
-                React Router
-              </Text>
-            </Flex>
-            <Flex direction="column" align="center">
-              <i className="ci ci-astro ci-2x ci-invert"></i>
-              <Text as="span" align="center">
-                Astro
-              </Text>
-            </Flex>
-          </Flex>
+          </BoxEaseIn>
         </Container>
-      </BoxEaseIn>
+      </Flex>
     </Box>
   );
 }
