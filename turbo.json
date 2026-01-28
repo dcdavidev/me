@@ -17,6 +17,16 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "prisma:generate": {
+      "dependsOn": ["^prisma:generate"],
+      "inputs": ["$TURBO_DEFAULT", ".env*", "$NODE_ENV"],
+      "outputs": ["src/prisma/**"]
+    },
+    "prisma:migrate:dev": {
+      "dependsOn": ["^prisma:migrate:dev"],
+      "inputs": ["$TURBO_DEFAULT", ".env*", "$NODE_ENV"],
+      "outputs": ["prisma/migrations/**"]
     }
   }
 }

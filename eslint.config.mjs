@@ -9,6 +9,7 @@ export default defineConfig([
     '**/*:Zone.Identifier',
     '**/Thumbs.db',
     '**/.react-router/**',
+    'packages/server-models/src/prisma/**',
   ]),
   repoRecommended,
 ]);

@@ -4,4 +4,6 @@ packages:
   - .config/*
 
 onlyBuiltDependencies:
+  - '@prisma/engines'
   - esbuild
+  - prisma

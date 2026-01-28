@@ -19,6 +19,8 @@
     "lint": "pnpm dlx eslint --no-warn-ignored --fix .",
     "lint:fmt": "pnpm run lint && pnpm run fmt",
     "prepare": "pnpm dlx lefthook install",
+    "prisma:generate": "turbo run prisma:generate",
+    "prisma:migrate:dev": "turbo run prisma:migrate:dev",
     "release": "LEFTHOOK=\"0\" release-it",
     "serve": "infisical run --env=dev --path=\"/apps/me\" -- node apps/server/dist/main.js"
   },
@@ -49,7 +51,7 @@
     "prettier-plugin-sh": "^0.18.0",
     "prettier-plugin-toml": "^2.0.6",
     "release-it": "^19.2.4",
-    "turbo": "^2.7.6",
+    "turbo": "^2.8.0",
     "typescript": "5.9.3"
   },
   "packageManager": "pnpm@10.28.2+sha512.41872f037ad22f7348e3b1debbaf7e867cfd448f2726d9cf74c08f19507c31d2c8e7a11525b983febc2df640b5438dee6023ebb1f84ed43cc2d654d2bc326264",
