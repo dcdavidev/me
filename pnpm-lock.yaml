@@ -219,6 +219,9 @@ importers:
       react-router:
         specifier: 7.12.0
         version: 7.12.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      vanilla-cookieconsent:
+        specifier: ^3.1.0
+        version: 3.1.0
       wnodex:
         specifier: ^0.1.0
         version: 0.1.0

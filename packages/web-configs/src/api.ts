@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-const isServer = globalThis.window === undefined;
+const baseURL = import.meta.env.DEV
+  ? `http://localhost:${import.meta.env.PORT}/api`
+  : '/api';
 
 export const api = axios.create({
-  // @ts-expect-error end exists in ImportMeta
-  baseURL: isServer ? `http://localhost:${import.meta.env.PORT}` : '/api',
+  baseURL: baseURL,
   timeout: 10_000,
 });

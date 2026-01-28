@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "NODE_ENV=production react-router build --mode production",
-    "dev": "react-router dev",
+    "dev": "infisical run --env=dev --path=\"/apps/me\" -- react-router dev",
     "start": "react-router-serve ./dist/server/index.js",
     "typecheck": "react-router typegen && tsc"
   },

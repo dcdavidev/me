@@ -33,7 +33,9 @@ export function contactMe(req: Request, res: Response): void {
   const mailMessage = {
     from: EMAIL_USER,
     to: EMAIL_USER,
-    subject: `IO: ${name} has sent you a message.`,
+    sender: email,
+    replyTo: email,
+    subject: `dcdavidev.me: ${name} has sent you a message.`,
     text: message,
   };
 
