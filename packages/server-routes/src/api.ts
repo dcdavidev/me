@@ -1,7 +1,17 @@
 import { Router } from 'express';
 
-import { contactMe } from '@repo/server-controllers';
+import {
+  checkSession,
+  contactMe,
+  requestOtp,
+  verifyOtp,
+} from '@repo/server-controllers';
 
 export const apiRouter: Router = Router({ mergeParams: true });
 
 apiRouter.post('/contact-me', contactMe);
+
+// Auth
+apiRouter.post('/login', requestOtp);
+apiRouter.post('/verify', verifyOtp);
+apiRouter.get('/me', checkSession);

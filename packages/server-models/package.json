@@ -12,7 +12,8 @@
     "prisma:migrate:dev": "infisical run --env=dev --path=\"/apps/me\" -- prisma migrate dev"
   },
   "dependencies": {
-    "@prisma/adapter-pg": "^7.3.0"
+    "@prisma/adapter-pg": "^7.3.0",
+    "@prisma/client": "^7.3.0"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",

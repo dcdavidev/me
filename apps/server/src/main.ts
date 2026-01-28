@@ -8,13 +8,18 @@ import { createRequestHandler } from '@react-router/express';
 
 import { apiRouter, rootRouter } from '@repo/server-routes';
 import { HOST, PORT, PROD } from '@repo/server-schemas';
+import { initCronJobs } from '@repo/server-services';
 
 const wnodex = new Wnodex({
   port: PORT,
   compression: true,
   helmet: false,
   cors: {
-    origin: [PROD ? HOST : `http://localhost:${PORT}`, 'http://localhost:4200'],
+    origin: [
+      PROD ? HOST : `http://localhost:${PORT}`,
+      'http://localhost:4000', // web dev server
+      'http://localhost:4100', // admin dev server
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: [
       'Content-Type',
@@ -74,8 +79,8 @@ app.all('*splat', reactRouterHandler);
 
 // Start the server
 await wnodex.start().then(() => {
-  // Server started.
-  // Here you can add additional startup chores if needed.
+  // Startup chores
+  initCronJobs();
 });
 
 // Shutdown chores

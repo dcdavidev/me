@@ -48,6 +48,8 @@ export type {
 export { ENVIRONMENT, environmentSchema } from './environment.js';
 export type { Host, HostInput, HostOutput } from './host.js';
 export { HOST, hostSchema } from './host.js';
+export type { JwtSecret } from './jwt-secret.js';
+export { JWT_SECRET, jwtSecretSchema } from './jwt-secret.js';
 export type { NodeEnv, NodeEnvInput, NodeEnvOutput } from './node-env.js';
 export { DEV, NODE_ENV, PROD } from './node-env.js';
 export type { Port, PortInput, PortOutput } from './port.js';
