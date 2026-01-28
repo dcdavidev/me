@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.1](https://github.com/dcdavidev/me/compare/v0.6.0...v0.6.1) (2026-01-28)
+
+### Bug Fixes
+
+* **server:** add missing dependencies ([544d755](https://github.com/dcdavidev/me/commit/544d755ad055c7fda387b23b0229bc513a0ae1fc))
+
 ## [0.6.0](https://github.com/dcdavidev/me/compare/v0.5.0...v0.6.0) (2026-01-28)
 
 ### Features
