@@ -1,0 +1,5 @@
+export const ContactResponseCode = {
+  SUCCESS: 'CONTACT_SUCCESS',
+  INVALID_INPUT: 'CONTACT_INVALID_INPUT',
+  SERVER_ERROR: 'CONTACT_SERVER_ERROR',
+} as const;

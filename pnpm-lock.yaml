@@ -385,11 +385,26 @@ importers:
         specifier: ^7.0.5
         version: 7.0.5
 
+  packages/server-consts:
+    devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../.config/typescript
+      '@types/node':
+        specifier: ^25.0.10
+        version: 25.0.10
+      '@types/nodemailer':
+        specifier: ^7.0.5
+        version: 7.0.5
+
   packages/server-controllers:
     dependencies:
       '@repo/server-configs':
         specifier: workspace:*
         version: link:../server-configs
+      '@repo/server-consts':
+        specifier: workspace:*
+        version: link:../server-consts
       '@repo/server-schemas':
         specifier: workspace:*
         version: link:../server-schemas

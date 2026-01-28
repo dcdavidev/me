@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { Form, useActionData, useNavigation } from 'react-router';
 
 import {
@@ -23,19 +25,12 @@ import type { Route } from '../contact-me/+types';
 
 interface ActionResponse {
   ok: boolean;
-  message?: string;
+  code: string;
   timestamp: number;
 }
 
 export function meta() {
-  return [
-    { title: 'Contact Me | Davide Di Criscito' },
-    {
-      name: 'description',
-      content:
-        "Fill out the form below and I'll get back to you as soon as possible.",
-    },
-  ];
+  return [{ title: 'Contact Me | Davide Di Criscito' }];
 }
 
 export async function action({ request }: Route.ActionArgs) {
@@ -44,24 +39,26 @@ export async function action({ request }: Route.ActionArgs) {
 
   try {
     const { data } = await api.post('/contact-me', payload);
-    return { ...data, ok: true, timestamp: Date.now() };
+    return { ok: true, code: data.code, timestamp: Date.now() };
   } catch (error: unknown) {
-    console.error('❌ Error submitting form:', error);
+    const code =
+      (error as { response?: { data?: { code?: string } } })?.response?.data
+        ?.code || 'SERVER_ERROR';
 
-    const message =
-      (error as { response?: { data?: { message?: string } } })?.response?.data
-        ?.message || 'Failed to connect to server';
     return {
-      message,
       ok: false,
+      code: code,
       timestamp: Date.now(),
     };
   }
 }
 
 export default function ContactMe() {
-  const actionData = useActionData() as ActionResponse | undefined;
   const navigation = useNavigation();
+
+  const { t } = useTranslation();
+
+  const actionData = useActionData() as ActionResponse | undefined;
   const isSubmitting = navigation.state === 'submitting';
 
   return (
@@ -86,7 +83,7 @@ export default function ContactMe() {
             wrap="pretty"
             mb="6"
           >
-            Contact Me
+            {t('contact-me.title')}
           </Heading>
         </BoxEaseIn>
 
@@ -94,51 +91,55 @@ export default function ContactMe() {
           <BoxEaseIn>
             <Card size="3" style={{ width: '100%', maxWidth: '100%' }}>
               <Heading size={'4'} wrap="pretty" align="center" mb={'4'}>
-                Fill out the form below and I'll get back to you as soon as
-                possible.
+                {t('contact-me.subtitle')}
               </Heading>
 
               <Form method="post">
-                <Flex direction="column" gap="3">
+                <Flex direction="column" gap="4">
                   <label>
                     <Text as="div" size="2" mb="1" weight="bold">
-                      Name
+                      {t('contact-me.form.name.label')}
                     </Text>
                     <TextField.Root
                       name="name"
-                      placeholder="Your name"
+                      placeholder={t('contact-me.form.name.placeholder')}
                       required
                       suppressHydrationWarning
+                      size={'3'}
                     />
                   </label>
                   <label>
                     <Text as="div" size="2" mb="1" weight="bold">
-                      Email
+                      {t('contact-me.form.email.label')}
                     </Text>
                     <TextField.Root
                       name="email"
                       type="email"
-                      placeholder="your@email.com"
+                      placeholder={t('contact-me.form.email.placeholder')}
                       required
                       suppressHydrationWarning
+                      size={'3'}
                     />
                   </label>
                   <label>
                     <Text as="div" size="2" mb="1" weight="bold">
-                      Message
+                      {t('contact-me.form.message.label')}
                     </Text>
                     <TextArea
                       name="message"
-                      placeholder="How can I help you?"
+                      placeholder={t('contact-me.form.message.placeholder')}
                       required
                       suppressHydrationWarning
+                      size={'3'}
                     />
                   </label>
                 </Flex>
 
                 <Flex gap="3" mt="4" justify="end">
                   <Button type="submit" disabled={isSubmitting}>
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                    {isSubmitting
+                      ? t('contact-me.form.submit.submitting')
+                      : t('contact-me.form.submit.default')}
                   </Button>
                 </Flex>
               </Form>
@@ -157,9 +158,9 @@ export default function ContactMe() {
                   {actionData.ok ? <IconCircleCheck /> : <IconAlertTriangle />}
                 </Callout.Icon>
                 <Callout.Text>
-                  {actionData.ok
-                    ? 'Message sent successfully! I will get back to you soon.'
-                    : actionData.message || 'Something went wrong.'}
+                  {actionData.code
+                    ? t(`contact-me.form.feedback.${actionData.code}`)
+                    : t('contact-me.form.feedback.unknown_error')}
                 </Callout.Text>
               </Callout.Root>
             </BoxEaseIn>
