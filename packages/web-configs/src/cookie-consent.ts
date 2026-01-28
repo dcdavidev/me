@@ -38,7 +38,7 @@ export const consentConfig: CookieConsentConfig = {
           acceptNecessaryBtn: 'Reject all',
           showPreferencesBtn: 'Manage preferences',
           footer:
-            '<a href="#link">Privacy Policy</a>\n<a href="#link">Terms and conditions</a>',
+            '<a href="/privacy">Privacy Policy</a>\n<a href="#link">Terms and conditions</a>',
         },
         preferencesModal: {
           title: 'Consent Preferences Center',
@@ -83,7 +83,7 @@ export const consentConfig: CookieConsentConfig = {
           acceptNecessaryBtn: 'Rifiuta tutto',
           showPreferencesBtn: 'Gestisci preferenze',
           footer:
-            '<a href="#link">Informativa sulla privacy</a>\n<a href="#link">Termini e condizioni</a>',
+            '<a href="/privacy">Informativa sulla privacy</a>\n<a href="#link">Termini e condizioni</a>',
         },
         preferencesModal: {
           title: 'Centro preferenze per il consenso',

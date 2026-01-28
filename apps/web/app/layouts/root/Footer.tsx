@@ -99,6 +99,8 @@ export function Footer() {
                   >
                     {t('common.nav.cookie-pref')}
                   </Link>
+                  <Link to="/privacy">{t('common.nav.privacy')}</Link>
+                  <Link to="/terms">{t('common.nav.terms')}</Link>
                 </Flex>
               </Grid>
             </Box>

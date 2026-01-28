@@ -6,6 +6,8 @@ export default {
     contact: 'Contact Me',
     'tech-stack': 'Tech Stack',
     'cookie-pref': 'Cookie Preferences',
+    privacy: 'Privacy Policy',
+    terms: 'Terms & Conditions',
   },
   footer: {
     vat: 'Italian VAT number {{vat}}',

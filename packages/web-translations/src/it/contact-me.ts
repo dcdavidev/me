@@ -15,6 +15,10 @@ export default {
       label: 'Messaggio',
       placeholder: 'Ciao, vorrei realizzare qualcosa di straordinario...',
     },
+    privacy: {
+      label: 'Ho letto e accetto la',
+      link: 'Privacy Policy',
+    },
     submit: {
       default: 'Invia Messaggio',
       loading: 'Invio...',

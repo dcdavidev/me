@@ -15,6 +15,10 @@ export default {
       label: 'Message',
       placeholder: 'Hi, I wish to build something amazing...',
     },
+    privacy: {
+      label: 'I have read and agree to the',
+      link: 'Privacy Policy',
+    },
     submit: {
       default: 'Send Message',
       submitting: 'Sending...',

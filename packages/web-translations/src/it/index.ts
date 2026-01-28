@@ -5,6 +5,7 @@ import error from './error.js';
 import home from './home.js';
 import privacy from './privacy.js';
 import techStack from './tech-stack.js';
+import terms from './terms.js';
 
 export const it = {
   common,
@@ -16,4 +17,5 @@ export const it = {
   'contact-me': contactMe,
   'tech-stack': techStack,
   privacy,
+  terms,
 };

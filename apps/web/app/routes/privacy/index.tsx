@@ -1,61 +1,15 @@
 import { useTranslation } from 'react-i18next';
-import Markdown, { type Components } from 'react-markdown';
+import Markdown from 'react-markdown';
 
-import {
-  Box,
-  Container,
-  Flex,
-  Heading,
-  Link,
-  Separator,
-  Text,
-} from '@radix-ui/themes';
+import { Box, Container, Flex, Heading, Separator } from '@radix-ui/themes';
 
 import { BoxEaseIn } from '@repo/shared-ui-components';
+import { MarkdownComponents } from '@repo/web-components';
 
 interface PrivacySection {
   title: string;
   content: string;
 }
-
-const MarkdownComponents: Components = {
-  p: ({ children }) => (
-    <Text
-      as="p"
-      size="3"
-      mb="3"
-      style={{ lineHeight: '1.6', color: 'var(--gray-11)' }}
-    >
-      {children}
-    </Text>
-  ),
-  strong: ({ children }) => (
-    <Text weight="bold" style={{ color: 'var(--gray-12)' }}>
-      {children}
-    </Text>
-  ),
-  ul: ({ children }) => (
-    <ul
-      style={{
-        paddingLeft: '1.5rem',
-        marginBottom: '1rem',
-        listStyleType: 'disc',
-      }}
-    >
-      {children}
-    </ul>
-  ),
-  li: ({ children }) => (
-    <li style={{ marginBottom: '0.5rem', color: 'var(--gray-11)' }}>
-      <Text size="3">{children}</Text>
-    </li>
-  ),
-  a: ({ href, children }) => (
-    <Link href={href} target="_blank" rel="noopener noreferrer">
-      {children}
-    </Link>
-  ),
-};
 
 export function meta() {
   return [{ title: 'Privacy Policy | Davide Di Criscito' }];
@@ -100,7 +54,7 @@ export default function PrivacyPolicy() {
                 const id = `section-${section.title.toLowerCase().replaceAll(/\s+/g, '-')}`;
                 return (
                   <Box key={id} id={id}>
-                    <Heading size="5" mb="2">
+                    <Heading size="5" mb="2" color="ruby">
                       {section.title}
                     </Heading>
                     <Markdown components={MarkdownComponents}>

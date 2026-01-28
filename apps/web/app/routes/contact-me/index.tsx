@@ -1,14 +1,16 @@
 import { useTranslation } from 'react-i18next';
 
-import { Form, useActionData, useNavigation } from 'react-router';
+import { Form, Link, useActionData, useNavigation } from 'react-router';
 
 import {
   Box,
   Button,
   Callout,
   Card,
+  Checkbox,
   Flex,
   Heading,
+  Link as RadixLink,
   Text,
   TextArea,
   TextField,
@@ -133,6 +135,25 @@ export default function ContactMe() {
                       size={'3'}
                     />
                   </label>
+
+                  <Text as="label" size="2">
+                    <Flex gap="2" align="center">
+                      <Checkbox
+                        name="privacy_accepted"
+                        required
+                        defaultChecked={false}
+                      />
+                      <Text color="gray">
+                        {t('contact-me.form.privacy.label')}{' '}
+                        <RadixLink asChild color="ruby" weight="bold">
+                          <Link to="/privacy" target="_blank">
+                            {t('contact-me.form.privacy.link')}
+                          </Link>
+                        </RadixLink>
+                        .
+                      </Text>
+                    </Flex>
+                  </Text>
                 </Flex>
 
                 <Flex gap="3" mt="4" justify="end">

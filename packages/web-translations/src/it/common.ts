@@ -7,6 +7,8 @@ export default {
     contact: 'Contattami',
     'tech-stack': 'Stack Tecnologico',
     'cookie-pref': 'Preferenze Cookie',
+    privacy: 'Privacy Policy',
+    terms: 'Termini & Condizioni',
   },
   footer: {
     vat: 'P.IVA {{vat}}',
