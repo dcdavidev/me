@@ -6,7 +6,7 @@ import { Button, Container, Flex } from '@radix-ui/themes';
 
 import {
   IconArrowNarrowDownDashed,
-  IconBubbleTextFilled,
+  IconMailForward,
 } from '@tabler/icons-react';
 
 export function HomeActions() {
@@ -28,7 +28,7 @@ export function HomeActions() {
           style={{ cursor: 'pointer' }}
           onClick={() => navigate('/contact-me')}
         >
-          {t('home.top.cta.primary')} <IconBubbleTextFilled />
+          {t('home.top.cta.primary')} <IconMailForward />
         </Button>
         <Button
           size="4"
