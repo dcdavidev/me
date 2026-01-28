@@ -69,7 +69,7 @@ export const consentConfig: CookieConsentConfig = {
             {
               title: 'More information',
               description:
-                'For any query in relation to my policy on cookies and your choices, please <a class="cc__link" href="#yourdomain.com">contact me</a>.',
+                'For any query in relation to my policy on cookies and your choices, please <a class="cc__link" href="§/contact-me">contact me</a>.',
             },
           ],
         },
@@ -114,7 +114,7 @@ export const consentConfig: CookieConsentConfig = {
             {
               title: 'Ulteriori informazioni',
               description:
-                'Per qualsiasi domanda relativa alla mia politica sui cookie e alle tue scelte, <a class="cc__link" href="#yourdomain.com">contattami</a>.',
+                'Per qualsiasi domanda relativa alla mia politica sui cookie e alle tue scelte, <a class="cc__link" href="/contact-me">contattami</a>.',
             },
           ],
         },

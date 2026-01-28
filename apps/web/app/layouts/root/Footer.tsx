@@ -46,7 +46,7 @@ export function Footer() {
         <Container size={{ initial: '1', md: '4' }}>
           <Flex justify={'center'} align={'center'} py={'9'}>
             <Button color={'blue'} onClick={() => navigate('#top')}>
-              back to top <IconArrowUpDashed />
+              {t('common.scroll-to-top')} <IconArrowUpDashed />
             </Button>
           </Flex>
           <Card mb={'6'}>
@@ -65,7 +65,7 @@ export function Footer() {
                   Davide Di Criscito
                 </Heading>
                 <Text wrap={'pretty'} align={{ initial: 'center', md: 'left' }}>
-                  Full Stack Developer powering web solutions.
+                  Full Stack Developer—powering web solutions.
                 </Text>
               </Flex>
 

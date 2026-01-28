@@ -1,8 +1,6 @@
 /* eslint-disable @cspell/spellchecker */
 export default {
-  actions: {
-    back_to_top: 'Torna su',
-  },
+  'scroll-to-top': 'Torna su',
   nav: {
     home: 'Home',
     about: 'Chi sono',

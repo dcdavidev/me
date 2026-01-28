@@ -26,7 +26,6 @@ import {
   Theme,
 } from '@radix-ui/themes';
 
-import { SplashScreen } from '@repo/shared-ui-components';
 import { CookieConsentInit } from '@repo/web-components';
 import { consentConfig } from '@repo/web-configs';
 
@@ -157,15 +156,44 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <SplashScreen>
-      <Container size={{ initial: '1', sm: '2', md: '4' }} mx={'4'}>
-        <Flex justify={'center'} align={'center'} gap="4" direction={'column'}>
-          <Heading size="5">{message}</Heading>
-          <Text>{details}</Text>
-          {stack && <Code>{stack}</Code>}
-        </Flex>
-      </Container>
-    </SplashScreen>
+    <Container size={{ initial: '1', sm: '2', md: '4' }} mx={'4'}>
+      <Flex
+        justify={'center'}
+        align={'center'}
+        gap="4"
+        direction={'column'}
+        my={'9'}
+      >
+        <Heading size={{ initial: '5', md: '8' }}>{message}</Heading>
+        <Text>{details}</Text>
+
+        {stack && (
+          <Box
+            width="100%"
+            p="3"
+            style={{
+              backgroundColor: 'var(--gray-a3)',
+              borderRadius: 'var(--radius-3)',
+              overflowX: 'auto',
+            }}
+          >
+            <Code
+              size="2"
+              variant="ghost"
+              style={{
+                display: 'block',
+                whiteSpace: 'pre-wrap',
+                wordBreak: 'break-word',
+                textAlign: 'left',
+                fontFamily: 'monospace',
+              }}
+            >
+              {stack}
+            </Code>
+          </Box>
+        )}
+      </Flex>
+    </Container>
   );
 }
 

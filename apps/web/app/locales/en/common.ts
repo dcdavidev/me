@@ -1,7 +1,5 @@
 export default {
-  actions: {
-    back_to_top: 'Back to Top',
-  },
+  'scroll-to-top': 'Back to Top',
   nav: {
     home: 'Home',
     about: 'About',
