@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.6.0](https://github.com/dcdavidev/me/compare/v0.5.0...v0.6.0) (2026-01-28)
+
+### Features
+
+* **web:** add c ookie banner ([66a3666](https://github.com/dcdavidev/me/commit/66a3666997dcc16443020c0b265e56729c9d5b81))
+* **web:** add title ([d2c4c80](https://github.com/dcdavidev/me/commit/d2c4c80c2564e8578b321dc4681345e524273798))
+* **web:** contact-me form now works ([42b5b9c](https://github.com/dcdavidev/me/commit/42b5b9cb0a785d204aad7ffba82ea4619316e2b9))
+* **web:** improve AppBar ([c448d2b](https://github.com/dcdavidev/me/commit/c448d2b62a018e9a5e2d22e2baea4ee108b45871))
+* **web:** init translations ([cb9f38c](https://github.com/dcdavidev/me/commit/cb9f38c03be87105cb8409143cca4ed75c2b5ebb))
+* **web:** translate about ([aa7a088](https://github.com/dcdavidev/me/commit/aa7a0881f0a6a1c70b6f6bbe370beffcf9c76d96))
+* **web:** translate contact-me ([f7f91d8](https://github.com/dcdavidev/me/commit/f7f91d8764118215f9412575f9a97daf6fcf9c7e))
+* **web:** translate tech-stack ([1f1b4f2](https://github.com/dcdavidev/me/commit/1f1b4f2ddb8510b129f55e488286c2ad03ca2d12))
+* **web:** translate to it the landing page ([c6a21c4](https://github.com/dcdavidev/me/commit/c6a21c4afaabe5e46e279afb078f1a0ce2914dd0))
+
+### Bug Fixes
+
+* **web:** adjust margins and spacing ([c9e4bfe](https://github.com/dcdavidev/me/commit/c9e4bfe10a05ad9604ed3fca530487b454a70dfb))
+* **web:** fonts now load ([8e12b12](https://github.com/dcdavidev/me/commit/8e12b1281cb2e6ed209029f3d1f3ffb707bc5ad3))
+* **web:** implement flat routes using directories ([0e8bbcc](https://github.com/dcdavidev/me/commit/0e8bbcc1a498c7b82d7882d85205ed4070c4ccae))
+
 ## [0.5.0](https://github.com/dcdavidev/me/compare/v0.4.1...v0.5.0) (2026-01-27)
 
 ### Features
