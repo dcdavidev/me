@@ -3,12 +3,14 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'motion/react';
 
 export interface BoxEaseInProps extends React.PropsWithChildren {
+  id?: string;
   style?: React.CSSProperties;
   className?: string;
 }
 
 export const BoxEaseIn: React.FC<BoxEaseInProps> = ({
   children,
+  id,
   style,
   className,
 }) => {
@@ -17,6 +19,7 @@ export const BoxEaseIn: React.FC<BoxEaseInProps> = ({
 
   return (
     <motion.div
+      id={id}
       ref={ref}
       className={className}
       initial={{ opacity: 0, y: 40 }}

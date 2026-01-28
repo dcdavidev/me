@@ -3,7 +3,10 @@
     "**/*",
     "**/.server/**/*",
     "**/.client/**/*",
-    ".react-router/types/**/*"
+    ".react-router/types/**/*",
+    "../../packages/web-translations/src/it",
+    "../../packages/web-translations/src/index.ts",
+    "../../packages/web-translations/src/en"
   ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],

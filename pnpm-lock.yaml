@@ -292,6 +292,9 @@ importers:
       '@repo/web-configs':
         specifier: workspace:*
         version: link:../../packages/web-configs
+      '@repo/web-translations':
+        specifier: workspace:*
+        version: link:../../packages/web-translations
       '@tabler/icons-react':
         specifier: ^3.36.1
         version: 3.36.1(react@19.2.3)
@@ -533,6 +536,24 @@ importers:
       vanilla-cookieconsent:
         specifier: ^3.1.0
         version: 3.1.0
+    devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../.config/typescript
+      '@types/node':
+        specifier: ^25.0.10
+        version: 25.0.10
+      '@types/react':
+        specifier: ^19.2.9
+        version: 19.2.9
+      '@types/react-dom':
+        specifier: ^19.2.3
+        version: 19.2.3(@types/react@19.2.9)
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+
+  packages/web-translations:
     devDependencies:
       '@repo/typescript-config':
         specifier: workspace:*

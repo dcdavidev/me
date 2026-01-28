@@ -1,4 +1,6 @@
-import { Container, Flex, Heading } from '@radix-ui/themes';
+import { useTranslation } from 'react-i18next';
+
+import { Box, Flex, Heading } from '@radix-ui/themes';
 
 import { BoxEaseIn } from '@repo/shared-ui-components';
 
@@ -7,6 +9,8 @@ import backgroundImage from '~/assets/backgrounds/code.webp';
 import { TechStackSummary } from './_summary';
 
 export function Top() {
+  const { t } = useTranslation();
+
   return (
     <Flex
       id="top"
@@ -21,7 +25,7 @@ export function Top() {
         minHeight: '100vh',
       }}
     >
-      <Container size={{ initial: '1', sm: '2', md: '4' }} mx={'4'}>
+      <Box maxWidth={'600px'} mx="4">
         <Flex justify="center" align="center" gap={'9'} direction={'column'}>
           <BoxEaseIn>
             <Heading
@@ -30,7 +34,7 @@ export function Top() {
               wrap="pretty"
               mb={'-6'}
             >
-              Tech Stack
+              {t('tech-stack.title')}
             </Heading>
           </BoxEaseIn>
 
@@ -40,13 +44,13 @@ export function Top() {
               align="center"
               wrap="pretty"
             >
-              the ecosystem powering my development workflow.
+              {t('tech-stack.subtitle')}
             </Heading>
           </BoxEaseIn>
 
           <TechStackSummary />
         </Flex>
-      </Container>
+      </Box>
     </Flex>
   );
 }

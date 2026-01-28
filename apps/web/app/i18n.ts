@@ -2,7 +2,7 @@ import { initReactI18next } from 'react-i18next';
 
 import i18n from 'i18next';
 
-import { en, it } from './locales';
+import { en, it } from '@repo/web-translations';
 
 i18n.use(initReactI18next).init({
   resources: {
