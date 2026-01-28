@@ -535,6 +535,9 @@ importers:
       '@repo/server-schemas':
         specifier: workspace:*
         version: link:../server-schemas
+      '@repo/server-services':
+        specifier: workspace:*
+        version: link:../server-services
       '@types/express':
         specifier: ^5.0.6
         version: 5.0.6
@@ -599,6 +602,18 @@ importers:
       '@types/node':
         specifier: ^25.0.10
         version: 25.0.10
+
+  packages/server-services:
+    devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../.config/typescript
+      '@types/node':
+        specifier: ^25.0.10
+        version: 25.0.10
+      '@types/nodemailer':
+        specifier: ^7.0.5
+        version: 7.0.5
 
   packages/shared-ui-components:
     dependencies:
