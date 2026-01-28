@@ -8,6 +8,10 @@ import { BoxEaseIn, SplashScreen } from '@repo/shared-ui-components';
 // @ts-expect-error lottie not typed
 import animationData from '~/assets/animations/kitty-error-404.lottie';
 
+export function meta() {
+  return [{ title: '404 | Davide Di Criscito' }];
+}
+
 export default function NotFound() {
   const { t } = useTranslation();
 
