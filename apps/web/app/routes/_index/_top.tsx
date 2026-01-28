@@ -1,3 +1,5 @@
+import { Trans, useTranslation } from 'react-i18next';
+
 import { Box, Container, Flex, Heading } from '@radix-ui/themes';
 
 import { BoxEaseIn } from '@repo/shared-ui-components';
@@ -7,6 +9,8 @@ import backgroundImage from '~/assets/backgrounds/abstract-brown.webp';
 import { HomeActions } from './_call-to-action';
 
 export function Top() {
+  const { t } = useTranslation();
+
   return (
     <Flex
       id="top"
@@ -30,7 +34,7 @@ export function Top() {
               align="center"
               wrap="pretty"
             >
-              Ready to build something <u>unique</u>?
+              <Trans i18nKey="home.top.title" components={{ 1: <u /> }} />
             </Heading>
           </BoxEaseIn>
           <BoxEaseIn>
@@ -40,7 +44,7 @@ export function Top() {
               align="center"
               wrap="pretty"
             >
-              Let's start today.
+              {t('home.top.subtitle')}
             </Heading>
           </BoxEaseIn>
 

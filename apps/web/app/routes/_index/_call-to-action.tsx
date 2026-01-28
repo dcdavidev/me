@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { useNavigate } from 'react-router';
 
 import { Button, Container, Flex } from '@radix-ui/themes';
@@ -9,6 +11,7 @@ import {
 
 export function HomeActions() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <Container size={{ initial: '1', sm: '2', md: '4' }}>
@@ -25,7 +28,7 @@ export function HomeActions() {
           style={{ cursor: 'pointer' }}
           onClick={() => navigate('/contact-me')}
         >
-          Contact Me <IconBubbleTextFilled />
+          {t('home.top.cta.primary')} <IconBubbleTextFilled />
         </Button>
         <Button
           size="4"
@@ -34,7 +37,7 @@ export function HomeActions() {
           style={{ cursor: 'pointer' }}
           onClick={() => navigate('#about')}
         >
-          Show More <IconArrowNarrowDownDashed />
+          {t('home.top.cta.secondary')} <IconArrowNarrowDownDashed />
         </Button>
       </Flex>
     </Container>

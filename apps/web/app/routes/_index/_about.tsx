@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import { useNavigate } from 'react-router';
 
 import {
@@ -16,6 +18,7 @@ import meFull from '~/assets/me/full.webp';
 
 export function About() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <Box id="about" px={'4'}>
@@ -42,7 +45,7 @@ export function About() {
               <BoxFadeIn>
                 <img
                   src={meFull}
-                  alt="A picture of me"
+                  alt="Davide DC"
                   style={{
                     width: '100%',
                     maxWidth: '300px',
@@ -54,44 +57,23 @@ export function About() {
             </Flex>
 
             <BoxEaseIn>
-              <Heading
-                size="7"
-                mb="4"
-                align={{ initial: 'center', md: 'left' }}
-              >
-                About Me
-              </Heading>
-              <Text as="p" mb="4" wrap={'pretty'}>
-                Hello! I'm Davide Di Criscito, a passionate full-stack web
-                developer.
-              </Text>
-              <Text as="p" mb="4" wrap={'pretty'}>
-                I craft complex web applications with TypeScript, React.js, and
-                Node.js/Express.js. My core focus is eliminating chaos by
-                building robust CI/CD pipelines, CLIs, and dev automation tools.
-                I manage and deploy to production environments, dedicated to
-                enhancing developer workflow and delivering clean, scalable
-                server architecture.
-              </Text>
-              <Text as="p" wrap={'pretty'}>
-                I'm always eager to take on new challenges and collaborate on
-                exciting projects. Let's connect and build something amazing
-                together!
-              </Text>
+              <Flex direction={'column'} gap={'6'}>
+                <Heading size="7" align={{ initial: 'center', md: 'left' }}>
+                  {t('home.about.title')}
+                </Heading>
+                <Text as="p" wrap={'pretty'} style={{ whiteSpace: 'pre-line' }}>
+                  {t('home.about.desc')}
+                </Text>
+                <Button
+                  size={'4'}
+                  variant="soft"
+                  onClick={() => navigate('/about')}
+                >
+                  {t('home.about.cta.primary')}
+                </Button>
+              </Flex>
             </BoxEaseIn>
           </Grid>
-
-          <BoxEaseIn>
-            <Flex justify={'center'} align={'center'} mt={'9'}>
-              <Button
-                size={'4'}
-                variant="outline"
-                onClick={() => navigate('/about')}
-              >
-                Discover more about me 🙋
-              </Button>
-            </Flex>
-          </BoxEaseIn>
         </Flex>
       </Container>
     </Box>

@@ -81,7 +81,7 @@ export function Footer() {
                   <Link to={'/'}>{t('common.nav.home')}</Link>
                   <Link to={'/about'}>{t('common.nav.about')}</Link>
                   <Link to={'/contact-me'}>{t('common.nav.contact')}</Link>
-                  <Link to={'/tech-stack'}>{t('common.nav.tech_stack')}</Link>
+                  <Link to={'/tech-stack'}>{t('common.nav.tech-stack')}</Link>
                 </Flex>
 
                 <Flex
@@ -97,7 +97,7 @@ export function Footer() {
                       showPreferences();
                     }}
                   >
-                    {t('common.nav.cookie_pref')}
+                    {t('common.nav.cookie-pref')}
                   </Link>
                 </Flex>
               </Grid>
@@ -116,7 +116,7 @@ export function Footer() {
                 {t('common.footer.vat', { vat: '04737220980' })}
               </Text>
               <Text size={'1'} wrap="pretty" align={'center'}>
-                {t('common.footer.source_code')}{' '}
+                {t('common.footer.source-code')}{' '}
                 <Link to="https://github.com/dcdavidev/me" target="_blank">
                   GitHub
                 </Link>
