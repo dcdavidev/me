@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/dcdavidev/me/compare/v0.6.1...v0.7.0) (2026-01-28)
+
+### Features
+
+* **web:** add privacy route ([d440f9c](https://github.com/dcdavidev/me/commit/d440f9c673e538e14fc0854d12f7da1c9e9c9080))
+* **web:** add terms route ([e6d7a61](https://github.com/dcdavidev/me/commit/e6d7a61ab6c51a985986c235afdbe12ec0e15907))
+
 ## [0.6.1](https://github.com/dcdavidev/me/compare/v0.6.0...v0.6.1) (2026-01-28)
 
 ### Bug Fixes
