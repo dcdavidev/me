@@ -3,55 +3,68 @@ import '@fontsource-variable/funnel-display';
 import '@fontsource-variable/roboto-serif';
 import '@fontsource-variable/source-code-pro';
 
+import { I18nextProvider, useTranslation } from 'react-i18next';
+
 import {
   isRouteErrorResponse,
-  Link,
   Links,
+  type LoaderFunctionArgs,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
-  useNavigate,
+  useLoaderData,
 } from 'react-router';
 
 import {
-  Avatar,
   Box,
-  Button,
-  Card,
   Code,
   Container,
   Flex,
-  Grid,
   Heading,
-  IconButton,
-  Separator,
   Text,
   Theme,
 } from '@radix-ui/themes';
-
-import {
-  IconArrowUpDashed,
-  IconBrandGithubFilled,
-  IconBrandLinkedinFilled,
-} from '@tabler/icons-react';
 
 import { SplashScreen } from '@repo/shared-ui-components';
 import { CookieConsentInit } from '@repo/web-components';
 import { consentConfig } from '@repo/web-configs';
 
-import footerBgImg from '~/assets/backgrounds/abstract-purple.webp';
-import meSqrd from '~/assets/me/squared.webp';
-
 import '@radix-ui/themes/styles.css';
 import '~/app.css';
 
 import type { Route } from './+types/root';
-import { useCookieConsent } from './hooks';
+import { AppBar } from './layouts/root/AppBar';
+import { Footer } from './layouts/root/Footer';
+
+import i18n from '~/i18n';
+
+function getLocale(request: Request): string {
+  const url = new URL(request.url);
+  if (url.searchParams.has('lang')) {
+    return url.searchParams.get('lang') === 'it' ? 'it' : 'en';
+  }
+
+  const acceptLanguage = request.headers.get('Accept-Language');
+  if (acceptLanguage?.includes('it')) {
+    return 'it';
+  }
+
+  // Default
+  return 'en';
+}
 
 export const meta: Route.MetaFunction = () => [
   {
-    title: 'Davide DC',
+    title: 'Davide Di Criscito',
+  },
+  {
+    name: 'description',
+    content: 'full stack developer—powering web solutions.',
+  },
+  {
+    name: 'author',
+    content: 'Davide Di Criscito',
   },
   {
     name: 'apple-mobile-web-app-title',
@@ -60,12 +73,6 @@ export const meta: Route.MetaFunction = () => [
 ];
 
 export const links: Route.LinksFunction = () => [
-  { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-  {
-    rel: 'preconnect',
-    href: 'https://fonts.gstatic.com',
-    crossOrigin: 'anonymous',
-  },
   {
     rel: 'stylesheet',
     href: 'https://cdn.jsdelivr.net/gh/dheereshag/coloured-icons@1.9.6/app/ci.min.css',
@@ -86,191 +93,67 @@ export const links: Route.LinksFunction = () => [
   { rel: 'manifest', href: '/site.webmanifest' },
 ];
 
+export async function loader({ request }: LoaderFunctionArgs) {
+  const locale = getLocale(request);
+  return { locale };
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
-  const navigate = useNavigate();
-  const { showPreferences } = useCookieConsent();
+  // Lang/Locales
+  const { locale } = useLoaderData<typeof loader>();
+  if (i18n.language !== locale) {
+    i18n.changeLanguage(locale);
+  }
 
   return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, user-scalable=no"
-        />
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <Theme appearance="dark" accentColor="ruby" radius="medium">
-          <Box
-            position="fixed"
-            left="0"
-            right="0"
-            top="0"
-            p="2"
-            style={{ zIndex: 1000 }}
-          >
-            <Flex direction="row" gap="2" justify="center" align="start">
-              <Box flexGrow="1">
-                <Avatar
-                  size="3"
-                  src={meSqrd}
-                  fallback="Me"
-                  radius="full"
-                  onClick={() => navigate('/')}
-                  style={{ cursor: 'pointer' }}
-                />
-              </Box>
-              <Flex gap="4" justify="center" align="end" p="2">
-                <IconButton
-                  variant="ghost"
-                  color="blue"
-                  onClick={() =>
-                    window.open('https://linkedin.com/in/dcdavidev')
-                  }
-                >
-                  <IconBrandLinkedinFilled />
-                </IconButton>
-                <IconButton
-                  variant="ghost"
-                  color="gray"
-                  onClick={() => window.open('https://github.com/dcdavidev')}
-                >
-                  <IconBrandGithubFilled />
-                </IconButton>
-              </Flex>
-            </Flex>
-          </Box>
+    <I18nextProvider i18n={i18n}>
+      <html lang={locale}>
+        <head>
+          <meta charSet="utf-8" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, user-scalable=no"
+          />
+          <Meta />
+          <Links />
+        </head>
+        <body>
+          <Theme appearance="dark" accentColor="ruby" radius="medium">
+            <AppBar />
 
-          <Box>
-            <main style={{ position: 'relative' }}>
-              {children}
-              <ScrollRestoration />
-            </main>
-          </Box>
-
-          <Flex
-            id="footer"
-            justify={'center'}
-            align={'center'}
-            style={{
-              minHeight: '100vh',
-              position: 'relative',
-              backgroundImage: `url(${footerBgImg})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          >
-            <Box px={'4'} width={'100%'}>
-              <Container size={{ initial: '1', md: '4' }}>
-                <Flex justify={'center'} align={'center'} py={'9'}>
-                  <Button color={'blue'} onClick={() => navigate('#top')}>
-                    back to top <IconArrowUpDashed />
-                  </Button>
-                </Flex>
-                <Card mb={'6'}>
-                  <Box p={'4'}>
-                    <Flex
-                      direction={'column'}
-                      justify={'center'}
-                      align={{ initial: 'center', md: 'start' }}
-                      gap={'2'}
-                    >
-                      <Heading
-                        size={{ initial: '4', md: '6' }}
-                        wrap={'pretty'}
-                        align={{ initial: 'center', md: 'left' }}
-                      >
-                        Davide Di Criscito
-                      </Heading>
-                      <Text
-                        wrap={'pretty'}
-                        align={{ initial: 'center', md: 'left' }}
-                      >
-                        Full Stack Developer powering web solutions.
-                      </Text>
-                    </Flex>
-
-                    <Separator my={'6'} style={{ width: '100%' }} />
-
-                    <Grid columns={{ initial: '1', md: '2', lg: '3' }} gap="6">
-                      <Flex
-                        direction={'column'}
-                        justify={'start'}
-                        align={{ initial: 'center', md: 'start' }}
-                        gap={'2'}
-                      >
-                        <Link to={'/'}>Home</Link>
-                        <Link to={'/about'}>About</Link>
-                        <Link to={'/contact-me'}>Contact Me</Link>
-                        <Link to={'/tech-stack'}>Tech Stack</Link>
-                      </Flex>
-
-                      <Flex
-                        direction={'column'}
-                        justify={'start'}
-                        align={{ initial: 'center', md: 'start' }}
-                        gap={'2'}
-                      >
-                        <Link
-                          to={'#'}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            showPreferences();
-                          }}
-                        >
-                          Cookie Preferences
-                        </Link>
-                      </Flex>
-                    </Grid>
-                  </Box>
-                </Card>
-
-                <Container size={{ initial: '1', md: '4' }}>
-                  <Flex
-                    justify={'center'}
-                    align={'center'}
-                    direction={'column'}
-                    gap={'4'}
-                  >
-                    <Text align={'center'} wrap="pretty">
-                      Davide Di Criscito - Italian VAT number 04737220980
-                    </Text>
-                    <Text size={'1'} wrap="pretty" align={'center'}>
-                      View the source code of this website on{' '}
-                      <Link
-                        to="https://github.com/dcdavidev/me"
-                        target="_blank"
-                      >
-                        GitHub
-                      </Link>
-                      .
-                    </Text>
-                  </Flex>
-                </Container>
-              </Container>
+            <Box>
+              <main style={{ position: 'relative' }}>
+                {children}
+                <ScrollRestoration />
+              </main>
             </Box>
-          </Flex>
-        </Theme>
 
-        <CookieConsentInit config={consentConfig} />
-        <Scripts />
-      </body>
-    </html>
+            <Footer />
+          </Theme>
+
+          <CookieConsentInit config={consentConfig} />
+          <Scripts />
+        </body>
+      </html>
+    </I18nextProvider>
   );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = 'Oops!';
-  let details = 'An unexpected error occurred.';
+  const { t } = useTranslation();
+
+  let message = t('error.oops');
+  let details = t('error.unexpected');
   let stack: string | undefined;
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? '404' : 'Error';
+    message =
+      error.status === 404
+        ? t('error.not_found_title')
+        : t('error.generic_title');
     details =
       error.status === 404
-        ? 'The requested page could not be found.'
+        ? t('error.not_found_desc')
         : error.statusText || details;
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
