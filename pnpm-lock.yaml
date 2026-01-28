@@ -529,6 +529,9 @@ importers:
       '@repo/server-consts':
         specifier: workspace:*
         version: link:../server-consts
+      '@repo/server-models':
+        specifier: workspace:*
+        version: link:../server-models
       '@repo/server-schemas':
         specifier: workspace:*
         version: link:../server-schemas
