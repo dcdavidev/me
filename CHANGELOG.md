@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.8.0](https://github.com/dcdavidev/me/compare/v0.7.0...v0.8.0) (2026-01-29)
+
+### Features
+
+* **admin:** add authentication ([78ca5ca](https://github.com/dcdavidev/me/commit/78ca5cac2ac41966d7603f400c3f8288ff65c6cd))
+* **admin:** add sidebar ([5c12162](https://github.com/dcdavidev/me/commit/5c121624eefb29e0f9fca84299c4e25f3d7af0bb))
+* **admin:** init index ([a0b4bbf](https://github.com/dcdavidev/me/commit/a0b4bbfa5533d8e6ca36c4d920b525cf41928923))
+* **server-controllers:** add request-otp ([0ce16c2](https://github.com/dcdavidev/me/commit/0ce16c2baea2c16d5dd18f0731fcc43687d068e9))
+* **server-models:** add OteTimePassword model ([ca85342](https://github.com/dcdavidev/me/commit/ca853428e2ac734650e7b7ddecc22b011a456e68))
+* **server-services:** add sent-otp-email ([371568e](https://github.com/dcdavidev/me/commit/371568e93412a3d3cb05e03b01fd9742ee1c5293))
+* **web:** refactor web routes and merged admin ([785e91c](https://github.com/dcdavidev/me/commit/785e91cf28592624d7e1a8f9acb97f9742a53c8b))
+
 ## [0.7.0](https://github.com/dcdavidev/me/compare/v0.6.1...v0.7.0) (2026-01-28)
 
 ### Features
