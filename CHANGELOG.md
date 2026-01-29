@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.2](https://github.com/dcdavidev/me/compare/v0.8.1...v0.8.2) (2026-01-29)
+
+### Bug Fixes
+
+* hardcode HOST ([326e588](https://github.com/dcdavidev/me/commit/326e5888fb45882c3247f32a0a0178d70c92de8d))
+
 ## [0.8.1](https://github.com/dcdavidev/me/compare/v0.8.0...v0.8.1) (2026-01-29)
 
 ### Reverts
