@@ -6,9 +6,9 @@
   "type": "module",
   "main": "./dist/index.js",
   "scripts": {
-    "build": "pnpm run sync:web && node esbuild.mjs",
-    "postbuild": "node build.js",
-    "dev": "infisical run --env=dev --path=\"/apps/me\" -- tsx watch src/main.ts",
+    "build": "pnpm run sync && node esbuild.mjs n&& node build.js",
+    "dev": "infisical run --env=prod --path=\"/apps/me\" -- tsx watch src/main.ts",
+    "sync": "pnpm run sync:web",
     "sync:web": "rsync -av --delete --mkpath ../web/dist/ src/web/"
   },
   "dependencies": {
@@ -20,8 +20,10 @@
     "@repo/server-routes": "workspace:*",
     "@repo/server-schemas": "workspace:*",
     "@repo/server-services": "workspace:*",
+    "@repo/server-utils": "workspace:*",
     "@repo/web": "workspace:*",
     "@tabler/icons-react": "^3.36.1",
+    "axios": "^1.13.3",
     "cookie-parser": "^1.4.7",
     "express": "^5.2.1",
     "i18next": "^25.8.0",

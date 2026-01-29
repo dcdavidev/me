@@ -25,6 +25,7 @@
     "@repo/web-configs": "workspace:*",
     "@repo/web-translations": "workspace:*",
     "@tabler/icons-react": "^3.36.1",
+    "axios": "^1.13.3",
     "i18next": "^25.8.0",
     "i18next-browser-languagedetector": "^8.2.0",
     "isbot": "^5.1.31",

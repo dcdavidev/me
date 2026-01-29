@@ -33,8 +33,6 @@ import '@radix-ui/themes/styles.css';
 import '~/app.css';
 
 import type { Route } from './+types/root';
-import { AppBar } from './layouts/root/AppBar';
-import { Footer } from './layouts/root/Footer';
 
 import i18n from '~/i18n';
 
@@ -118,16 +116,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         </head>
         <body>
           <Theme appearance="dark" accentColor="ruby" radius="medium">
-            <AppBar />
-
             <Box>
               <main style={{ position: 'relative' }}>
                 {children}
                 <ScrollRestoration />
               </main>
             </Box>
-
-            <Footer />
           </Theme>
 
           <CookieConsentInit config={consentConfig} />

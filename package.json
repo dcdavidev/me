@@ -22,7 +22,8 @@
     "prisma:generate": "turbo run prisma:generate",
     "prisma:migrate:dev": "turbo run prisma:migrate:dev",
     "release": "LEFTHOOK=\"0\" release-it",
-    "serve": "infisical run --env=dev --path=\"/apps/me\" -- node apps/server/dist/main.js"
+    "serve": "infisical run --env=prod --path=\"/apps/me\" -- node apps/server/dist/main.js",
+    "typecheck": "turbo run typecheck"
   },
   "config": {
     "commitizen": {

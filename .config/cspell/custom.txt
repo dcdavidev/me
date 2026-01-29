@@ -15,6 +15,7 @@ Inserisci
 Invia
 inviato
 isbot
+Italiano
 L'indirizzo
 l'invio
 libc

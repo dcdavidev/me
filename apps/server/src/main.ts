@@ -1,14 +1,13 @@
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-import express from 'express';
-
 import { Wnodex } from 'wnodex';
 import { createRequestHandler } from '@react-router/express';
 
 import { apiRouter, rootRouter } from '@repo/server-routes';
 import { HOST, PORT, PROD } from '@repo/server-schemas';
 import { initCronJobs } from '@repo/server-services';
+import { createClientRouter } from '@repo/server-utils';
 
 const wnodex = new Wnodex({
   port: PORT,
@@ -44,42 +43,34 @@ const app = wnodex.getApp();
 app.set('trust proxy', 1);
 app.disable('x-powered-by');
 
-// client files
-const CLIENT_PATH = path.join(import.meta.dirname, 'web');
+// --- PATHS ---
+const CLIENT_WEB_PATH = path.join(import.meta.dirname, 'web');
 
-// SSR client files
+// --- SSR HANDLER ---
 const reactRouterHandler = createRequestHandler({
   build: await import(
-    pathToFileURL(path.join(CLIENT_PATH, 'server', 'index.js')).href
+    pathToFileURL(path.join(CLIENT_WEB_PATH, 'server', 'index.js')).href
   ),
 });
 
-// Client assets
-app.use(
-  '/assets',
-  express.static(path.join(CLIENT_PATH, 'client', 'assets'), {
-    immutable: true,
-    maxAge: '1y',
-  })
-);
-
-// Client filles
-app.use(
-  express.static(path.join(CLIENT_PATH, 'client'), {
-    maxAge: '1h',
-  })
-);
-
-// Routes
+// --- API & SYSTEM ROUTES ---
 app.use('/api', apiRouter);
 app.use('/', rootRouter);
 
-// SPA fallback
-app.all('*splat', reactRouterHandler);
+// --- CLIENTS (Using the reusable router) ---
 
-// Start the server
+// Web Client (SSR)
+app.use(
+  '/',
+  createClientRouter({
+    clientPath: CLIENT_WEB_PATH,
+    ssrHandler: reactRouterHandler,
+    noIndex: false,
+  })
+);
+
+// --- STARTUP ---
 await wnodex.start().then(() => {
-  // Startup chores
   initCronJobs();
 });
 

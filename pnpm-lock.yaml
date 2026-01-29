@@ -322,12 +322,18 @@ importers:
       '@repo/server-services':
         specifier: workspace:*
         version: link:../../packages/server-services
+      '@repo/server-utils':
+        specifier: workspace:*
+        version: link:../../packages/server-utils
       '@repo/web':
         specifier: workspace:*
         version: link:../web
       '@tabler/icons-react':
         specifier: ^3.36.1
         version: 3.36.1(react@19.2.3)
+      axios:
+        specifier: ^1.13.3
+        version: 1.13.3
       cookie-parser:
         specifier: ^1.4.7
         version: 1.4.7
@@ -455,6 +461,9 @@ importers:
       '@tabler/icons-react':
         specifier: ^3.36.1
         version: 3.36.1(react@19.2.3)
+      axios:
+        specifier: ^1.13.3
+        version: 1.13.3
       i18next:
         specifier: ^25.8.0
         version: 25.8.0(typescript@5.9.2)
@@ -709,6 +718,25 @@ importers:
       '@types/nodemailer':
         specifier: ^7.0.5
         version: 7.0.5
+
+  packages/server-utils:
+    dependencies:
+      '@repo/server-controllers':
+        specifier: workspace:*
+        version: link:../server-controllers
+      express:
+        specifier: ^5.2.1
+        version: 5.2.1
+    devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../.config/typescript
+      '@types/express':
+        specifier: ^5.0.6
+        version: 5.0.6
+      '@types/node':
+        specifier: ^25.0.10
+        version: 25.0.10
 
   packages/shared-ui-components:
     dependencies:

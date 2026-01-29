@@ -14,11 +14,11 @@ export const logout = (_req: Request, res: Response) => {
   // Clear the JWT cookie
   // Note: path and sameSite should match the options used during login
   res.clearCookie('auth_token', {
+    path: '/',
     httpOnly: true,
     secure: isProd,
-    path: '/',
-    expires: new Date(0),
     sameSite: isProd ? 'strict' : 'lax',
+    expires: new Date(0),
   });
 
   res.status(200).json({ message: 'Logout effettuato con successo.' });

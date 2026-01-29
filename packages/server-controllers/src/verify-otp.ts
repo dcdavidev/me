@@ -64,14 +64,14 @@ export async function verifyOtp(
     const isProd = process.env.NODE_ENV === 'production';
 
     res.cookie('auth_token', token, {
+      path: '/',
       httpOnly: true, // Prevents JavaScript access (XSS protection)
       secure: isProd,
       sameSite: isProd ? 'strict' : 'lax',
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
-      path: '/',
     });
 
-    res.status(200).json({ message: 'Accesso eseguito.' });
+    res.status(200).json({ message: 'Successful login.' });
   } catch (error) {
     next(error);
   }
