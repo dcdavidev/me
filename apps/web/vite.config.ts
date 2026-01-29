@@ -13,6 +13,7 @@ export default defineConfig(({ mode }) => {
 
     define: {
       'import.meta.env.PORT': JSON.stringify(env.PORT),
+      'import.meta.env.HOST': JSON.stringify(env.HOST),
     },
 
     resolve: {
