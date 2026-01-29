@@ -66,7 +66,7 @@ export async function verifyOtp(
     res.cookie('auth_token', token, {
       httpOnly: true, // Prevents JavaScript access (XSS protection)
       secure: isProd,
-      sameSite: 'strict', // CSRF protection
+      sameSite: isProd ? 'strict' : 'lax',
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
       path: '/',
     });

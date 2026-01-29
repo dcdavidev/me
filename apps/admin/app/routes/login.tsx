@@ -1,4 +1,10 @@
-import { Form, redirect, useActionData, useNavigation } from 'react-router';
+import {
+  Form,
+  redirect,
+  useActionData,
+  useNavigation,
+  useSearchParams,
+} from 'react-router';
 
 import { isAxiosError } from 'axios';
 
@@ -20,7 +26,7 @@ import { InputOTP } from '@repo/shared-ui-components';
 
 import backgroundImage from '~/assets/backgrounds/login.webp';
 
-import type { Route } from './+types/_index';
+import type { Route } from './+types/login';
 
 export function meta() {
   return [{ title: 'Admin | Davide Di Criscito' }];
@@ -29,6 +35,9 @@ export function meta() {
 export async function clientAction({ request }: Route.ClientActionArgs) {
   const formData = await request.formData();
   const intent = formData.get('intent');
+
+  const url = new URL(request.url);
+  const next = url.searchParams.get('next') || '/';
 
   if (intent === 'request-code') {
     const email = formData.get('email');
@@ -72,7 +81,7 @@ export async function clientAction({ request }: Route.ClientActionArgs) {
     try {
       await api.post('/verify', { email, code });
 
-      return redirect('/app');
+      return redirect(next);
     } catch (error) {
       let errorMessage = 'Codice non valido o scaduto.';
 
@@ -89,6 +98,7 @@ export async function clientAction({ request }: Route.ClientActionArgs) {
 
 export default function LoginPage() {
   const navigation = useNavigation();
+  const [searchParams] = useSearchParams();
   const actionData = useActionData<typeof clientAction>();
   const isSubmitting = navigation.state === 'submitting';
 
@@ -96,6 +106,11 @@ export default function LoginPage() {
     actionData && 'step' in actionData && actionData.step === 'verify';
   const email =
     isVerifyStep && 'email' in actionData ? (actionData.email as string) : '';
+
+  const nextParam = searchParams.get('next');
+  const formAction = nextParam
+    ? `/login?next=${encodeURIComponent(nextParam)}`
+    : '/login';
 
   return (
     <Flex
@@ -131,7 +146,7 @@ export default function LoginPage() {
                 </Callout.Root>
               )}
 
-              <Form method="post">
+              <Form method="post" action={formAction}>
                 {isVerifyStep ? (
                   /* --- FORM OTP --- */
                   <Flex direction="column" gap="4" align="center">
