@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.1](https://github.com/dcdavidev/me/compare/v0.8.0...v0.8.1) (2026-01-29)
+
+### Reverts
+
+* **server:** go back to directly serving web files ([7672bf9](https://github.com/dcdavidev/me/commit/7672bf97c58064e5d8e65f85f6509c9c59dd8665))
+
 ## [0.8.0](https://github.com/dcdavidev/me/compare/v0.7.0...v0.8.0) (2026-01-29)
 
 ### Features
