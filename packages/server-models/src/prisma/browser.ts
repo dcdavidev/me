@@ -21,3 +21,13 @@ export * from './enums.js';
  *
  */
 export type OneTimePassword = Prisma.OneTimePasswordModel;
+/**
+ * Model Project
+ * Projects
+ */
+export type Project = Prisma.ProjectModel;
+/**
+ * Model ProjectTranslation
+ *
+ */
+export type ProjectTranslation = Prisma.ProjectTranslationModel;

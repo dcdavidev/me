@@ -55,6 +55,8 @@ export const AnyNull = runtime.AnyNull;
 
 export const ModelName = {
   OneTimePassword: 'OneTimePassword',
+  Project: 'Project',
+  ProjectTranslation: 'ProjectTranslation',
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -84,6 +86,32 @@ export const OneTimePasswordScalarFieldEnum = {
 export type OneTimePasswordScalarFieldEnum =
   (typeof OneTimePasswordScalarFieldEnum)[keyof typeof OneTimePasswordScalarFieldEnum];
 
+export const ProjectScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  name: 'name',
+  homepageUrl: 'homepageUrl',
+  repoUrl: 'repoUrl',
+  logoUrl: 'logoUrl',
+  bannerUrl: 'bannerUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+} as const;
+
+export type ProjectScalarFieldEnum =
+  (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum];
+
+export const ProjectTranslationScalarFieldEnum = {
+  id: 'id',
+  language: 'language',
+  shortDescription: 'shortDescription',
+  body: 'body',
+  projectId: 'projectId',
+} as const;
+
+export type ProjectTranslationScalarFieldEnum =
+  (typeof ProjectTranslationScalarFieldEnum)[keyof typeof ProjectTranslationScalarFieldEnum];
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc',
@@ -97,3 +125,10 @@ export const QueryMode = {
 } as const;
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode];
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last',
+} as const;
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder];

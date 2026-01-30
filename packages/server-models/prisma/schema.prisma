@@ -17,3 +17,33 @@ model OneTimePassword {
   @@index([email])
   @@index([expiresAt])
 }
+
+/// Projects
+model Project {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  homepageUrl String?
+  repoUrl     String?
+  logoUrl     String?
+  bannerUrl   String?
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  translations ProjectTranslation[]
+}
+
+model ProjectTranslation {
+  id          String   @id @default(cuid())
+  language    String   // e.g. "it" or "en"
+
+  shortDescription String
+  body             String   @db.Text // Markdown content
+
+  // Relation to Project
+  projectId   String
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, language])
+}

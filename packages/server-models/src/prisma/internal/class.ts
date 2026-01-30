@@ -19,7 +19,7 @@ const config: runtime.GetPrismaClientConfig = {
   engineVersion: '9d6ad21cbbceab97458517b147a6a09ff43aa735',
   activeProvider: 'postgresql',
   inlineSchema:
-    'generator client {\n  provider = "prisma-client"\n  output   = "../src/prisma"\n}\n\ndatasource db {\n  provider = "postgresql"\n}\n\nmodel OneTimePassword {\n  id        String   @id @default(uuid())\n  email     String\n  code      String\n  expiresAt DateTime\n  createdAt DateTime @default(now())\n\n  @@index([email])\n  @@index([expiresAt])\n}\n',
+    'generator client {\n  provider = "prisma-client"\n  output   = "../src/prisma"\n}\n\ndatasource db {\n  provider = "postgresql"\n}\n\nmodel OneTimePassword {\n  id        String   @id @default(uuid())\n  email     String\n  code      String\n  expiresAt DateTime\n  createdAt DateTime @default(now())\n\n  @@index([email])\n  @@index([expiresAt])\n}\n\n/// Projects\nmodel Project {\n  id          String  @id @default(cuid())\n  slug        String  @unique\n  name        String\n  homepageUrl String?\n  repoUrl     String?\n  logoUrl     String?\n  bannerUrl   String?\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  translations ProjectTranslation[]\n}\n\nmodel ProjectTranslation {\n  id       String @id @default(cuid())\n  language String // e.g. "it" or "en"\n\n  shortDescription String\n  body             String @db.Text // Markdown content\n\n  // Relation to Project\n  projectId String\n  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)\n\n  @@unique([projectId, language])\n}\n',
   runtimeDataModel: {
     models: {},
     enums: {},
@@ -28,7 +28,7 @@ const config: runtime.GetPrismaClientConfig = {
 };
 
 config.runtimeDataModel = JSON.parse(
-  '{"models":{"OneTimePassword":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"email","kind":"scalar","type":"String"},{"name":"code","kind":"scalar","type":"String"},{"name":"expiresAt","kind":"scalar","type":"DateTime"},{"name":"createdAt","kind":"scalar","type":"DateTime"}],"dbName":null}},"enums":{},"types":{}}'
+  '{"models":{"OneTimePassword":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"email","kind":"scalar","type":"String"},{"name":"code","kind":"scalar","type":"String"},{"name":"expiresAt","kind":"scalar","type":"DateTime"},{"name":"createdAt","kind":"scalar","type":"DateTime"}],"dbName":null},"Project":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"slug","kind":"scalar","type":"String"},{"name":"name","kind":"scalar","type":"String"},{"name":"homepageUrl","kind":"scalar","type":"String"},{"name":"repoUrl","kind":"scalar","type":"String"},{"name":"logoUrl","kind":"scalar","type":"String"},{"name":"bannerUrl","kind":"scalar","type":"String"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"updatedAt","kind":"scalar","type":"DateTime"},{"name":"translations","kind":"object","type":"ProjectTranslation","relationName":"ProjectToProjectTranslation"}],"dbName":null},"ProjectTranslation":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"language","kind":"scalar","type":"String"},{"name":"shortDescription","kind":"scalar","type":"String"},{"name":"body","kind":"scalar","type":"String"},{"name":"projectId","kind":"scalar","type":"String"},{"name":"project","kind":"object","type":"Project","relationName":"ProjectToProjectTranslation"}],"dbName":null}},"enums":{},"types":{}}'
 );
 
 async function decodeBase64AsWasm(
@@ -236,6 +236,29 @@ export interface PrismaClient<
    * ```
    */
   get oneTimePassword(): Prisma.OneTimePasswordDelegate<
+    ExtArgs,
+    { omit: OmitOpts }
+  >;
+
+  /**
+   * `prisma.project`: Exposes CRUD operations for the **Project** model.
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Projects
+   * const projects = await prisma.project.findMany()
+   * ```
+   */
+  get project(): Prisma.ProjectDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.projectTranslation`: Exposes CRUD operations for the **ProjectTranslation** model.
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more ProjectTranslations
+   * const projectTranslations = await prisma.projectTranslation.findMany()
+   * ```
+   */
+  get projectTranslation(): Prisma.ProjectTranslationDelegate<
     ExtArgs,
     { omit: OmitOpts }
   >;
