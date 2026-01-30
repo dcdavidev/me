@@ -21,6 +21,7 @@ export const InputOTP = ({
   <OTPInput
     ref={ref}
     containerClassName={`flex items-center gap-2 has-[:disabled]:opacity-50 ${containerClassName || ''}`}
+    autoComplete="one-time-code"
     {...props}
     render={({ slots }) => (
       <Flex gap="2">

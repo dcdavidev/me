@@ -20,6 +20,8 @@ import {
   TextField,
 } from '@radix-ui/themes';
 
+import { serialize } from 'cookie';
+
 import { BoxEaseIn } from '@repo/shared-ui-components';
 import { InputOTP } from '@repo/shared-ui-components';
 import { api } from '@repo/web-configs';
@@ -47,11 +49,9 @@ export async function action({ request }: Route.ActionArgs) {
 
     try {
       await api.post('/login', { email });
-
       return { step: 'verify', email, error: null };
     } catch (error) {
       console.error('[Login Server Action Error]:', error);
-
       let errorMessage = "Errore durante l'invio. Riprova.";
 
       if (isAxiosError(error)) {
@@ -61,7 +61,6 @@ export async function action({ request }: Route.ActionArgs) {
           errorMessage = error.response.data.message;
         }
       }
-
       return { error: errorMessage };
     }
   }
@@ -80,18 +79,26 @@ export async function action({ request }: Route.ActionArgs) {
 
     try {
       const response = await api.post('/verify', { email, code });
-      const cookie = response.headers['set-cookie'];
+      const { token, expiresIn } = response.data;
+
+      const cookieHeader = serialize('auth_token', token, {
+        path: '/',
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+        maxAge: expiresIn / 1000,
+      });
 
       return redirect(next, {
-        headers: cookie ? { 'Set-Cookie': cookie.join(', ') } : {},
+        headers: {
+          'Set-Cookie': cookieHeader,
+        },
       });
     } catch (error) {
       let errorMessage = 'Codice non valido o scaduto.';
-
       if (isAxiosError(error) && error.response?.data?.message) {
         errorMessage = error.response.data.message;
       }
-
       return { step: 'verify', email, error: errorMessage };
     }
   }
@@ -158,6 +165,7 @@ export default function LoginPage() {
                         maxLength={6}
                         name="code"
                         disabled={isSubmitting}
+                        autoComplete="one-time-code"
                       />
                     </Box>
 

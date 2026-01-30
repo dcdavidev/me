@@ -59,19 +59,11 @@ export async function verifyOtp(
     // Generate JWT
     const token = signToken({ email });
 
-    // Set Cookie
-    // secure: true in production ensures it's only sent over HTTPS
-    const isProd = process.env.NODE_ENV === 'production';
-
-    res.cookie('auth_token', token, {
-      path: '/',
-      httpOnly: true, // Prevents JavaScript access (XSS protection)
-      secure: isProd,
-      sameSite: isProd ? 'strict' : 'lax',
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
+    res.status(200).json({
+      message: 'Login effettuato.',
+      token,
+      expiresIn: 7 * 24 * 60 * 60 * 1000,
     });
-
-    res.status(200).json({ message: 'Successful login.' });
   } catch (error) {
     next(error);
   }
