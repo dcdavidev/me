@@ -8,6 +8,8 @@ import {
   verifyOtp,
 } from '@repo/server-controllers';
 
+import projectsRouter from './projects.js';
+
 export const apiRouter: Router = Router({ mergeParams: true });
 
 apiRouter.post('/contact-me', contactMe);
@@ -17,3 +19,6 @@ apiRouter.post('/login', requestOtp);
 apiRouter.post('/login', logout);
 apiRouter.post('/verify', verifyOtp);
 apiRouter.get('/me', checkSession);
+
+// Projects
+apiRouter.use('/projects', projectsRouter);

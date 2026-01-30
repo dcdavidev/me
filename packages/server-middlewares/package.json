@@ -1,5 +1,5 @@
 {
-  "name": "@repo/server-routes",
+  "name": "@repo/server-middlewares",
   "version": "0.8.3",
   "private": true,
   "license": "CC-BY-NC-ND-4.0",
@@ -8,8 +8,7 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "@repo/server-controllers": "workspace:*",
-    "@repo/server-middlewares": "workspace:*",
+    "@repo/server-services": "workspace:*",
     "express": "^5.2.1"
   },
   "devDependencies": {

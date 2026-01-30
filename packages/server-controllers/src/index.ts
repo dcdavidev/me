@@ -1,6 +1,11 @@
 export { checkSession } from './check-session.js';
 export { contactMe } from './contact-me.js';
+export { createProject } from './create-project.js';
+export { deleteProject } from './delete-project.ts.js';
+export { getProjectBySlug } from './get-project-by-slug.js';
+export { getProjects } from './get-projects.js';
 export { health } from './health.js';
 export { logout } from './logout.js';
 export { requestOtp } from './request-otp.js';
+export { updateProject } from './update-project.js';
 export { verifyOtp } from './verify-otp.js';
