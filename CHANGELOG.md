@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.3](https://github.com/dcdavidev/me/compare/v0.8.2...v0.8.3) (2026-01-30)
+
+### Bug Fixes
+
+* api baseUrl ([0e83fe2](https://github.com/dcdavidev/me/commit/0e83fe24a1ad2fad112da4c45f3447828fd14534))
+
 ## [0.8.2](https://github.com/dcdavidev/me/compare/v0.8.1...v0.8.2) (2026-01-29)
 
 ### Bug Fixes
