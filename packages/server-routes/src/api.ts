@@ -18,7 +18,7 @@ apiRouter.post('/contact-me', contactMe);
 apiRouter.post('/login', requestOtp);
 apiRouter.post('/login', logout);
 apiRouter.post('/verify', verifyOtp);
-apiRouter.get('/me', checkSession);
+apiRouter.post('/me', checkSession);
 
 // Projects
 apiRouter.use('/projects', projectsRouter);

@@ -83,8 +83,8 @@ export async function action({ request }: Route.ActionArgs) {
 
       const cookieHeader = serialize('auth_token', token, {
         path: '/',
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
+        httpOnly: false,
+        secure: import.meta.env.PROD,
         sameSite: 'lax',
         maxAge: expiresIn / 1000,
       });

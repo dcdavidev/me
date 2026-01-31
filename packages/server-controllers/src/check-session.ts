@@ -1,10 +1,13 @@
 import type { NextFunction, Request, Response } from 'express';
 
-import { verifyToken } from '@repo/server-services';
+import jwt from 'jsonwebtoken';
 
 /**
- * Checks if the user has a valid session cookie.
+ * Checks if the user has a valid session token provided in the request body.
  * Used by the frontend to protect routes.
+ * @param req - The Express request object.
+ * @param res - The Express response object.
+ * @param _next - The Express next function.
  */
 export async function checkSession(
   req: Request,
@@ -12,18 +15,28 @@ export async function checkSession(
   _next: NextFunction
 ): Promise<void> {
   try {
-    const token = req.cookies.auth_token;
+    const { token } = req.body;
 
     if (!token) {
-      res.status(401).json({ authenticated: false });
+      res.status(401).json({ authenticated: false, message: 'Token missing' });
       return;
     }
 
-    // Verify token throws if invalid/expired
-    const payload = verifyToken(token);
+    const secret = process.env.JWT_SECRET;
+    if (!secret) {
+      throw new Error('JWT_SECRET is not defined in environment variables');
+    }
+    const payload = jwt.verify(token, secret);
 
-    res.status(200).json({ authenticated: true, user: payload });
+    res.status(200).json({
+      authenticated: true,
+      user: payload,
+    });
   } catch {
-    res.status(401).json({ authenticated: false });
+    // jwt.verify throws error if token is expired or invalid
+    res.status(401).json({
+      authenticated: false,
+      message: 'Invalid or expired token',
+    });
   }
 }

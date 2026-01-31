@@ -22,6 +22,7 @@ import {
   Container,
   Flex,
   Heading,
+  Spinner,
   Text,
   Theme,
 } from '@radix-ui/themes';
@@ -188,6 +189,18 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
         )}
       </Flex>
     </Container>
+  );
+}
+
+export function HydrateFallback() {
+  return (
+    <Flex
+      align="center"
+      justify="center"
+      style={{ height: '100vh', width: '100%' }}
+    >
+      <Spinner size="3" />
+    </Flex>
   );
 }
 

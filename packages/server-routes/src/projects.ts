@@ -14,7 +14,7 @@ const projectsRouter: Router = Router();
 /**
  * Public routes
  */
-projectsRouter.get('/', getProjects);
+projectsRouter.post('/', getProjects);
 projectsRouter.get('/:slug', getProjectBySlug);
 
 /**

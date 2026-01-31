@@ -3,30 +3,30 @@ import { type NextFunction, type Request, type Response } from 'express';
 import { prisma } from '@repo/server-models';
 
 /**
- * Retrieves all projects with translations for a specific language.
- * @param req - Express request with lang query param.
- * @param res - Express response.
+ * Retrieves the list of all projects with their translations.
+ * @param _req - Express request object.
+ * @param res - Express response object.
  * @param next - Express next function.
+ * @returns
  */
 export async function getProjects(
-  req: Request,
+  _req: Request,
   res: Response,
   next: NextFunction
 ): Promise<void> {
   try {
-    const lang = typeof req.query.lang === 'string' ? req.query.lang : 'en';
-
     const projects = await prisma.project.findMany({
       include: {
-        translations: {
-          where: { language: lang },
-        },
+        translations: true,
       },
-      orderBy: { createdAt: 'desc' },
+      orderBy: {
+        createdAt: 'desc',
+      },
     });
 
     res.status(200).json(projects);
   } catch (error) {
+    console.error('[GetProjects Error]:', error);
     next(error);
   }
 }

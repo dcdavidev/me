@@ -13,6 +13,10 @@ import { initCronJobs } from '@repo/server-services';
 const wnodex = new Wnodex({
   port: PORT,
   compression: true,
+  bodyParsers: {
+    json: { limit: '200mb' },
+    urlencoded: { limit: '200mb', extended: true },
+  },
   helmet: false,
   cors: {
     origin: [

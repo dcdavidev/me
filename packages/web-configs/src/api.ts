@@ -9,8 +9,6 @@ const baseURL = import.meta.env.DEV ? devURL : prodURL;
 
 console.log(`[Axios Init] Mode: ${import.meta.env.MODE} | BaseURL: ${baseURL}`);
 
-console.log(`[Axios Init] Mode: ${import.meta.env.MODE}, BaseURL: ${baseURL}`);
-
 export const api = axios.create({
   baseURL: baseURL,
   timeout: 10_000,
