@@ -3,8 +3,8 @@ import { type NextFunction, type Request, type Response } from 'express';
 import { prisma } from '@repo/server-models';
 
 /**
- * Retrieves a single project by slug.
- * @param req - Express request with slug param and optional lang query.
+ * Retrieves a single project by slug with all its translations.
+ * @param req - Express request with slug param.
  * @param res - Express response.
  * @param next - Express next function.
  * @returns
@@ -15,15 +15,17 @@ export async function getProjectBySlug(
   next: NextFunction
 ): Promise<void> {
   try {
-    const slug = req.params.slug as string;
-    const lang = (req.query.lang as string) || 'en';
+    const { slug } = req.params;
+
+    if (typeof slug !== 'string') {
+      res.status(400).json({ error: 'Invalid project slug' });
+      return;
+    }
 
     const project = await prisma.project.findUnique({
       where: { slug },
       include: {
-        translations: {
-          where: { language: lang },
-        },
+        translations: true,
       },
     });
 
@@ -34,6 +36,7 @@ export async function getProjectBySlug(
 
     res.status(200).json(project);
   } catch (error) {
+    console.error(`[GetProjectBySlug Error] Slug: ${req.params.slug} -`, error);
     next(error);
   }
 }
