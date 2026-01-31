@@ -4,6 +4,7 @@ import contactMe from './contact-me.js';
 import error from './error.js';
 import home from './home.js';
 import privacy from './privacy.js';
+import projects from './projects.js';
 import techStack from './tech-stack.js';
 import terms from './terms.js';
 
@@ -16,6 +17,7 @@ export const it = {
   about,
   'contact-me': contactMe,
   'tech-stack': techStack,
+  projects,
   privacy,
   terms,
 };
