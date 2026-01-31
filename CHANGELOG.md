@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.9.0](https://github.com/dcdavidev/me/compare/v0.8.3...v0.9.0) (2026-01-31)
+
+### Features
+
+* add CRUD for projects ([149f598](https://github.com/dcdavidev/me/commit/149f5989889163f3d9862ca162a3e81c391a0f30))
+* **server-models:** create modles for projects ([80cdc15](https://github.com/dcdavidev/me/commit/80cdc15abc3ef35448271dd108e6e5466527a3d6))
+* **web-configs:** add interceptor to handle token expiration ([afc32f4](https://github.com/dcdavidev/me/commit/afc32f4564823cb455be2c3e51c0ee40930d63a2))
+* **web:** add _public.projects.tsx ([932d8d1](https://github.com/dcdavidev/me/commit/932d8d168f90220b0c85b2ac4954e6fec4d354f7))
+* **web:** add _puyblic.projects.{_index,$slug}.tsx ([497cb7a](https://github.com/dcdavidev/me/commit/497cb7ae10ca34122a63041b174c7974333fdec9))
+* **web:** add dashboard.projects ([737e988](https://github.com/dcdavidev/me/commit/737e9887674ff1a380f5e0321d9853093148fa76))
+
+### Bug Fixes
+
+* handle cookie clinet-side ([eca88b2](https://github.com/dcdavidev/me/commit/eca88b2f91fa12b394d8325854a38053ae5f1249))
+
 ## [0.8.3](https://github.com/dcdavidev/me/compare/v0.8.2...v0.8.3) (2026-01-30)
 
 ### Bug Fixes
