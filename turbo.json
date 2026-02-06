@@ -5,7 +5,17 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".dist/**"]
+      "outputs": ["dist/**"]
+    },
+    "typecheck": {
+      "dependsOn": ["^typecheck"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": [".react-router/**"]
+    },
+    "dev": {
+      "dependsOn": ["^dev"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": [".react-router/**", "dist/**"]
     }
   }
 }
