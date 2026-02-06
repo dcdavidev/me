@@ -1,33 +1,9 @@
-# spellbookx turbo-morepo-template
+# dcdavidev/me
 
-This is a starter template for a monorepo using [Turborepo](https://turbo.build/). It comes pre-configured with the excellent [Spellbookx](https://github.com/spellbookx/spellbookx) configurations for linting, formatting, and more, allowing you to bootstrap a new project quickly with solid defaults.
-
-## Getting Started
-
-To create a new repository based on this template, you can use the `create-turbo` command with the `--example` flag, pointing to this GitHub repository.
-
-```bash
-npx create-turbo@latest --example https://github.com/spellbookx/turbo-monorepo-template
-```
-
-This will scaffold a new project in a directory of your choice.
-
-## What's Inside?
-
-This template sets up a Turborepo monorepo with:
-
-- [ESLint](https://eslint.org/) configured using `@spellbookx/eslint-config`.
-- [Prettier](https://prettier.io/) configured using `@spellbookx/prettier-config`.
-- [TypeScript](https://www.typescriptlang.org/) configs based on `@spellbookx/typescript-config`.
-- Commit linting with [Commitlint](https://commitlint.js.org/) and `@spellbookx/commitlint-config`.
-- [CSpell](https://cspell.org/) for spell checking.
-- [Lefthook](https://github.com/evilmartians/lefthook) as a Git hooks manager.
-- [Release It!](https://github.com/release-it/release-it) for automated releases.
+My personal portfolio website.
 
 ## License
 
-This project is licensed under the MIT License.
+This project is shared as a personal and portfolio work. The source code is provided for viewing and study only. Modification, redistribution, and commercial use are not permitted. Attribution to the original author is required.
 
-**Copyright (c) 2026 Davide Di Criscito**
-
-For the full details, see the [LICENSE](LICENSE) file.
+Unfiltered Desires © 2026 by Davide Di Criscito is licensed under [**CC BY-NC-ND 4.0**](https://creativecommons.org/licenses/by-nc-nd/4.0/).
