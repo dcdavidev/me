@@ -1,16 +1,17 @@
-@import 'tailwindcss';
-
-@theme {
-  --font-sans:
-    'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+:root {
+  --pittorica-font-family:
+    'Inter Variable', Inter, system-ui, -apple-system, sans-serif;
+  --pittorica-font-heading: 'Momo Trust Display', sans-serif;
+  --pittorica-font-code: ui-monospace, SFMono-Regular, monospace;
+  --pittorica-font-strong: inherit;
+  --pittorica-font-em: inherit;
+  --pittorica-font-quote: inherit;
 }
 
-html,
-body {
-  @apply bg-white dark:bg-gray-950;
+.pittorica-theme {
+  --pittorica-source-color: #75485e;
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
+body {
+  color: var(--pittorica-white);
 }
