@@ -17,6 +17,9 @@ import {
 
 import { PittoricaTheme } from '@pittorica/react';
 
+import { consentConfig } from '@repo/shared-client-configs';
+import { CookieConsentInit } from '@repo/shared-ui-components';
+
 import './app.css';
 
 import type { Route } from './+types/root';
@@ -115,8 +118,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <body className="pittorica-theme" data-appearance="dark">
           <PittoricaTheme sourceColor="#75485e" appearance="dark">
             {children}
+            <ScrollRestoration />
           </PittoricaTheme>
-          <ScrollRestoration />
+
+          <CookieConsentInit config={consentConfig} />
           <Scripts />
         </body>
       </html>
