@@ -106,6 +106,7 @@ export default function PublicLayout() {
         id="footer"
         justify={'center'}
         align={'center'}
+        gap="6"
         style={{
           minHeight: '100vh',
           position: 'relative',
@@ -122,8 +123,8 @@ export default function PublicLayout() {
               </Button>
             </Flex>
 
-            <Card mt="6" mb="6" translucent>
-              <Box p={'4'}>
+            <Card mt="6" mb="6" p="4" translucent>
+              <Flex direction="column" gap="6">
                 <Flex
                   direction={'column'}
                   justify={'center'}
@@ -164,7 +165,7 @@ export default function PublicLayout() {
                     <Link href="/terms">{t('common.nav.terms')}</Link>
                   </Flex>
                 </Flex>
-              </Box>
+              </Flex>
             </Card>
 
             <Container maxWidth="sm">
